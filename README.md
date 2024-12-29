@@ -1,4 +1,4 @@
-# Variable_Voltage_Controller
+# Variable Voltage Controller
 Desktop device that outputs a variable voltage whos value is controlled by the user.  The user will be able to monitor the input and output voltage and current.  This device will be suitable for prototyping, lab-bench testing and recreational purposes
 # System Scope
 The system will provide:
