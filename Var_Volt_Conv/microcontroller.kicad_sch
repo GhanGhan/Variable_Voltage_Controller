@@ -2,7 +2,7 @@
 	(version 20231120)
 	(generator "eeschema")
 	(generator_version "8.0")
-	(uuid "d6a63ad2-7227-4942-a4b9-b1fb7d42a9f1")
+	(uuid "e93f86e5-eb5b-4045-bd1e-fd1452276b55")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:C"
@@ -1330,6 +1330,10 @@
 		(uuid "45f7ded6-29c6-40ea-9d88-08360849ff95")
 	)
 	(no_connect
+		(at 114.3 86.36)
+		(uuid "7bdf1761-2da3-44ea-8e34-de061b74fa61")
+	)
+	(no_connect
 		(at 154.94 83.82)
 		(uuid "96c1813f-76ed-4a64-b718-13464bdc8886")
 	)
@@ -1343,7 +1347,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 88.9) (xy 114.3 88.9)
+			(xy 109.22 88.9) (xy 114.3 88.9)
 		)
 		(stroke
 			(width 0)
@@ -1623,7 +1627,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 83.82) (xy 114.3 83.82)
+			(xy 109.22 83.82) (xy 114.3 83.82)
 		)
 		(stroke
 			(width 0)
@@ -1791,17 +1795,6 @@
 		)
 		(uuid "f6ae8edc-b2f0-4a95-87b6-cfe0786ad1da")
 	)
-	(label "S-INPUT_CURRENT"
-		(at 95.25 83.82 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0479398c-c509-4373-b429-eb4e6268819f")
-	)
 	(label "NRST"
 		(at 107.95 71.12 0)
 		(fields_autoplaced yes)
@@ -1812,17 +1805,6 @@
 			(justify left bottom)
 		)
 		(uuid "10526e33-047c-4080-b592-2a76bf3412fa")
-	)
-	(label "SPI_CLK"
-		(at 165.1 71.12 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1bcad102-5711-44eb-b3ee-8831317ee47b")
 	)
 	(label "SWDIO"
 		(at 163.83 96.52 180)
@@ -1835,50 +1817,6 @@
 		)
 		(uuid "35134d5a-858b-4e79-8684-f82bbb084143")
 	)
-	(label "S-INPUT_VOLTAGE"
-		(at 95.25 88.9 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "62baba3b-db4c-4359-ba17-a9abc28e03cf")
-	)
-	(label "S-OUTPUT_CURRENT"
-		(at 176.53 86.36 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "80a34aea-3980-4756-aea9-96e25c567bba")
-	)
-	(label "S-OUTPUT_VOLTAGE"
-		(at 176.53 88.9 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "862490f7-340c-435e-bf56-decd56edfa09")
-	)
-	(label "SPI_MISO"
-		(at 165.1 78.74 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "89dd93ef-116f-4442-af99-fb4fe5948ccf")
-	)
 	(label "SWCLK"
 		(at 163.83 99.06 180)
 		(fields_autoplaced yes)
@@ -1890,16 +1828,159 @@
 		)
 		(uuid "9aa989e6-9df6-424d-b6f6-09e46a5de033")
 	)
-	(label "SPI_MOSI"
-		(at 165.1 81.28 180)
+	(global_label "SPI_MOSI"
+		(shape input)
+		(at 165.1 81.28 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left)
 		)
-		(uuid "aed16373-50d3-49a5-af24-3ecca00cef57")
+		(uuid "16033b95-84dd-415e-bbae-9e986a4266a9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 176.7333 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPI_CLK"
+		(shape input)
+		(at 165.1 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2b926179-0ad8-4212-8460-7613b4bc6950")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.7052 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S-OUTPUT_VOLTAGE"
+		(shape input)
+		(at 176.53 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2c3a3634-3d33-4c51-8ba8-ff36e8c66ccb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.3838 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S-OUTPUT_CURRENT"
+		(shape input)
+		(at 176.53 86.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "31984ab0-d10d-42a9-b4a8-fa88599026b3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 199.049 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S-INPUT_VOLTAGE"
+		(shape input)
+		(at 109.22 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d67bfd93-76f6-4156-b248-df6d9eb4662e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 89.0595 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPI_MISO"
+		(shape input)
+		(at 165.1 78.74 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dd44263e-ce01-4b40-95b4-c4d065285889")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 176.7333 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S-INPUT_CURRENT"
+		(shape input)
+		(at 109.22 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "eeb9c7a0-ee8a-4cf2-8102-27cc9cf3b2ce")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 88.3943 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -2112,18 +2193,17 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "78ef201f-79f7-4b76-b7b2-02a3d00ddaaa")
 		(property "Reference" "Y?"
-			(at 87.63 72.5168 90)
+			(at 69.088 71.12 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Crystal_GND24"
-			(at 87.63 75.0568 90)
+		(property "Value" "16MHz"
+			(at 69.088 73.66 90)
 			(effects
 				(font
 					(size 1.27 1.27)
