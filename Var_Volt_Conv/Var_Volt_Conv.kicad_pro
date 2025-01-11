@@ -389,7 +389,11 @@
     ],
     [
       "b048280b-6fef-4656-96bb-ca0a0c35ac5b",
-      "Microcontroller"
+      "[2] Microcontroller"
+    ],
+    [
+      "18589d04-92b7-4bb3-b941-112d31f9b6cf",
+      "[1] Power"
     ]
   ],
   "text_variables": {}
