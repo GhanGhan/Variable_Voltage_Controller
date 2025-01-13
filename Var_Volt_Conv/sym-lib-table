@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "TPS552872_Buck-Boost")(type "KiCad")(uri "${KIPRJMOD}/Project_Library/TPS552872_Buck-Boost/TPS552872_Buck-Boost.kicad_sym")(options "")(descr ""))
+)

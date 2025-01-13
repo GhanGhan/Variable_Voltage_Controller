@@ -1,0 +1,15 @@
+* C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Spice_Designs\Reverse_Voltage_ORing\Reverse_V_with_PMOS.asc
+M1 I N001 O O AO6407
+R1 O N001 100k
+R2 N001 0 100
+D1 N001 O 1N914
+V1 I 0 6
+R3 O 0 1k
+.model D D
+.lib C:\Users\Ghani\AppData\Local\LTspice\lib\cmp\standard.dio
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\Ghani\AppData\Local\LTspice\lib\cmp\standard.mos
+.tran 1
+.backanno
+.end

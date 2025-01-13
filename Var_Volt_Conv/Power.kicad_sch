@@ -1691,6 +1691,447 @@
 				)
 			)
 		)
+		(symbol "TPS552872_Buck-Boost:TPS552872RYQR"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -12.446 20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TPS552872RYQR"
+				(at 8.128 -21.844 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 48.26 40.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 48.26 40.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "  Buck-Boost Switching Regulator IC Positive Adjustable 0.8V 1 Output 2.5A 21-PowerVFQFN"
+				(at 1.27 -25.146 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TPS552872RYQR_0_0"
+				(pin input line
+					(at -13.97 0 0)
+					(length 2.54)
+					(name "EN/UVLO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 3.81 21.59 270)
+					(length 2.54)
+					(name "SW2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 13.97 8.89 180)
+					(length 2.54)
+					(name "VOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 13.97 2.54 180)
+					(length 2.54)
+					(name "ISP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 13.97 0 180)
+					(length 2.54)
+					(name "ISN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 13.97 -3.81 180)
+					(length 2.54)
+					(name "FB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 13.97 -7.62 180)
+					(length 2.54)
+					(name "COMP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 13.97 -15.24 180)
+					(length 2.54)
+					(name "CDC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -13.97 3.81 0)
+					(length 2.54)
+					(name "AGND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -13.97 6.35 0)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 21.59 270)
+					(length 2.54)
+					(name "BOOT2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 13.97 -11.43 180)
+					(length 2.54)
+					(name "MODE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -7.62 21.59 270)
+					(length 2.54)
+					(name "BOOT1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -13.97 -2.54 0)
+					(length 2.54)
+					(name "EXTVCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector line
+					(at -13.97 -7.62 0)
+					(length 2.54)
+					(name "PG"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at -13.97 -10.16 0)
+					(length 2.54)
+					(name "CC\\"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -13.97 -13.97 0)
+					(length 2.54)
+					(name "DITH/SYNC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -13.97 -16.51 0)
+					(length 2.54)
+					(name "FSW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -13.97 8.89 0)
+					(length 2.54)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -3.81 21.59 270)
+					(length 2.54)
+					(name "SW1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 13.97 6.35 180)
+					(length 2.54)
+					(name "PGND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "TPS552872RYQR_1_1"
+				(rectangle
+					(start -11.43 19.05)
+					(end 11.43 -20.32)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+		)
 		(symbol "Transistor_FET:AO3400A"
 			(pin_names hide)
 			(exclude_from_sim no)
@@ -7194,6 +7635,130 @@
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
 					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TPS552872_Buck-Boost:TPS552872RYQR")
+		(at 273.05 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5b9517c3-ae3a-4222-bbbb-eb777d45a154")
+		(property "Reference" "U?"
+			(at 259.842 103.632 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TPS552872RYQR"
+			(at 278.892 143.764 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 321.31 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 321.31 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Buck-Boost Switching Regulator IC Positive Adjustable 0.8V 1 Output 2.5A 21-PowerVFQFN"
+			(at 274.32 147.066 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "14"
+			(uuid "ef7c9853-5253-46b2-b985-3795a36661a4")
+		)
+		(pin "21"
+			(uuid "07a12644-fca2-427f-b263-9a5d884f4fc2")
+		)
+		(pin "15"
+			(uuid "c8b2d0cb-8bad-43ee-8d9e-3844da5b86ac")
+		)
+		(pin "2"
+			(uuid "ab363ef1-797d-43c3-bb86-cd7afef92216")
+		)
+		(pin "11"
+			(uuid "4c8d806e-021b-418b-a7b5-a65b997d767e")
+		)
+		(pin "7"
+			(uuid "510d0bdd-2131-48b1-a3b2-3ee638969783")
+		)
+		(pin "19"
+			(uuid "1e82a01d-5812-4920-a962-cd3d0d740146")
+		)
+		(pin "16"
+			(uuid "131720d1-a903-4350-815a-d77769949c80")
+		)
+		(pin "10"
+			(uuid "7ee8d575-ccb8-4b59-9156-2d1c2ecc7c36")
+		)
+		(pin "6"
+			(uuid "d7d6e78a-2646-4d93-898f-2a374f4a6d63")
+		)
+		(pin "8"
+			(uuid "95ca36e7-fe57-4f29-9867-250a9e065724")
+		)
+		(pin "18"
+			(uuid "7952f0af-3a21-489f-afbc-d349238461a4")
+		)
+		(pin "12"
+			(uuid "a516da6f-0951-4997-af93-8dae96f2158c")
+		)
+		(pin "3"
+			(uuid "5833e12c-3d93-4821-a6d0-c930a369358b")
+		)
+		(pin "13"
+			(uuid "8263ac4f-3ccf-4654-98ab-569f6bbb3881")
+		)
+		(pin "1"
+			(uuid "6bd6b51e-b62c-43af-a857-0de6c0b10f61")
+		)
+		(pin "20"
+			(uuid "cb9345ac-a291-4865-b590-9d4e83d9ed76")
+		)
+		(pin "17"
+			(uuid "98e145c9-777b-4666-bbc6-106bc305119f")
+		)
+		(pin "4"
+			(uuid "c0183c4a-79c8-4f55-b029-272fc8c213fe")
+		)
+		(pin "9"
+			(uuid "e063cef0-6188-4ff0-9000-8a5059ed01f8")
+		)
+		(pin "5"
+			(uuid "89877631-f5cb-4867-b914-a2356b152307")
+		)
+		(instances
+			(project ""
+				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
+					(reference "U?")
 					(unit 1)
 				)
 			)

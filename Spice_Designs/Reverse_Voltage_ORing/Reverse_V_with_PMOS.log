@@ -1,0 +1,11 @@
+LTspice 24.0.12 for Windows
+Circuit: * C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Spice_Designs\Reverse_Voltage_ORing\Reverse_V_with_PMOS.asc
+Start Time: Sun Jan 12 09:00:38 2025
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = modified trap
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.353 seconds.
+
