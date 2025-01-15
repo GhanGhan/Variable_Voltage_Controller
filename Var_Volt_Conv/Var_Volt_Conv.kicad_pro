@@ -410,6 +410,10 @@
     [
       "da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a",
       "[3] Display"
+    ],
+    [
+      "a939aa62-b331-46a3-b3e0-48fa29856a0e",
+      "[4] Sensors"
     ]
   ],
   "text_variables": {}

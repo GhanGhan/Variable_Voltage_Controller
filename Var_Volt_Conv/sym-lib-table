@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "TPS552872_Buck-Boost")(type "KiCad")(uri "${KIPRJMOD}/Project_Library/TPS552872_Buck-Boost/TPS552872_Buck-Boost.kicad_sym")(options "")(descr ""))
   (lib (name "LCD_Display_Module")(type "KiCad")(uri "${KIPRJMOD}/Project_Library/TPS552872_Buck-Boost/LCD_Display_Module.kicad_sym")(options "")(descr ""))
+  (lib (name "INA21x Current-Shunt Monitors")(type "KiCad")(uri "${KIPRJMOD}/Project_Library/TPS552872_Buck-Boost/INA21x Current-Shunt Monitors.kicad_sym")(options "")(descr ""))
 )
