@@ -1441,6 +1441,18 @@
 		)
 		(uuid "2eba3cdb-cad2-419b-9285-529675f6a057")
 	)
+	(text "[3] Display\n"
+		(exclude_from_sim no)
+		(at 44.45 25.654 0)
+		(effects
+			(font
+				(size 5.08 5.08)
+				(thickness 1.016)
+				(bold yes)
+			)
+		)
+		(uuid "45c18978-1cde-425f-90df-840578791145")
+	)
 	(global_label "{slash}RESET"
 		(shape input)
 		(at 121.92 104.14 180)

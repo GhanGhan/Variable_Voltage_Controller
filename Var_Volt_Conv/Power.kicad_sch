@@ -10513,7 +10513,7 @@
 				)
 			)
 		)
-		(property "Value" "L"
+		(property "Value" "2.2uF"
 			(at 326.39 85.09 90)
 			(effects
 				(font
