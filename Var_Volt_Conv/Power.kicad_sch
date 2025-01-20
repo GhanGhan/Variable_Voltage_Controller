@@ -6615,6 +6615,16 @@
 		)
 		(uuid "55efbd48-7bea-4f7a-ac91-a4218f3033f2")
 	)
+	(text "TVS Diodes: PESD18VF1BLYL"
+		(exclude_from_sim no)
+		(at 40.894 143.51 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "72e829d3-493b-4f8f-8adc-188a79f7988f")
+	)
 	(text "[1] Power"
 		(exclude_from_sim no)
 		(at 41.402 22.352 0)
@@ -10905,7 +10915,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SOD-882"
 			(at 62.23 81.28 0)
 			(effects
 				(font
