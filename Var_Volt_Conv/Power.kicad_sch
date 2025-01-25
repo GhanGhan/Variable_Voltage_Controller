@@ -9889,7 +9889,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "11mR"
 			(at 359.41 102.87 90)
 			(effects
 				(font
@@ -10495,7 +10495,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "11mR"
 			(at 137.16 93.98 90)
 			(effects
 				(font
