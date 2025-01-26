@@ -2701,6 +2701,16 @@
 		)
 		(uuid ef7fc1ec-fc05-458f-98d2-37f208c94e13)
 	)
+	(text "TVS/ESD Diodes: PESD3V3L1BA"
+		(exclude_from_sim no)
+		(at 140.97 176.022 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "052dcf2e-1065-404b-8757-abfcfff2f1fc")
+	)
 	(text "Programming & Reset Connector\n"
 		(exclude_from_sim no)
 		(at 86.36 127.508 0)
@@ -2710,6 +2720,17 @@
 			)
 		)
 		(uuid "828609b8-700b-49e6-9fb4-f6423a7c2dbd")
+	)
+	(text "Crystal: 7U16000E12UCG\nLoad Capacitance: 12 pF\nAssumed Stray Capacitance: 5pF\nCl = 2*(12pF-5pF)\nESR = 60 ohm (max)"
+		(exclude_from_sim no)
+		(at 82.55 98.044 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a7575643-23e7-4f40-8a84-dc756c9ec4d9")
 	)
 	(text "STM32G030F6P6TR Microcontroller"
 		(exclude_from_sim no)
@@ -4278,7 +4299,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "0.1uF"
 			(at 148.59 50.7999 0)
 			(effects
 				(font
@@ -4473,7 +4494,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "0.1uF"
 			(at 76.2 149.8599 0)
 			(effects
 				(font
