@@ -1578,7 +1578,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "24e18510-a215-4847-97db-8240d3f070b9")
-		(property "Reference" "C?"
+		(property "Reference" "C401"
 			(at 208.28 46.9899 0)
 			(effects
 				(font
@@ -1596,7 +1596,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 205.4352 52.07 0)
 			(effects
 				(font
@@ -1632,7 +1632,7 @@
 		(instances
 			(project ""
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "C?")
+					(reference "C401")
 					(unit 1)
 				)
 			)
@@ -1647,7 +1647,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "29ed6ef2-35c1-4937-9434-93e1f05ea1a8")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR0407"
 			(at 87.63 158.75 0)
 			(effects
 				(font
@@ -1697,7 +1697,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR051")
+					(reference "#PWR0407")
 					(unit 1)
 				)
 			)
@@ -1853,7 +1853,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "612dd4da-1ac4-45f4-9d92-4178fb2f87c5")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR0408"
 			(at 203.2 161.29 0)
 			(effects
 				(font
@@ -1903,7 +1903,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR055")
+					(reference "#PWR0408")
 					(unit 1)
 				)
 			)
@@ -1919,7 +1919,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6b9a5341-1ae4-489c-9520-32cbfdb01316")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR0401"
 			(at 189.23 49.53 0)
 			(effects
 				(font
@@ -1969,7 +1969,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR054")
+					(reference "#PWR0401")
 					(unit 1)
 				)
 			)
@@ -1985,7 +1985,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "763eb50d-0f8e-4361-8ade-252448c0e922")
-		(property "Reference" "C?"
+		(property "Reference" "C402"
 			(at 222.25 119.3799 0)
 			(effects
 				(font
@@ -2003,7 +2003,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 219.4052 124.46 0)
 			(effects
 				(font
@@ -2039,7 +2039,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "C?")
+					(reference "C402")
 					(unit 1)
 				)
 			)
@@ -2195,7 +2195,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9fd12623-47b8-46cf-ace7-355e8d8241bd")
-		(property "Reference" "#PWR0305"
+		(property "Reference" "#PWR0402"
 			(at 204.47 59.69 0)
 			(effects
 				(font
@@ -2245,7 +2245,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR0305")
+					(reference "#PWR0402")
 					(unit 1)
 				)
 			)
@@ -2261,7 +2261,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a3059174-a023-4d58-984b-fc2ad29200c3")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR0405"
 			(at 203.2 120.65 0)
 			(effects
 				(font
@@ -2311,7 +2311,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR056")
+					(reference "#PWR0405")
 					(unit 1)
 				)
 			)
@@ -2327,7 +2327,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "af9ad3b8-1035-436f-9e55-84ba72ebd6ba")
-		(property "Reference" "#PWR0306"
+		(property "Reference" "#PWR0406"
 			(at 218.44 132.08 0)
 			(effects
 				(font
@@ -2377,7 +2377,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR0306")
+					(reference "#PWR0406")
 					(unit 1)
 				)
 			)
@@ -2392,7 +2392,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c1b5ad3c-5e07-4874-a814-d6cd01582193")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR0403"
 			(at 88.9 86.36 0)
 			(effects
 				(font
@@ -2442,7 +2442,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR048")
+					(reference "#PWR0403")
 					(unit 1)
 				)
 			)
@@ -2458,7 +2458,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ee7be52a-7e6d-44e5-a73c-1d18c20dde05")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR0404"
 			(at 189.23 87.63 0)
 			(effects
 				(font
@@ -2508,7 +2508,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "#PWR053")
+					(reference "#PWR0404")
 					(unit 1)
 				)
 			)
