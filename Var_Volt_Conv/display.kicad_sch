@@ -1930,7 +1930,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Display:NHD-C12832A1Z-FSRGB"
 			(at 148.59 87.63 90)
 			(effects
 				(font
