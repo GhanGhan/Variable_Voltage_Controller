@@ -50,7 +50,7 @@
 			)
 		)
 		(symbol "NHD-C12832A1Z-FSW-FBW-3V3_0_0"
-			(pin power_in line
+			(pin power_out line
 				(at -1.27 11.43 270)
 				(length 2.54)
 				(name "V0"
@@ -68,7 +68,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at -3.81 11.43 270)
 				(length 2.54)
 				(name "VOUT"
@@ -248,7 +248,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 1.27 11.43 270)
 				(length 2.54)
 				(name "V1"
@@ -266,7 +266,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 3.81 11.43 270)
 				(length 2.54)
 				(name "V2"
@@ -284,7 +284,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 6.35 11.43 270)
 				(length 2.54)
 				(name "V3"
@@ -302,7 +302,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 8.89 11.43 270)
 				(length 2.54)
 				(name "V4"
@@ -320,7 +320,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 19.05 -3.81 180)
 				(length 2.54)
 				(name "C2-"
@@ -338,7 +338,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 19.05 -6.35 180)
 				(length 2.54)
 				(name "C2+"
@@ -356,7 +356,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 19.05 -8.89 180)
 				(length 2.54)
 				(name "C1+"
@@ -374,7 +374,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 19.05 -11.43 180)
 				(length 2.54)
 				(name "C1-"

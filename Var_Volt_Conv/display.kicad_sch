@@ -189,7 +189,7 @@
 				)
 			)
 			(symbol "NHD-C12832A1Z-FSW-FBW-3V3_0_0"
-				(pin power_in line
+				(pin power_out line
 					(at -1.27 11.43 270)
 					(length 2.54)
 					(name "V0"
@@ -207,7 +207,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at -3.81 11.43 270)
 					(length 2.54)
 					(name "VOUT"
@@ -387,7 +387,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 1.27 11.43 270)
 					(length 2.54)
 					(name "V1"
@@ -405,7 +405,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 3.81 11.43 270)
 					(length 2.54)
 					(name "V2"
@@ -423,7 +423,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 6.35 11.43 270)
 					(length 2.54)
 					(name "V3"
@@ -441,7 +441,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 8.89 11.43 270)
 					(length 2.54)
 					(name "V4"
@@ -459,7 +459,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 19.05 -3.81 180)
 					(length 2.54)
 					(name "C2-"
@@ -477,7 +477,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 19.05 -6.35 180)
 					(length 2.54)
 					(name "C2+"
@@ -495,7 +495,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 19.05 -8.89 180)
 					(length 2.54)
 					(name "C1+"
@@ -513,7 +513,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 19.05 -11.43 180)
 					(length 2.54)
 					(name "C1-"
@@ -1641,7 +1641,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "34a56b03-b310-4f60-9c85-3b4040e55177")
-		(property "Reference" "#PWR047"
+		(property "Reference" "#PWR0304"
 			(at 191.77 105.41 0)
 			(effects
 				(font
@@ -1691,7 +1691,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "#PWR047")
+					(reference "#PWR0304")
 					(unit 1)
 				)
 			)
@@ -1913,7 +1913,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "80009dc5-6f58-4b8d-a3fd-5089911416e4")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR0303"
 			(at 175.26 97.79 0)
 			(effects
 				(font
@@ -1963,7 +1963,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "#PWR027")
+					(reference "#PWR0303")
 					(unit 1)
 				)
 			)
@@ -1978,7 +1978,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a3bfd076-85fd-4aa0-b62d-b042f0a1ccd5")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR0302"
 			(at 132.08 83.82 0)
 			(effects
 				(font
@@ -2028,7 +2028,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "#PWR026")
+					(reference "#PWR0302")
 					(unit 1)
 				)
 			)
@@ -2042,9 +2042,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b238bc4d-a812-406c-a02f-3ac516bf7174")
+		(fields_autoplaced yes)
+		(uuid "c0e8787e-d293-4cc2-bc66-74c7c3928745")
 		(property "Reference" "U301"
-			(at 134.874 89.154 0)
+			(at 149.86 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2052,7 +2053,7 @@
 			)
 		)
 		(property "Value" "NHD-C12832A1Z-FSW-FBW-3V3"
-			(at 149.606 114.554 0)
+			(at 149.86 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2086,62 +2087,62 @@
 				(hide yes)
 			)
 		)
+		(pin "10"
+			(uuid "0ed61122-7dae-4ca9-94ab-f9a90868b7ee")
+		)
 		(pin "4"
-			(uuid "1cca4103-678e-40af-bca4-3ed9df0cb07d")
-		)
-		(pin "6"
-			(uuid "880d2139-26e8-4396-a467-6e56383fae06")
-		)
-		(pin "9"
-			(uuid "bf57f4dc-0c26-496a-9858-5d5d9946e710")
-		)
-		(pin "11"
-			(uuid "3e299829-8500-48bb-b12e-101df59d73f7")
-		)
-		(pin "1"
-			(uuid "e036ee49-fe51-4dba-9652-3ad79d1830bb")
-		)
-		(pin "3"
-			(uuid "ee883eb1-06ea-48bd-999c-7bb99b9d9c84")
-		)
-		(pin "8"
-			(uuid "ec759cfd-dae5-4ee3-aaf8-37f3b872e577")
-		)
-		(pin "17"
-			(uuid "20fc2fe8-9e62-4eea-95c7-654fb2d3aecb")
-		)
-		(pin "2"
-			(uuid "b2abbe58-453b-4af9-bf2a-a21fce1fd6a3")
-		)
-		(pin "17"
-			(uuid "36ba9fd7-c923-4bee-ad2a-2d0343bc56a2")
+			(uuid "381da830-2bcf-48cf-aeee-f772446aafb1")
 		)
 		(pin "5"
-			(uuid "9087032f-9f08-49cc-b68f-c5fa7675f72f")
-		)
-		(pin "10"
-			(uuid "41b1e7b3-28cc-4f41-9728-4ab825a66ada")
-		)
-		(pin "7"
-			(uuid "b21e444b-6b24-4432-93ff-e3827f79a699")
-		)
-		(pin "14"
-			(uuid "68bc6a3c-52e8-4129-a9ba-fd6b5f42d650")
-		)
-		(pin "15"
-			(uuid "5142ce82-845f-467a-a6cf-c983f2d2d468")
-		)
-		(pin "12"
-			(uuid "55daa188-ef2e-45b4-a797-dd8229a6b19f")
-		)
-		(pin "13"
-			(uuid "d7b3b2fe-d411-47bb-b142-7258a28cbb00")
-		)
-		(pin "18"
-			(uuid "c9db1eec-2657-4ad8-9c17-f776e60212b5")
+			(uuid "eaf47903-dc91-427d-9364-eaebefc718a9")
 		)
 		(pin "19"
-			(uuid "f0d5ec15-4f23-45f2-aee9-e515324b22a3")
+			(uuid "07c35b57-f47d-46b1-9b9d-af2869e4ec3d")
+		)
+		(pin "6"
+			(uuid "76c24db8-9bc1-4c14-bc9e-8afb874dac6c")
+		)
+		(pin "15"
+			(uuid "4089fd84-e8fd-482d-a5eb-fb2d840c8f8d")
+		)
+		(pin "13"
+			(uuid "176ef8d0-cc80-485a-9b56-9973e85baf67")
+		)
+		(pin "18"
+			(uuid "dcf9ed52-2366-4097-8a1b-8b7253f97d61")
+		)
+		(pin "8"
+			(uuid "a4a4ef8d-63c5-47b1-9885-b1126124a167")
+		)
+		(pin "17"
+			(uuid "359448e5-ee79-4f48-81b0-b9b72e775b00")
+		)
+		(pin "11"
+			(uuid "8cf67558-d52c-435e-98d9-1690e87610d2")
+		)
+		(pin "9"
+			(uuid "8db79c2c-0d0b-4af7-ab41-2a1bde769fe7")
+		)
+		(pin "2"
+			(uuid "01b5ef3c-eef8-4c2f-8a73-3afe7bafc8b8")
+		)
+		(pin "1"
+			(uuid "0fec7cdb-e9f6-4098-91dd-bf6e8e5c36c0")
+		)
+		(pin "3"
+			(uuid "c90a974a-0474-4cf6-9677-9c5d7828879b")
+		)
+		(pin "14"
+			(uuid "a881ac8f-e9c2-4ca0-b0d3-9f29f5f0aaf3")
+		)
+		(pin "17"
+			(uuid "00e36947-39de-4bcc-a674-00a604d34bab")
+		)
+		(pin "12"
+			(uuid "ee70961c-b594-44e1-8479-9b3179c49f53")
+		)
+		(pin "7"
+			(uuid "1e894a2b-3bd4-4345-8fe4-9623fc903241")
 		)
 		(instances
 			(project ""
@@ -2368,7 +2369,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ff2eb0a1-0eee-4905-adb5-f73150a1fff0")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR0301"
 			(at 138.43 82.55 0)
 			(effects
 				(font
@@ -2418,7 +2419,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "#PWR045")
+					(reference "#PWR0301")
 					(unit 1)
 				)
 			)
