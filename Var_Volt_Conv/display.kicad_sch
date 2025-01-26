@@ -1572,7 +1572,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2b831866-628f-4562-ada4-4f0ce0355f61")
-		(property "Reference" "C?"
+		(property "Reference" "C306"
 			(at 182.118 76.454 0)
 			(effects
 				(font
@@ -1626,7 +1626,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C306")
 					(unit 1)
 				)
 			)
@@ -1706,7 +1706,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "541bc459-29b7-4321-a55b-220821262b24")
-		(property "Reference" "C?"
+		(property "Reference" "C302"
 			(at 156.718 76.454 0)
 			(effects
 				(font
@@ -1760,7 +1760,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C302")
 					(unit 1)
 				)
 			)
@@ -1775,7 +1775,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5aa4cccd-982d-4390-b175-8a7624f5ab97")
-		(property "Reference" "C?"
+		(property "Reference" "C304"
 			(at 169.418 76.454 0)
 			(effects
 				(font
@@ -1829,7 +1829,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C304")
 					(unit 1)
 				)
 			)
@@ -1844,7 +1844,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6ee64a6e-1d41-4bd7-9241-9dd874aaac5c")
-		(property "Reference" "C?"
+		(property "Reference" "C308"
 			(at 178.308 112.014 0)
 			(effects
 				(font
@@ -1898,7 +1898,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C308")
 					(unit 1)
 				)
 			)
@@ -2043,7 +2043,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b238bc4d-a812-406c-a02f-3ac516bf7174")
-		(property "Reference" "U?"
+		(property "Reference" "U301"
 			(at 134.874 89.154 0)
 			(effects
 				(font
@@ -2146,7 +2146,7 @@
 		(instances
 			(project ""
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "U?")
+					(reference "U301")
 					(unit 1)
 				)
 			)
@@ -2161,7 +2161,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d42f0937-c839-4d03-b18f-49863c4abecb")
-		(property "Reference" "C?"
+		(property "Reference" "C303"
 			(at 163.068 76.454 0)
 			(effects
 				(font
@@ -2215,7 +2215,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C303")
 					(unit 1)
 				)
 			)
@@ -2230,7 +2230,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "da9efbdb-f26d-41d8-a89b-7fcb34228e61")
-		(property "Reference" "C?"
+		(property "Reference" "C305"
 			(at 175.768 76.454 0)
 			(effects
 				(font
@@ -2284,7 +2284,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C305")
 					(unit 1)
 				)
 			)
@@ -2299,7 +2299,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dbec2157-ecf3-4aba-8038-b041375afd71")
-		(property "Reference" "C?"
+		(property "Reference" "C307"
 			(at 178.308 100.584 0)
 			(effects
 				(font
@@ -2353,7 +2353,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C307")
 					(unit 1)
 				)
 			)
@@ -2433,7 +2433,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ffeee69d-b4e4-4f25-8f67-482c635b442c")
-		(property "Reference" "C?"
+		(property "Reference" "C301"
 			(at 147.828 75.184 0)
 			(effects
 				(font
@@ -2487,7 +2487,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "C?")
+					(reference "C301")
 					(unit 1)
 				)
 			)

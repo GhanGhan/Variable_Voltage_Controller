@@ -1229,7 +1229,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "153a2416-9954-4740-9f27-851432b93049")
-		(property "Reference" "U?"
+		(property "Reference" "U402"
 			(at 206.2165 124.46 0)
 			(effects
 				(font
@@ -1295,7 +1295,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "U?")
+					(reference "U402")
 					(unit 1)
 				)
 			)
@@ -1376,7 +1376,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3c74ef49-d106-4644-8530-9feb504b7b5f")
-		(property "Reference" "R?"
+		(property "Reference" "R403"
 			(at 90.17 128.2699 0)
 			(effects
 				(font
@@ -1430,7 +1430,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "R?")
+					(reference "R403")
 					(unit 1)
 				)
 			)
@@ -1446,7 +1446,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5a6fda1c-ad58-41e1-a97e-b6fab517d74e")
-		(property "Reference" "R?"
+		(property "Reference" "R401"
 			(at 91.44 55.8799 0)
 			(effects
 				(font
@@ -1500,7 +1500,7 @@
 		(instances
 			(project ""
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "R?")
+					(reference "R401")
 					(unit 1)
 				)
 			)
@@ -1648,7 +1648,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "776c1316-a3d3-43fe-bada-336611cd6178")
-		(property "Reference" "R?"
+		(property "Reference" "R404"
 			(at 90.17 143.5099 0)
 			(effects
 				(font
@@ -1702,7 +1702,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "R?")
+					(reference "R404")
 					(unit 1)
 				)
 			)
@@ -1718,7 +1718,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "859fdab0-3292-48e3-b332-f8c19b380296")
-		(property "Reference" "R?"
+		(property "Reference" "R402"
 			(at 91.44 71.1199 0)
 			(effects
 				(font
@@ -1772,7 +1772,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "R?")
+					(reference "R402")
 					(unit 1)
 				)
 			)
@@ -1986,7 +1986,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fe8880c6-90fa-4f3a-b4ee-00d9af78740b")
-		(property "Reference" "U?"
+		(property "Reference" "U401"
 			(at 192.2465 50.8 0)
 			(effects
 				(font
@@ -2052,7 +2052,7 @@
 		(instances
 			(project ""
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/a939aa62-b331-46a3-b3e0-48fa29856a0e"
-					(reference "U?")
+					(reference "U401")
 					(unit 1)
 				)
 			)
