@@ -6293,6 +6293,16 @@
 	)
 	(wire
 		(pts
+			(xy 280.67 135.89) (xy 280.67 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b583d31-d67f-43ea-8481-99913ce596ba")
+	)
+	(wire
+		(pts
 			(xy 289.56 198.12) (xy 289.56 204.47)
 		)
 		(stroke
@@ -7437,7 +7447,7 @@
 	)
 	(rectangle
 		(start 231.14 57.15)
-		(end 405.13 142.24)
+		(end 405.13 143.51)
 		(stroke
 			(width 0)
 			(type default)
@@ -7547,13 +7557,14 @@
 		)
 		(uuid "fab92fd8-200f-4f19-939e-748ec0650a2e")
 	)
-	(text "9.3kohm resistance sets the \nswitching frequency to 2MHz"
+	(text "9.3kohm resistance sets the \nswitching frequency to 2MHz\n9.3kohm resistors not readily\navailable, so a series combo\nof 5kohm and 4.3kohm is used"
 		(exclude_from_sim no)
-		(at 280.162 136.398 0)
+		(at 242.57 136.144 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify left)
 		)
 		(uuid "09b9032f-4d4c-4b35-9d29-89a9a46bebe6")
 	)
@@ -7639,13 +7650,14 @@
 		)
 		(uuid "c26e9345-9ad4-4b61-b3ee-cbb56e1ae126")
 	)
-	(text "20uF effective capacitance is recommended\nUsing parallel caps as 20uF ceramic is not\nreadily available"
+	(text "20uF effective capacitance is recommended\n20uF ceramic is not readily available,\nso a parallel combination of 2 10uF caps\nis used instead"
 		(exclude_from_sim no)
-		(at 253.746 111.76 0)
+		(at 232.156 112.014 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify left)
 		)
 		(uuid "cb3d5f99-dd6c-4722-b16c-d48006bb9d48")
 	)
@@ -7994,7 +8006,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 170.18 189.738 90)
 			(effects
 				(font
@@ -8274,7 +8286,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 36.322 198.12 90)
 			(effects
 				(font
@@ -8342,7 +8354,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 128.27 189.738 90)
 			(effects
 				(font
@@ -8813,7 +8825,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_PTV09A-1_Single_Vertical"
 			(at 363.22 111.76 0)
 			(effects
 				(font
@@ -8859,6 +8871,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 280.67 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1534d365-29cd-4446-9f1f-1943f7703947")
+		(property "Reference" "#PWR0409"
+			(at 280.67 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 280.67 141.224 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 280.67 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 280.67 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 280.67 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "16bd719b-9af9-4bf1-8df8-4403eb92c015")
+		)
+		(instances
+			(project "Var_Volt_Conv"
+				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
+					(reference "#PWR0409")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 304.8 189.23 0)
 		(unit 1)
@@ -8868,7 +8945,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "19ac776b-71f5-4a33-b349-58398b2ce8c8")
-		(property "Reference" "R112"
+		(property "Reference" "R113"
 			(at 307.34 187.9599 0)
 			(effects
 				(font
@@ -8877,7 +8954,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "40R"
+		(property "Value" "160R"
 			(at 307.34 190.4999 0)
 			(effects
 				(font
@@ -8886,7 +8963,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 303.022 189.23 90)
 			(effects
 				(font
@@ -8922,7 +8999,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
-					(reference "R112")
+					(reference "R113")
 					(unit 1)
 				)
 			)
@@ -9143,7 +9220,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "22763786-c515-465b-a4f6-78e1be7a9238")
-		(property "Reference" "R114"
+		(property "Reference" "R115"
 			(at 358.14 91.4399 0)
 			(effects
 				(font
@@ -9161,7 +9238,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 353.822 92.71 90)
 			(effects
 				(font
@@ -9197,7 +9274,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
-					(reference "R114")
+					(reference "R115")
 					(unit 1)
 				)
 			)
@@ -9404,7 +9481,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 198.882 203.2 90)
 			(effects
 				(font
@@ -9737,7 +9814,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 38.1 226.568 90)
 			(effects
 				(font
@@ -10130,6 +10207,76 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 280.67 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "35ff2381-728b-4701-9836-fb4c5939acec")
+		(property "Reference" "R112"
+			(at 283.21 130.8099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.3k"
+			(at 283.21 133.3499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 278.892 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 280.67 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 280.67 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8e3f7eb9-1665-4410-a190-a4b36c674c78")
+		)
+		(pin "1"
+			(uuid "e3633a7f-0f5d-427d-ae14-4668c734c074")
+		)
+		(instances
+			(project "Var_Volt_Conv"
+				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
+					(reference "R112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 204.47 74.93 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10156,7 +10303,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 206.248 74.93 90)
 			(effects
 				(font
@@ -10331,71 +10478,6 @@
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
 					(reference "C108")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 280.67 128.27 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "42bbfacb-7e77-4a2c-ac95-20b02552bc56")
-		(property "Reference" "#PWR038"
-			(at 280.67 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 280.67 132.334 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 280.67 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 280.67 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 280.67 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1c2bbf59-9ba7-4f19-a63b-e03383f26d80")
-		)
-		(instances
-			(project "Var_Volt_Conv"
-				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
-					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -10644,7 +10726,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "49be8fc4-a38c-48f7-b9e2-52826ca6b3c2")
-		(property "Reference" "R115"
+		(property "Reference" "R116"
 			(at 360.934 78.994 90)
 			(effects
 				(font
@@ -10660,7 +10742,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
 			(at 360.68 83.058 90)
 			(effects
 				(font
@@ -10696,7 +10778,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
-					(reference "R115")
+					(reference "R116")
 					(unit 1)
 				)
 			)
@@ -11181,7 +11263,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "652113ca-06ce-481f-a739-14628f7384f4")
-		(property "Reference" "R116"
+		(property "Reference" "R117"
 			(at 365.76 121.9199 0)
 			(effects
 				(font
@@ -11199,7 +11281,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 361.442 123.19 90)
 			(effects
 				(font
@@ -11235,7 +11317,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
-					(reference "R116")
+					(reference "R117")
 					(unit 1)
 				)
 			)
@@ -11266,7 +11348,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
 			(at 138.43 74.168 90)
 			(effects
 				(font
@@ -12218,7 +12300,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8dc8cfcb-4415-4c21-9450-5c6085a01c19")
-		(property "Reference" "R113"
+		(property "Reference" "R114"
 			(at 347.98 113.0299 0)
 			(effects
 				(font
@@ -12236,7 +12318,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 343.662 114.3 90)
 			(effects
 				(font
@@ -12272,7 +12354,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/18589d04-92b7-4bb3-b941-112d31f9b6cf"
-					(reference "R113")
+					(reference "R114")
 					(unit 1)
 				)
 			)
@@ -12661,7 +12743,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 99.822 204.47 90)
 			(effects
 				(font
@@ -12731,7 +12813,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 50.292 231.14 90)
 			(effects
 				(font
@@ -13633,7 +13715,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "9.3k"
+		(property "Value" "5k"
 			(at 283.21 123.1899 0)
 			(effects
 				(font
@@ -13642,7 +13724,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 278.892 121.92 90)
 			(effects
 				(font
@@ -15089,7 +15171,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 226.822 203.2 90)
 			(effects
 				(font
