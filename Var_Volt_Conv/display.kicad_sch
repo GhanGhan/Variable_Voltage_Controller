@@ -316,16 +316,16 @@
 					)
 				)
 				(pin input inverted
-					(at -19.05 -7.62 0)
+					(at -19.05 -5.08 0)
 					(length 2.54)
-					(name "/CS1"
+					(name "/RST"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "17"
+					(number "16"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -334,9 +334,9 @@
 					)
 				)
 				(pin input inverted
-					(at -19.05 -5.08 0)
+					(at -19.05 -7.62 0)
 					(length 2.54)
-					(name "/RST"
+					(name "/CS1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1905,6 +1905,125 @@
 		)
 	)
 	(symbol
+		(lib_id "LCD_Display_Module:NHD-C12832A1Z-FSW-FBW-3V3")
+		(at 149.86 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7eeb4183-41e9-4449-8793-6c2057c322fb")
+		(property "Reference" "U301"
+			(at 149.86 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NHD-C12832A1Z-FSW-FBW-3V3"
+			(at 149.86 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 148.59 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 148.59 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Graphic LCD Display Module Transflective Black (White - Inverted) FSTN - Film Super-Twisted Nematic SPI 128 x 32"
+			(at 150.114 131.826 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "11"
+			(uuid "e724dc9a-be52-4de0-9f4a-3da7b707bc99")
+		)
+		(pin "18"
+			(uuid "ed350e16-9592-4e85-91d1-33d7ee34620c")
+		)
+		(pin "12"
+			(uuid "ed110172-d9c7-498d-9970-9d16fd4891e5")
+		)
+		(pin "13"
+			(uuid "2c73db1a-c0f4-4f29-a91f-068fc376441a")
+		)
+		(pin "14"
+			(uuid "694929cc-d641-4aa7-81a4-d7392b9157c7")
+		)
+		(pin "16"
+			(uuid "35b161a7-69eb-45ed-be8c-cf390c42e36a")
+		)
+		(pin "19"
+			(uuid "ff3a5c2f-8d09-4d9a-a3b1-2c3ea200db9f")
+		)
+		(pin "9"
+			(uuid "a53ff887-bae1-4787-ba44-49187d105028")
+		)
+		(pin "1"
+			(uuid "f9bac0a0-87f4-48e8-8e0e-57d78f45bd13")
+		)
+		(pin "10"
+			(uuid "fadb7a03-b7f4-4fdf-a1de-03dc6c72c198")
+		)
+		(pin "15"
+			(uuid "c58a2b13-6610-4c91-a815-196d466548cd")
+		)
+		(pin "17"
+			(uuid "0c2e8189-75e3-4744-905d-cc8401c09dce")
+		)
+		(pin "3"
+			(uuid "fb5a5e48-dfa4-481d-8c12-4125aabe1c11")
+		)
+		(pin "4"
+			(uuid "8a984ab5-f80b-49da-9cde-54b64dcf5a7c")
+		)
+		(pin "5"
+			(uuid "df83008f-7ed7-4281-a8c9-dfd7b0363bf8")
+		)
+		(pin "8"
+			(uuid "714f9941-3a71-47e9-bf3b-e95cdc205a3e")
+		)
+		(pin "6"
+			(uuid "02cd6579-43fd-4f93-8edd-ba1b5fd03900")
+		)
+		(pin "2"
+			(uuid "4a8eed7d-507e-4727-8859-7de33cfc98d6")
+		)
+		(pin "7"
+			(uuid "4be5901d-7339-40a5-8542-63379776ab0f")
+		)
+		(instances
+			(project ""
+				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
+					(reference "U301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V0")
 		(at 175.26 93.98 0)
 		(unit 1)
@@ -2029,125 +2148,6 @@
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
 					(reference "#PWR0302")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LCD_Display_Module:NHD-C12832A1Z-FSW-FBW-3V3")
-		(at 149.86 99.06 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c0e8787e-d293-4cc2-bc66-74c7c3928745")
-		(property "Reference" "U301"
-			(at 149.86 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NHD-C12832A1Z-FSW-FBW-3V3"
-			(at 149.86 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 148.59 87.63 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 148.59 87.63 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Graphic LCD Display Module Transflective Black (White - Inverted) FSTN - Film Super-Twisted Nematic SPI 128 x 32"
-			(at 150.114 131.826 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "10"
-			(uuid "0ed61122-7dae-4ca9-94ab-f9a90868b7ee")
-		)
-		(pin "4"
-			(uuid "381da830-2bcf-48cf-aeee-f772446aafb1")
-		)
-		(pin "5"
-			(uuid "eaf47903-dc91-427d-9364-eaebefc718a9")
-		)
-		(pin "19"
-			(uuid "07c35b57-f47d-46b1-9b9d-af2869e4ec3d")
-		)
-		(pin "6"
-			(uuid "76c24db8-9bc1-4c14-bc9e-8afb874dac6c")
-		)
-		(pin "15"
-			(uuid "4089fd84-e8fd-482d-a5eb-fb2d840c8f8d")
-		)
-		(pin "13"
-			(uuid "176ef8d0-cc80-485a-9b56-9973e85baf67")
-		)
-		(pin "18"
-			(uuid "dcf9ed52-2366-4097-8a1b-8b7253f97d61")
-		)
-		(pin "8"
-			(uuid "a4a4ef8d-63c5-47b1-9885-b1126124a167")
-		)
-		(pin "17"
-			(uuid "359448e5-ee79-4f48-81b0-b9b72e775b00")
-		)
-		(pin "11"
-			(uuid "8cf67558-d52c-435e-98d9-1690e87610d2")
-		)
-		(pin "9"
-			(uuid "8db79c2c-0d0b-4af7-ab41-2a1bde769fe7")
-		)
-		(pin "2"
-			(uuid "01b5ef3c-eef8-4c2f-8a73-3afe7bafc8b8")
-		)
-		(pin "1"
-			(uuid "0fec7cdb-e9f6-4098-91dd-bf6e8e5c36c0")
-		)
-		(pin "3"
-			(uuid "c90a974a-0474-4cf6-9677-9c5d7828879b")
-		)
-		(pin "14"
-			(uuid "a881ac8f-e9c2-4ca0-b0d3-9f29f5f0aaf3")
-		)
-		(pin "17"
-			(uuid "00e36947-39de-4bcc-a674-00a604d34bab")
-		)
-		(pin "12"
-			(uuid "ee70961c-b594-44e1-8479-9b3179c49f53")
-		)
-		(pin "7"
-			(uuid "1e894a2b-3bd4-4345-8fe4-9623fc903241")
-		)
-		(instances
-			(project ""
-				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb/da7c3a55-ae2d-42a4-870c-c5ac34ec6e6a"
-					(reference "U301")
 					(unit 1)
 				)
 			)

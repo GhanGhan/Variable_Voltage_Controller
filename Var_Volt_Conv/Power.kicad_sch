@@ -13572,7 +13572,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SOD-882"
 			(at 52.07 135.89 0)
 			(effects
 				(font
