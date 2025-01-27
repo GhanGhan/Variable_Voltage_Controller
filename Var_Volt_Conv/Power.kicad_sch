@@ -10951,7 +10951,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Buck_Boost:21-PowerVFQFN"
 			(at 349.25 59.69 0)
 			(effects
 				(font

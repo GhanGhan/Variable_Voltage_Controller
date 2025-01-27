@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Buck_Boost")(type "KiCad")(uri "${KIPRJMOD}/Project_Library/TPS552872_Buck-Boost/Buck_Boost.pretty")(options "")(descr ""))
+)
