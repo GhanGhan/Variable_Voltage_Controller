@@ -1420,7 +1420,7 @@
 			)
 		)
 	)
-	(global_label "SYSTEM_POWER_B"
+	(global_label "SYSTEM_POWER_A"
 		(shape input)
 		(at 78.74 46.99 180)
 		(fields_autoplaced yes)
@@ -1432,7 +1432,7 @@
 		)
 		(uuid "a087ab30-083d-4dcb-a946-13c47973a1ac")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.0031 46.99 0)
+			(at 59.1845 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
