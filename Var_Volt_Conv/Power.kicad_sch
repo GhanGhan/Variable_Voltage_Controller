@@ -7711,6 +7711,17 @@
 		)
 		(uuid "0f439a35-a415-4473-93f0-6050655ea4a1")
 	)
+	(label "GATE_T"
+		(at 101.6 110.49 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "120587c3-4ea9-47ff-b712-c567116642da")
+	)
 	(label "BB_FEEDBACK"
 		(at 335.28 104.14 0)
 		(fields_autoplaced yes)
@@ -7963,6 +7974,17 @@
 			(justify left bottom)
 		)
 		(uuid "aeb33f17-f9be-43f1-9dab-1bb4f5c9bbd3")
+	)
+	(label "GATE_J"
+		(at 101.6 55.88 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b1e3c9e1-8d43-43e8-9b4a-a855b01cd68c")
 	)
 	(label "COMP_OUT"
 		(at 83.82 209.55 0)
