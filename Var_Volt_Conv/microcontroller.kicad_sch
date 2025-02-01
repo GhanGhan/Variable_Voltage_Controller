@@ -1957,7 +1957,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 82.55) (xy 109.22 82.55)
+			(xy 96.52 82.55) (xy 106.68 82.55)
 		)
 		(stroke
 			(width 0)
@@ -2567,7 +2567,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 76.2) (xy 109.22 82.55)
+			(xy 106.68 76.2) (xy 106.68 82.55)
 		)
 		(stroke
 			(width 0)
@@ -2597,7 +2597,7 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 76.2) (xy 109.22 76.2)
+			(xy 135.89 76.2) (xy 106.68 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2796,7 +2796,7 @@
 		(uuid "76223707-acb0-45a7-a71f-ebcab5284fef")
 	)
 	(label "HSE_OUT"
-		(at 109.22 76.2 0)
+		(at 106.68 76.2 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2861,28 +2861,6 @@
 		)
 		(uuid "efce0188-d11b-41a4-9a18-18e8efa3881b")
 	)
-	(global_label "{slash}CHIP_SELECT"
-		(shape output)
-		(at 186.69 71.12 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "013e0393-509a-4a44-b8b9-411263fda3f7")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 203.2218 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SPI_MOSI"
 		(shape output)
 		(at 186.69 78.74 0)
@@ -2927,7 +2905,29 @@
 			)
 		)
 	)
-	(global_label "S-OUTPUT_VOLTAGE"
+	(global_label "{slash}CHIP_SELECT"
+		(shape output)
+		(at 125.73 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "36d9173e-34b3-41e6-afa3-33d4e5cf800d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 109.1982 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S-OUTPUT_CURRENT"
 		(shape input)
 		(at 198.12 86.36 0)
 		(fields_autoplaced yes)
@@ -2937,9 +2937,9 @@
 			)
 			(justify left)
 		)
-		(uuid "2c3a3634-3d33-4c51-8ba8-ff36e8c66ccb")
+		(uuid "36f456b4-ac76-4fb7-affd-62875aa91625")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.9738 86.36 0)
+			(at 220.639 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2949,7 +2949,7 @@
 			)
 		)
 	)
-	(global_label "S-OUTPUT_CURRENT"
+	(global_label "S-INPUT_CURRENT"
 		(shape input)
 		(at 198.12 83.82 0)
 		(fields_autoplaced yes)
@@ -2959,14 +2959,36 @@
 			)
 			(justify left)
 		)
-		(uuid "31984ab0-d10d-42a9-b4a8-fa88599026b3")
+		(uuid "3edb4c7c-8d94-4eb9-bdd6-ec848748284b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 220.639 83.82 0)
+			(at 218.9457 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S-OUTPUT_VOLTAGE"
+		(shape input)
+		(at 130.81 81.28 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8124769d-d816-4efb-b88f-8517a94cc6d6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 108.9562 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -2993,9 +3015,9 @@
 			)
 		)
 	)
-	(global_label "REGISTER_SELECT"
+	(global_label "{slash}RESET"
 		(shape output)
-		(at 186.69 73.66 0)
+		(at 186.69 71.12 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3003,36 +3025,14 @@
 			)
 			(justify left)
 		)
-		(uuid "b9f521bc-ec89-4ee1-93b8-d76d11c9c28c")
+		(uuid "ccca66a9-6105-4787-b641-0cd72d065ece")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 206.3059 73.66 0)
+			(at 196.7508 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "{slash}RESET"
-		(shape output)
-		(at 125.73 83.82 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "be8c0e34-3c44-4402-9eeb-6080ccaf83a0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 115.6692 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -3059,24 +3059,24 @@
 			)
 		)
 	)
-	(global_label "S-INPUT_CURRENT"
-		(shape input)
-		(at 130.81 81.28 180)
+	(global_label "REGISTER_SELECT"
+		(shape output)
+		(at 186.69 73.66 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
-		(uuid "eeb9c7a0-ee8a-4cf2-8102-27cc9cf3b2ce")
+		(uuid "f86901d7-7bbb-4923-adb2-d53871bff66d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 109.9843 81.28 0)
+			(at 206.3059 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 				(hide yes)
 			)
 		)
