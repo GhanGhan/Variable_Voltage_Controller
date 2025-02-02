@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "64608658-8bb7-4759-a4c5-1c2da21f69ce")
 	(paper "A3")
+	(title_block
+		(title "Variable Voltage Controller")
+		(date "2025-02-02")
+		(rev "1.0")
+	)
 	(lib_symbols
 		(symbol "Comparator:MCP6561x-LT"
 			(pin_names

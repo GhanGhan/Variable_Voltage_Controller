@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "705e33e5-253c-4c75-bff4-381782ee6a92")
 	(paper "A4")
+	(title_block
+		(title "Variable Voltage Controller")
+		(date "2025-02-02")
+		(rev "1.0")
+	)
 	(lib_symbols
 		(symbol "Device:C"
 			(pin_numbers hide)

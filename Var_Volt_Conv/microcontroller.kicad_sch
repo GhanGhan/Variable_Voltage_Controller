@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "df6dfbfc-c7f7-4945-838f-462b358c4a9b")
 	(paper "A4")
+	(title_block
+		(title "Variable Voltage Controller")
+		(date "2025-02-02")
+		(rev "1.0")
+	)
 	(lib_symbols
 		(symbol "Connector_Generic:Conn_01x05"
 			(pin_names
