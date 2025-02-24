@@ -500,9 +500,9 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../../../../OneDrive/ECE Projects/Variable Voltage Converter/Var_Volt_Conv.step",
       "svg": "",
-      "vrml": ""
+      "vrml": "../../../../OneDrive/ECE Projects/Variable Voltage Converter/Var_Volt_Conv.wrl"
     },
     "page_layout_descr_file": ""
   },
