@@ -14321,17 +14321,6 @@
 				(xyz 0 0 0)
 			)
 		)
-		(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm_Horizontal_O1.27mm_Z10.0mm.step"
-			(offset
-				(xyz -1.25 -10 -5)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 90 0 0)
-			)
-		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -26093,6 +26082,19 @@
 		(at 192.7 83.8 0)
 		(layer "F.SilkS")
 		(uuid "b84acfa4-6439-4593-9f30-4f3b89d52c3f")
+		(effects
+			(font
+				(size 0.75 0.75)
+				(thickness 0.15)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "Buck-Boost \nConv."
+		(at 189.2375 100.065 0)
+		(layer "F.SilkS")
+		(uuid "bcdf5c28-bc96-40fd-9b9a-78135a094c6d")
 		(effects
 			(font
 				(size 0.75 0.75)

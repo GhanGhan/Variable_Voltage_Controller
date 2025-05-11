@@ -1363,7 +1363,7 @@
 		)
 		(uuid d51b9a55-c809-4500-a61f-08ce3fdb09cd)
 	)
-	(text "INA215BIDCKR are current-sense amps\nwith a gain of 75V/V"
+	(text "INA213AIDCKR are current-sense amps\nwith a gain of 50V/V"
 		(exclude_from_sim no)
 		(at 202.692 68.326 0)
 		(effects
@@ -1384,7 +1384,7 @@
 		)
 		(uuid "42d5e0a5-76c8-4ac1-8db1-1827c153da0f")
 	)
-	(text "Imax = 4A\nGain = 75V/V\nRsense = 11mohm\n3.3V = Imax*Gain*Rsense"
+	(text "Imax = 6A\nGain = 50V/V\nRsense = 11mohm\n3.3V = Imax*Gain*Rsense"
 		(exclude_from_sim no)
 		(at 220.218 146.558 0)
 		(effects
@@ -1678,7 +1678,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "INA215BIDCKR"
+		(property "Value" "INA213AIDCKR"
 			(at 188.468 127 0)
 			(effects
 				(font
@@ -1705,7 +1705,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Current Sense Amplifier 1 Circuit Single-Ended SC-70-6, Gain 75V/V"
+		(property "Description" "Current Sense Amplifier 1 Circuit Single-Ended SC-70-6, Gain 50V/V"
 			(at 203.708 160.02 0)
 			(effects
 				(font
@@ -2704,7 +2704,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "INA215BIDCKR"
+		(property "Value" "INA213AIDCKR"
 			(at 174.498 53.34 0)
 			(effects
 				(font
@@ -2731,7 +2731,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Current Sense Amplifier 1 Circuit Single-Ended SC-70-6, Gain 75V/V"
+		(property "Description" "Current Sense Amplifier 1 Circuit Single-Ended SC-70-6, Gain 50V/V"
 			(at 189.738 86.36 0)
 			(effects
 				(font
