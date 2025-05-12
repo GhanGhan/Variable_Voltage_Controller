@@ -1714,6 +1714,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C129346"
+			(at 203.2 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "INA213AIDCKR"
+			(at 203.2 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "3ad7c5de-8712-456a-b649-7445b94c4029")
 		)
@@ -1788,6 +1806,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C155422"
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05B104KA5NNNC"
 			(at 204.47 48.26 0)
 			(effects
 				(font
@@ -1932,6 +1968,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C409902"
+			(at 87.63 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "ERJ2RKF2402X"
+			(at 87.63 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "21fe89d5-2a39-45be-b9e1-34e68f6a6b2b")
 		)
@@ -1994,6 +2048,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 88.9 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C114639"
+			(at 88.9 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "RC0603FR-079K1L"
 			(at 88.9 57.15 0)
 			(effects
 				(font
@@ -2204,6 +2276,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C155422"
+			(at 218.44 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05B104KA5NNNC"
+			(at 218.44 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7ae87436-41e9-4e89-91c0-512879745f6e")
 		)
@@ -2339,6 +2429,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C400631"
+			(at 87.63 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "ERJ2RKF4701X"
+			(at 87.63 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d28aa2b0-25e2-4199-a9b4-5dcb5dc3406d")
 		)
@@ -2401,6 +2509,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 88.9 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C114662"
+			(at 88.9 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "RC0603FR-072K2L"
 			(at 88.9 72.39 0)
 			(effects
 				(font
@@ -2733,6 +2859,24 @@
 		)
 		(property "Description" "Current Sense Amplifier 1 Circuit Single-Ended SC-70-6, Gain 50V/V"
 			(at 189.738 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C129346"
+			(at 189.23 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "INA213AIDCKR"
+			(at 189.23 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)

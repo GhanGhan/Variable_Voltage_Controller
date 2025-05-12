@@ -3274,6 +3274,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C2689642"
+			(at 59.69 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "PTS636SK25SMTRLFS"
+			(at 59.69 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "57ad10e5-1d1b-42f6-b909-a165b2adec9b")
 		)
@@ -3402,6 +3420,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 130.81 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C76995"
+			(at 130.81 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "GRM155R60J475KE96D"
 			(at 130.81 49.53 0)
 			(effects
 				(font
@@ -3547,6 +3583,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C51450"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "90a8524e-2934-4101-98da-acfc287559c2")
 		)
@@ -3615,6 +3669,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C458857"
+			(at 85.09 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "0402N140J500CT"
+			(at 85.09 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3c62aaa2-c307-48b9-8af4-e25637baae81")
 		)
@@ -3674,6 +3746,24 @@
 			)
 		)
 		(property "Description" "Four pin crystal, GND on pins 2 and 4"
+			(at 96.52 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C251610"
+			(at 96.52 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "7U16000E12UCG"
 			(at 96.52 74.93 0)
 			(effects
 				(font
@@ -3889,6 +3979,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C51450"
+			(at 134.62 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+			(at 134.62 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a77bef50-c5b4-4d6d-a1d8-601fb62d86a4")
 		)
@@ -3949,6 +4057,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 85.09 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C458857"
+			(at 85.09 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "0402N140J500CT"
 			(at 85.09 87.63 0)
 			(effects
 				(font
@@ -4092,6 +4218,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" ""
+			(at 104.14 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "PPTC051LFBN-RC"
+			(at 104.14 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4a1a8658-0df5-4905-90b5-bf625ef16a0d")
 		)
@@ -4163,6 +4307,24 @@
 			)
 		)
 		(property "Description" "Bidirectional transient-voltage-suppression diode"
+			(at 148.59 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C51450"
+			(at 148.59 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
 			(at 148.59 162.56 0)
 			(effects
 				(font
@@ -4307,6 +4469,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C51450"
+			(at 120.65 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+			(at 120.65 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f391cc4d-a7f0-465a-9590-1fc19f02c626")
 		)
@@ -4369,6 +4549,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 144.78 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C155422"
+			(at 144.78 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05B104KA5NNNC"
 			(at 144.78 49.53 0)
 			(effects
 				(font
@@ -4514,6 +4712,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C724040"
+			(at 156.21 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "STM32G030F6P6"
+			(at 156.21 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b898703a-085d-4262-bd2c-98894681e567")
 		)
@@ -4630,6 +4846,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 72.39 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C155422"
+			(at 72.39 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05B104KA5NNNC"
 			(at 72.39 148.59 0)
 			(effects
 				(font

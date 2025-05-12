@@ -1753,6 +1753,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C14445"
+			(at 181.61 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05A105KP5NNNC"
+			(at 181.61 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "937719b3-a363-4cdc-b455-b1d5d5f42435")
 		)
@@ -1814,6 +1832,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 156.21 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C14445"
+			(at 156.21 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05A105KP5NNNC"
 			(at 156.21 77.47 0)
 			(effects
 				(font
@@ -1891,6 +1927,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C14445"
+			(at 168.91 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05A105KP5NNNC"
+			(at 168.91 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e3056550-b0aa-40aa-81d7-ddfb0ff17734")
 		)
@@ -1952,6 +2006,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 177.8 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C72203"
+			(at 177.8 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "GRM155R61E225ME15D"
 			(at 177.8 114.3 0)
 			(effects
 				(font
@@ -2153,6 +2225,24 @@
 		)
 		(property "Description" "Graphic LCD Display Module Transflective Black (White - Inverted) FSTN - Film Super-Twisted Nematic SPI 128 x 32"
 			(at 150.114 131.826 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" ""
+			(at 149.86 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "NHD-C12832A1Z-FSW-FBW-3V3"
+			(at 149.86 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2410,6 +2500,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C14445"
+			(at 162.56 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05A105KP5NNNC"
+			(at 162.56 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "152619c1-88d6-4d6a-bbcc-fcb5fd8ac6db")
 		)
@@ -2471,6 +2579,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 175.26 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C14445"
+			(at 175.26 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "CL05A105KP5NNNC"
 			(at 175.26 77.47 0)
 			(effects
 				(font
@@ -2548,6 +2674,24 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part #" "C72203"
+			(at 182.88 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "GRM155R61E225ME15D"
+			(at 182.88 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "6a3bccfa-d80b-4629-a687-db1db44225eb")
 		)
@@ -2609,6 +2753,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 147.32 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part #" "C72203"
+			(at 147.32 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part #" "GRM155R61E225ME15D"
 			(at 147.32 76.2 0)
 			(effects
 				(font

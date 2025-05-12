@@ -588,6 +588,18 @@
           "label": "Sim.Device",
           "name": "Sim.Device",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "JLCPCB Part #",
+          "name": "JLCPCB Part #",
+          "show": true
+        },
+        {
+          "group_by": true,
+          "label": "Manufacturer Part #",
+          "name": "Manufacturer Part #",
+          "show": true
         }
       ],
       "filter_string": "",
