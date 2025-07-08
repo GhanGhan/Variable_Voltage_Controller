@@ -7288,7 +7288,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "GRM155R71E103KA01D"
+		(property "Manufacturer Part #" "0402B103K500NT"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7301,7 +7301,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C77013"
+		(property "LCSC" "C1524"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14219,7 +14219,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "RT0805BRD074K3L"
+		(property "Manufacturer Part #" "0805W8F4301T5E"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14232,7 +14232,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C728653"
+		(property "LCSC" "C17667"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22415,7 +22415,7 @@
 		(path "/18589d04-92b7-4bb3-b941-112d31f9b6cf/6a4de3e6-4dba-4f5f-9dbc-e42bbc65e7a1")
 		(sheetname "[1] Power")
 		(sheetfile "Power.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -5.11 10)
 			(end -5.11 9.05)
@@ -24719,7 +24719,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "PTS636SK25SMTRLFS"
+		(property "Manufacturer Part #" "GT-TC060B-H025-L1"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24732,7 +24732,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2689642"
+		(property "LCSC" "C778169"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
