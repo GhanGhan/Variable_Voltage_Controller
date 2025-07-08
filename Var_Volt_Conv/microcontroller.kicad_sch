@@ -3274,7 +3274,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C2689642"
+		(property "Manufacturer Part #" "GT-TC060B-H025-L1"
 			(at 59.69 148.59 0)
 			(effects
 				(font
@@ -3283,7 +3283,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "PTS636SK25SMTRLFS"
+		(property "LCSC" "C2689642"
 			(at 59.69 148.59 0)
 			(effects
 				(font
@@ -3428,7 +3428,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C76995"
+		(property "Manufacturer Part #" "GRM155R60J475KE96D"
 			(at 130.81 49.53 0)
 			(effects
 				(font
@@ -3437,7 +3437,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "GRM155R60J475KE96D"
+		(property "LCSC" "C76995"
 			(at 130.81 49.53 0)
 			(effects
 				(font
@@ -3583,7 +3583,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C51450"
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
 			(at 162.56 162.56 0)
 			(effects
 				(font
@@ -3592,7 +3592,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+		(property "LCSC" "C51450"
 			(at 162.56 162.56 0)
 			(effects
 				(font
@@ -3669,7 +3669,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C458857"
+		(property "Manufacturer Part #" "0402N140J500CT"
 			(at 85.09 66.04 0)
 			(effects
 				(font
@@ -3678,7 +3678,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "0402N140J500CT"
+		(property "LCSC" "C458857"
 			(at 85.09 66.04 0)
 			(effects
 				(font
@@ -3754,7 +3754,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C251610"
+		(property "Manufacturer Part #" "7U16000E12UCG"
 			(at 96.52 74.93 0)
 			(effects
 				(font
@@ -3763,7 +3763,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "7U16000E12UCG"
+		(property "LCSC" "C251610"
 			(at 96.52 74.93 0)
 			(effects
 				(font
@@ -3979,7 +3979,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C51450"
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
 			(at 134.62 162.56 0)
 			(effects
 				(font
@@ -3988,7 +3988,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+		(property "LCSC" "C51450"
 			(at 134.62 162.56 0)
 			(effects
 				(font
@@ -4065,7 +4065,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C458857"
+		(property "Manufacturer Part #" "0402N140J500CT"
 			(at 85.09 87.63 0)
 			(effects
 				(font
@@ -4074,7 +4074,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "0402N140J500CT"
+		(property "LCSC" "C458857"
 			(at 85.09 87.63 0)
 			(effects
 				(font
@@ -4218,15 +4218,6 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" ""
-			(at 104.14 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Manufacturer Part #" "PPTC051LFBN-RC"
 			(at 104.14 147.32 0)
 			(effects
@@ -4315,7 +4306,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C51450"
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
 			(at 148.59 162.56 0)
 			(effects
 				(font
@@ -4324,7 +4315,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+		(property "LCSC" "C51450"
 			(at 148.59 162.56 0)
 			(effects
 				(font
@@ -4469,7 +4460,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C51450"
+		(property "Manufacturer Part #" "PESD3V3L1BA,115"
 			(at 120.65 162.56 0)
 			(effects
 				(font
@@ -4478,7 +4469,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "PESD3V3L1BA,115"
+		(property "LCSC" "C51450"
 			(at 120.65 162.56 0)
 			(effects
 				(font
@@ -4557,7 +4548,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C155422"
+		(property "Manufacturer Part #" "CL05B104KA5NNNC"
 			(at 144.78 49.53 0)
 			(effects
 				(font
@@ -4566,7 +4557,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "CL05B104KA5NNNC"
+		(property "LCSC" "C155422"
 			(at 144.78 49.53 0)
 			(effects
 				(font
@@ -4712,7 +4703,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C724040"
+		(property "Manufacturer Part #" "STM32G030F6P6"
 			(at 156.21 83.82 0)
 			(effects
 				(font
@@ -4721,7 +4712,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "STM32G030F6P6"
+		(property "LCSC" "C724040"
 			(at 156.21 83.82 0)
 			(effects
 				(font
@@ -4854,7 +4845,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part #" "C155422"
+		(property "Manufacturer Part #" "CL05B104KA5NNNC"
 			(at 72.39 148.59 0)
 			(effects
 				(font
@@ -4863,7 +4854,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "CL05B104KA5NNNC"
+		(property "LCSC" "C155422"
 			(at 72.39 148.59 0)
 			(effects
 				(font
