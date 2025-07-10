@@ -17904,7 +17904,7 @@
 				)
 			)
 		)
-		(property "lcsc" ""
+		(property "lcsc" "C12891 "
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24720,7 +24720,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "GT-TC060B-H025-L1"
+		(property "Manufacturer Part #" "PTS636SKG25SMTR LFS"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24733,7 +24733,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C778169"
+		(property "lcsc" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24746,10 +24746,22 @@
 				)
 			)
 		)
+		(property "LCSC" ""
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cf4252c2-b615-4e3c-8996-e57dbf211e9f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/b048280b-6fef-4656-96bb-ca0a0c35ac5b/3e61ba2a-9d43-4c7d-8054-c9ec4a291ecc")
 		(sheetname "[2] Microcontroller")
 		(sheetfile "microcontroller.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -3.2 -2)
 			(end -3.2 -0.8)

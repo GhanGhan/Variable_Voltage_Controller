@@ -3274,7 +3274,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "GT-TC060B-H025-L1"
+		(property "Manufacturer Part #" "PTS636SKG25SMTR LFS"
 			(at 59.69 148.59 0)
 			(effects
 				(font
@@ -3283,7 +3283,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C778169"
+		(property "lcsc" ""
 			(at 59.69 148.59 0)
 			(effects
 				(font
