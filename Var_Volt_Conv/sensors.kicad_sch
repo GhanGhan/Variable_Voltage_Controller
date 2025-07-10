@@ -1428,7 +1428,7 @@
 		)
 		(uuid "c78f50c2-a757-4fb6-bdfe-613303d03dfe")
 	)
-	(text "SPB_max = 20V\nS-IV = 17V*4.7k/(4.7k + 24k)\n      = 3.27V"
+	(text "SPB_max = 20V\nS-IV = 20V*4.75k/(4.75k + 24k)\n      = 3.30V"
 		(exclude_from_sim no)
 		(at 96.266 139.7 0)
 		(effects
@@ -1723,7 +1723,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C129346"
+		(property "lcsc" "C129346"
 			(at 203.2 138.43 0)
 			(effects
 				(font
@@ -1823,7 +1823,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C155422"
+		(property "lcsc" "C155422"
 			(at 204.47 48.26 0)
 			(effects
 				(font
@@ -1977,7 +1977,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C409902"
+		(property "lcsc" "C409902"
 			(at 87.63 129.54 0)
 			(effects
 				(font
@@ -2056,7 +2056,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "RC0603FR-079K1L"
+		(property "Manufacturer Part #" "0603WAF9101T5E"
 			(at 88.9 57.15 0)
 			(effects
 				(font
@@ -2065,7 +2065,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C114639"
+		(property "lcsc" "C23260"
 			(at 88.9 57.15 0)
 			(effects
 				(font
@@ -2285,7 +2285,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C155422"
+		(property "lcsc" "C155422"
 			(at 218.44 120.65 0)
 			(effects
 				(font
@@ -2393,7 +2393,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7K"
+		(property "Value" "4.75K"
 			(at 90.17 146.0499 0)
 			(effects
 				(font
@@ -2429,7 +2429,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "ERJ2RKF4701X"
+		(property "Manufacturer Part #" "0402WGF4751TCE"
 			(at 87.63 144.78 0)
 			(effects
 				(font
@@ -2438,7 +2438,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C400631"
+		(property "lcsc" "C25901 "
 			(at 87.63 144.78 0)
 			(effects
 				(font
@@ -2517,7 +2517,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "RC0603FR-072K2L"
+		(property "Manufacturer Part #" "0603WAF2201T5E"
 			(at 88.9 72.39 0)
 			(effects
 				(font
@@ -2526,7 +2526,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C114662"
+		(property "lcsc" "C4190"
 			(at 88.9 72.39 0)
 			(effects
 				(font
@@ -2875,7 +2875,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C129346"
+		(property "lcsc" "C129346"
 			(at 189.23 64.77 0)
 			(effects
 				(font
