@@ -2948,7 +2948,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "17047591-2ef3-4823-bc44-32a102c592c6")
@@ -2998,7 +2998,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3011,7 +3011,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7477,7 +7477,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "c39b6c92-2ce0-4298-ae6d-c08f6fd8c674")
@@ -7527,7 +7527,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7540,7 +7540,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10618,7 +10618,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "b370d74f-147f-4b6e-9e09-5665912a8ad8")
@@ -10668,7 +10668,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10681,7 +10681,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11685,7 +11685,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "50k"
 			(at 0 1.17 0)
 			(layer "F.Fab")
 			(uuid "7e45e86f-8668-45e4-9e19-5389d50c4809")
@@ -11735,7 +11735,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "0402WGF1003TCE"
+		(property "Manufacturer Part #" "RTT025002FTH"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11748,7 +11748,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C25741"
+		(property "lcsc" "C166559"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15944,7 +15944,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "6ad58719-99c9-4811-ba68-48109542819c")
@@ -15994,7 +15994,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16007,7 +16007,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18080,7 +18080,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "50k"
 			(at 0 1.17 90)
 			(layer "F.Fab")
 			(uuid "d399123c-d92f-49a0-baf2-31f9d4a41961")
@@ -18130,7 +18130,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part #" "0402WGF1003TCE"
+		(property "Manufacturer Part #" "RTT025002FTH"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18143,7 +18143,7 @@
 				)
 			)
 		)
-		(property "lcsc" "C25741"
+		(property "lcsc" "C166559"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")

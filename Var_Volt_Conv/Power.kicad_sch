@@ -10146,7 +10146,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 139.7 212.0901 0)
 			(effects
 				(font
@@ -10185,7 +10185,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 133.35 213.36 0)
 			(effects
 				(font
@@ -10194,7 +10194,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 133.35 213.36 0)
 			(effects
 				(font
@@ -10672,7 +10672,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 158.75 212.0901 0)
 			(effects
 				(font
@@ -10711,7 +10711,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 165.1 213.36 0)
 			(effects
 				(font
@@ -10720,7 +10720,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 165.1 213.36 0)
 			(effects
 				(font
@@ -10882,7 +10882,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "50k"
 			(at 203.2 204.4699 0)
 			(effects
 				(font
@@ -10918,7 +10918,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "0402WGF1003TCE"
+		(property "Manufacturer Part #" "RTT025002FTH"
 			(at 200.66 203.2 0)
 			(effects
 				(font
@@ -10927,7 +10927,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C25741"
+		(property "lcsc" "C166559"
 			(at 200.66 203.2 0)
 			(effects
 				(font
@@ -12714,7 +12714,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 158.75 176.5299 0)
 			(effects
 				(font
@@ -12753,7 +12753,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 165.1 175.26 0)
 			(effects
 				(font
@@ -12762,7 +12762,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 165.1 175.26 0)
 			(effects
 				(font
@@ -15198,7 +15198,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "50k"
 			(at 104.14 205.7399 0)
 			(effects
 				(font
@@ -15234,7 +15234,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "0402WGF1003TCE"
+		(property "Manufacturer Part #" "RTT025002FTH"
 			(at 101.6 204.47 0)
 			(effects
 				(font
@@ -15243,7 +15243,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C25741"
+		(property "lcsc" "C166559"
 			(at 101.6 204.47 0)
 			(effects
 				(font
@@ -16858,7 +16858,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3407"
+		(property "Value" "AO3401A"
 			(at 139.7 176.5299 0)
 			(effects
 				(font
@@ -16897,7 +16897,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "AO3407"
+		(property "Manufacturer Part #" "AO3401A"
 			(at 133.35 175.26 0)
 			(effects
 				(font
@@ -16906,7 +16906,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C351408"
+		(property "lcsc" "C15127"
 			(at 133.35 175.26 0)
 			(effects
 				(font
