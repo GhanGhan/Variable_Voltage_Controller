@@ -1,39 +1,119 @@
-13:05:29 **** Incremental Build of configuration Debug for project VVC ****
+14:06:44 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:8: warning: unused variable 'text4' [-Wunused-variable]
+  112 |   char text4[] = "Don't 'at' me, BITCH!!";
+      |        ^~~~~
+../Core/Src/main.c:111:8: warning: unused variable 'text3' [-Wunused-variable]
+  111 |   char text3[] = "breaks off of Man of Steel";
+      |        ^~~~~
+../Core/Src/main.c:110:8: warning: unused variable 'text2' [-Wunused-variable]
+  110 |   char text2[] = "Superman (2025) beats the";
+      |        ^~~~~
+../Core/Src/main.c:109:8: warning: unused variable 'text' [-Wunused-variable]
+  109 |   char text[] = "Hello World!!!!";
+      |        ^~~~
 arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: VVC.elf
  
 arm-none-eabi-size  VVC.elf 
 arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
    text	   data	    bss	    dec	    hex	filename
-  11632	     12	   1772	  13416	   3468	VVC.elf
+  15008	     92	   2100	  17200	   4330	VVC.elf
 Finished building: default.size.stdout
  
 Finished building: VVC.list
  
-13:05:32 **** Incremental Build of configuration Debug for project VVC ****
+14:06:48 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
 arm-none-eabi-size  VVC.elf 
    text	   data	    bss	    dec	    hex	filename
-  11632	     12	   1772	  13416	   3468	VVC.elf
+  15008	     92	   2100	  17200	   4330	VVC.elf
 Finished building: default.size.stdout
  
-13:06:47 **** Incremental Build of configuration Debug for project VVC ****
+14:10:45 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:8: warning: unused variable 'text4' [-Wunused-variable]
+  112 |   char text4[] = "Don't 'at' me, BITCH!!";
+      |        ^~~~~
+../Core/Src/main.c:111:8: warning: unused variable 'text3' [-Wunused-variable]
+  111 |   char text3[] = "breaks off of Man of Steel";
+      |        ^~~~~
+../Core/Src/main.c:110:8: warning: unused variable 'text2' [-Wunused-variable]
+  110 |   char text2[] = "Superman (2025) beats the";
+      |        ^~~~~
+../Core/Src/main.c:109:8: warning: unused variable 'text' [-Wunused-variable]
+  109 |   char text[] = "Hello World!!!!";
+      |        ^~~~
 arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: VVC.elf
  
 arm-none-eabi-size  VVC.elf 
 arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
    text	   data	    bss	    dec	    hex	filename
-  11476	     12	   1772	  13260	   33cc	VVC.elf
+  15008	     92	   2100	  17200	   4330	VVC.elf
 Finished building: default.size.stdout
  
 Finished building: VVC.list
  
-13:07:14 **** Incremental Build of configuration Debug for project VVC ****
+14:17:56 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:8: warning: unused variable 'text4' [-Wunused-variable]
+  112 |   char text4[] = "Don't 'at' me, BITCH!!";
+      |        ^~~~~
+../Core/Src/main.c:111:8: warning: unused variable 'text3' [-Wunused-variable]
+  111 |   char text3[] = "breaks off of Man of Steel";
+      |        ^~~~~
+../Core/Src/main.c:110:8: warning: unused variable 'text2' [-Wunused-variable]
+  110 |   char text2[] = "Superman (2025) beats the";
+      |        ^~~~~
+../Core/Src/main.c:109:8: warning: unused variable 'text' [-Wunused-variable]
+  109 |   char text[] = "Hello World!!!!";
+      |        ^~~~
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  15008	     92	   2100	  17200	   4330	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+14:19:07 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:8: warning: unused variable 'text4' [-Wunused-variable]
+  112 |   char text4[] = "Don't 'at' me, BITCH!!";
+      |        ^~~~~
+../Core/Src/main.c:111:8: warning: unused variable 'text3' [-Wunused-variable]
+  111 |   char text3[] = "breaks off of Man of Steel";
+      |        ^~~~~
+../Core/Src/main.c:110:8: warning: unused variable 'text2' [-Wunused-variable]
+  110 |   char text2[] = "Superman (2025) beats the";
+      |        ^~~~~
+../Core/Src/main.c:109:8: warning: unused variable 'text' [-Wunused-variable]
+  109 |   char text[] = "Hello World!!!!";
+      |        ^~~~
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  15008	     92	   2100	  17200	   4330	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+14:24:01 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -42,7 +122,100 @@ Finished building target: VVC.elf
 arm-none-eabi-size  VVC.elf 
 arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
    text	   data	    bss	    dec	    hex	filename
-  11468	     12	   1772	  13252	   33c4	VVC.elf
+  14784	     92	   2100	  16976	   4250	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+14:25:51 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14856	     92	   2100	  17048	   4298	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+14:28:47 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-size  VVC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14856	     92	   2100	  17048	   4298	VVC.elf
+Finished building: default.size.stdout
+ 
+14:33:41 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14856	     92	   2100	  17048	   4298	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+14:34:37 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14856	     92	   2100	  17048	   4298	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+14:40:56 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14876	     92	   2100	  17068	   42ac	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+15:22:38 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32g0xx_hal_msp.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g0xx_hal_msp.d" -MT"Core/Src/stm32g0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32g0xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32g0xx_it.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g0xx_it.d" -MT"Core/Src/stm32g0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32g0xx_it.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14876	     92	   2100	  17068	   42ac	VVC.elf
+Finished building: default.size.stdout
+ 
+Finished building: VVC.list
+ 
+15:23:17 **** Incremental Build of configuration Debug for project VVC ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
+arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14872	     92	   2100	  17064	   42a8	VVC.elf
 Finished building: default.size.stdout
  
 Finished building: VVC.list

@@ -63,12 +63,12 @@ void Error_Handler(void);
 #define _RST_GPIO_Port GPIOA
 #define A0_Pin GPIO_PIN_2
 #define A0_GPIO_Port GPIOA
-#define S_Output_Current_Pin GPIO_PIN_6
+#define S_Input_Current_Pin GPIO_PIN_6
+#define S_Input_Current_GPIO_Port GPIOA
+#define S_Output_Current_Pin GPIO_PIN_7
 #define S_Output_Current_GPIO_Port GPIOA
-#define S_Output_Voltage_Pin GPIO_PIN_7
-#define S_Output_Voltage_GPIO_Port GPIOA
-#define S_Input_Current_Pin GPIO_PIN_0
-#define S_Input_Current_GPIO_Port GPIOB
+#define S_Output_Voltage_Pin GPIO_PIN_0
+#define S_Output_Voltage_GPIO_Port GPIOB
 #define _CS_Pin GPIO_PIN_3
 #define _CS_GPIO_Port GPIOB
 
