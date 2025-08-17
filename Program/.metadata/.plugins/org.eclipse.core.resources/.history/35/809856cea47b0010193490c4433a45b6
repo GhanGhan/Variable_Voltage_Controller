@@ -47,11 +47,11 @@ ADC_HandleTypeDef hadc1;
 SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
-const float sys_voltage = 3.3;//ADC reference voltage
-const uint16_t adc_res = 4095;
+const double sys_voltage = 3.3;//ADC reference voltage
+const uint16_t adc_res = pow(2, 12)-1;
 const uint8_t vi_scale = 17; //largest allowable input voltage
 const uint8_t vo_scale = 20; //largest allowable output voltage
-const float curr_scale = 1/(50*0.011); //Amp gain * Rsense
+const double curr_scale = 1/(50*0.011); //Amp gain * Rsense
 
 /* USER CODE END PV */
 
@@ -67,9 +67,6 @@ void clear_screen();
 void comm_write(uint8_t c);
 void data_write(uint8_t d);
 void print_data(char* text, uint8_t rowIndex);
-void ftoa(float n, char* res, int afterpoint);
-int intToStr(int x, char str[], int d);
-void reverse(char* str, int len);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -136,25 +133,24 @@ int main(void)
 	  }
 	  //Now the buffer contains all 4 values.
 	  //snprintf(numText, sizeof(numText), "%.2f", ADC_buffer[0]*sys_voltage*vi_scale/adc_res);
-	  ftoa((float)ADC_buffer[0]*vi_scale/adc_res, numText, 3);
 	  print_data(numText, 0);
 
+	  //snprintf(numText, sizeof(numText), "%.2f", ADC_buffer[1]*sys_voltage*vo_scale/adc_res);
 	  //sprintf(numText, "%d", ADC_buffer[1]);
-	  ftoa((float)ADC_buffer[1]*vo_scale/adc_res, numText, 3);
 	  print_data(numText, 1);
 
+	  //snprintf(numText, sizeof(numText), "%.2f", ADC_buffer[2]*sys_voltage*curr_scale/adc_res);
 	  //sprintf(numText, "%d", ADC_buffer[2]);
-	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 3);
 	  print_data(numText, 2);
 
+	  //snprintf(numText, sizeof(numText), "%.2f", ADC_buffer[3]*sys_voltage*curr_scale/adc_res);
 	  //sprintf(numText, "%d", ADC_buffer[3]);
-	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 3);
 	  print_data(numText, 3);
 	  //print_data(text, 0);
 	  //print_data(text2, 1);
 	  //print_data(text3, 2);
 	  //print_data(text4, 3);
-	  HAL_Delay(1000);
+	  HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -450,67 +446,8 @@ void print_data(char* text, uint8_t rowIndex)
 			val = Ascii_1[c][j];
 			data_write(val);
 		}
+
 	}
-}
-
-// Reverses a string 'str' of length 'len'
-void reverse(char* str, int len)
-{
-    int i = 0, j = len - 1, temp;
-    while (i < j) {
-        temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-        i++;
-        j--;
-    }
-}
-
-// Converts a given integer x to string str[].
-// d is the number of digits required in the output.
-// If d is more than the number of digits in x,
-// then 0s are added at the beginning.
-int intToStr(int x, char str[], int d)
-{
-    int i = 0;
-    while (x) {
-        str[i++] = (x % 10) + '0';
-        x = x / 10;
-    }
-
-    // If number of digits required is more, then
-    // add 0s at the beginning
-    while (i < d)
-        str[i++] = '0';
-
-    reverse(str, i);
-    str[i] = '\0';
-    return i;
-}
-
-// Converts a floating-point/double number to a string.
-void ftoa(float n, char* res, int afterpoint)
-{
-    // Extract integer part
-    int ipart = (int)n;
-
-    // Extract floating part
-    float fpart = n - (float)ipart;
-
-    // convert integer part to string
-    int i = intToStr(ipart, res, 0);
-
-    // check for display option after point
-    if (afterpoint != 0) {
-        res[i] = '.'; // add dot
-
-        // Get the value of fraction part upto given no.
-        // of points after dot. The third parameter
-        // is needed to handle cases like 233.007
-        fpart = fpart * pow(10, afterpoint);
-
-        intToStr((int)fpart, res + i + 1, afterpoint);
-    }
 }
 
 /* USER CODE END 4 */

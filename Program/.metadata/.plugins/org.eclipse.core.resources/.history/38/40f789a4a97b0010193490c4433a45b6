@@ -136,25 +136,23 @@ int main(void)
 	  }
 	  //Now the buffer contains all 4 values.
 	  //snprintf(numText, sizeof(numText), "%.2f", ADC_buffer[0]*sys_voltage*vi_scale/adc_res);
-	  ftoa((float)ADC_buffer[0]*vi_scale/adc_res, numText, 3);
+	  ftoa((float)(ADC_buffer[0]*vi_scale/adc_res-.58), numText, 3);
 	  print_data(numText, 0);
 
 	  //sprintf(numText, "%d", ADC_buffer[1]);
 	  ftoa((float)ADC_buffer[1]*vo_scale/adc_res, numText, 3);
 	  print_data(numText, 1);
 
-	  //sprintf(numText, "%d", ADC_buffer[2]);
-	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 3);
+	  sprintf(numText, "%d", ADC_buffer[2]);
 	  print_data(numText, 2);
 
-	  //sprintf(numText, "%d", ADC_buffer[3]);
-	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 3);
+	  sprintf(numText, "%d", ADC_buffer[3]);
 	  print_data(numText, 3);
 	  //print_data(text, 0);
 	  //print_data(text2, 1);
 	  //print_data(text3, 2);
 	  //print_data(text4, 3);
-	  HAL_Delay(1000);
+	  HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
