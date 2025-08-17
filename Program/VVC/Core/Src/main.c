@@ -56,7 +56,9 @@ static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
 void reset_screen();
 void init_screen();
+void clear_screen();
 void comm_write(uint8_t c);
+void data_write(uint8_t d);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -98,7 +100,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   reset_screen();
   init_screen();
-
+  clear_screen();
+  char text[] = "Hello World!!!!";
+  char text2[] = "Almost done";
+  char text3[] = "With this project";
+  char text4[] = "Vo = 13.54V";
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,9 +112,72 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	comm_write(0xAE); // Display OFF
-	HAL_Delay(1000);
-	comm_write(0xAF); //Display ON
+	  ///////////////////////////////
+	unsigned char page = 0xB0;
+	comm_write(0x40); // Display start address + 0x40
+	comm_write(page); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	///////////////////////////
+	comm_write(page + 1); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text2[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text2[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	///////////////////////////
+	comm_write(page + 2); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text3[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text3[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	///////////////////////////
+	comm_write(page + 3); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text4[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text4[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
 	HAL_Delay(1000);
 
     /* USER CODE BEGIN 3 */
@@ -316,15 +385,49 @@ void init_screen()
 	comm_write(0xAF); //Display ON
 }
 
+void clear_screen()
+{
+	uint8_t page = 0xB0; //'B'- command to set Page Address, lower four bits contain actual address
+						//Command := 0xB0 + start address
+	comm_write(0xAE); // Display OFF
+	comm_write(0x40); // D7,D6 = "01" - command to set start line, Bottom 5 bits are start line address
+						//Command := 0x40 + start line address
+
+	for(uint8_t i = 0; i < 4; i++)
+	{
+		comm_write(page);	// send page address
+		//	Following two lines set the column address to leftmost column
+		comm_write(0x10); // column address upper 4 bits + 0x10
+		comm_write(0x00); // column address lower 4 bits + 0x00
+
+		for(uint8_t j = 0; j < 128; j++)
+		{
+			data_write(0x00);
+		}
+		page++;//After 128 columns, go to the next page
+	}
+	comm_write(0xAF);//Turn the display back on
+}
+
 void comm_write(uint8_t c)
 {
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
 	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
 
-	HAL_SPI_Transmit(&hspi2, &c, 1, 100);
+	HAL_SPI_Transmit(&hspi2, &c, 1, 100); // transmit command
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
 
+}
+
+void data_write(uint8_t d)
+{
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
+	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_SET);	//Set message type to
+
+	HAL_SPI_Transmit(&hspi2, &d, 1, 100); //transmit data
+
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
 }
 
 /* USER CODE END 4 */
