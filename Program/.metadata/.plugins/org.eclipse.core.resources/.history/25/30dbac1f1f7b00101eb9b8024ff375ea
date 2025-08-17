@@ -31,12 +31,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define LCD_CS_LOW()        HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET)
-#define LCD_CS_HIGH()       HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET)
-#define LCD_DC_COMMAND()    HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_RESET)
-#define LCD_DC_DATA()       HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_SET)
-#define LCD_RST_LOW()       HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_RESET)
-#define LCD_RST_HIGH()      HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_SET)
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -59,11 +54,11 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
-void LCD_Write(uint8_t dc, uint8_t data);
-void LCD_Init(void);
-void LCD_SetCursor(uint8_t x, uint8_t y);
-void LCD_Clear(void);
-void LCD_WriteString(char *str);
+void reset_screen();
+void init_screen();
+void clear_screen();
+void comm_write(uint8_t c);
+void data_write(uint8_t d);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -103,23 +98,87 @@ int main(void)
   MX_ADC1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-  LCD_Init();
-  //HAL_Delay(1000);
-  LCD_Clear();
-  LCD_SetCursor(0, 0); // Set cursor to the top-left corner
-  LCD_WriteString("Hello World!");
-  //HAL_Delay(1000);
+  reset_screen();
+  init_screen();
+  clear_screen();
+  char text[] = "Hello World!!!!";
+  char text2[] = "Superman 2025 beats the";
+  char text3[] = "breaks off of Man of Steel";
+  char text4[] = "Don't 'at' me, BITCH";
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //LCD_Clear();
-	  //LCD_SetCursor(0, 0); // Set cursor to the top-left corner
-	  //LCD_WriteString("Hello World!");
-	  //HAL_Delay(100);
     /* USER CODE END WHILE */
+	  ///////////////////////////////
+	unsigned char page = 0xB0;
+	comm_write(0x40); // Display start address + 0x40
+	comm_write(page); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	///////////////////////////
+	comm_write(page + 1); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text2[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text2[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	///////////////////////////
+	comm_write(page + 2); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text3[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text3[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	///////////////////////////
+	comm_write(page + 3); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text4[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text4[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
+	HAL_Delay(1000);
 
     /* USER CODE BEGIN 3 */
   }
@@ -243,7 +302,7 @@ static void MX_SPI2_Init(void)
   /* SPI2 parameter configuration*/
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi2.Init.Direction = SPI_DIRECTION_1LINE;
   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
@@ -305,110 +364,72 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void LCD_Write(uint8_t dc, uint8_t data)
+void reset_screen()
 {
-    // Set D/C pin
-    if(dc == 0)
-    {
-        LCD_DC_COMMAND();
-    }
-    else
-    {
-        LCD_DC_DATA();
-    }
-
-    // Set CS pin low to begin transmission
-    LCD_CS_LOW();
-
-    // Transmit data via SPI
-    HAL_SPI_Transmit(&hspi2, &data, 1, 100);
-
-    // Set CS pin high to end transmission
-    LCD_CS_HIGH();
+	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_RESET);
+	HAL_Delay(100);
+	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_SET);
+	HAL_Delay(100);
 }
 
-void LCD_Init(void)
+void init_screen()
 {
-    // Hardware reset
-    LCD_RST_LOW();
-    HAL_Delay(10);
-    LCD_RST_HIGH();
-    HAL_Delay(10);
-
-    // Turn off display
-    LCD_Write(0, 0xAE);
-
-    // Set bias 1/9
-    LCD_Write(0, 0xA2);
-
-    // Set power control
-    LCD_Write(0, 0x2F);
-
-    // Set V0 voltage resistor ratio
-    LCD_Write(0, 0x26);
-
-    // Set electronic volume (contrast)
-    LCD_Write(0, 0x81);
-    LCD_Write(0, 0x1E); // Adjust this value (0x00-0x3F) for contrast
-
-    // Set all pixels on
-    LCD_Write(0, 0xA5);
-    HAL_Delay(5);
-    LCD_Write(0, 0xA4);
-
-    // Reverse display (optional)
-    // LCD_Write(0, 0xA7);
-
-    // Normal display
-    LCD_Write(0, 0xA6);
-
-    // Reverse scan direction
-    LCD_Write(0, 0xC8);
-
-    // Set start line
-    LCD_Write(0, 0x40);
-
-    // Turn on display
-    LCD_Write(0, 0xAF);
-    HAL_Delay(100);
+	comm_write(0xA0); //Set SEG (column) direction - left to right
+	comm_write(0xAE); //Turn the display off
+	comm_write(0xC8); //Set COM (row) direction - top to bottom
+	comm_write(0xA2); //Set LCD bias
+	comm_write(0x2F); //Power Control Set - Boost, Regulator and Follower are all on
+	comm_write(0x21); //Set Resistor Ratio - 001 -> 3.5
+	comm_write(0x81); //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	comm_write(0x20); //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	comm_write(0xAF); //Display ON
 }
 
-void LCD_SetCursor(uint8_t x, uint8_t y)
+void clear_screen()
 {
-    LCD_Write(0, 0xB0 | y); // Set page address
-    LCD_Write(0, 0x10 | ((x >> 4) & 0x0F)); // Set column address MSB
-    LCD_Write(0, 0x00 | (x & 0x0F)); // Set column address LSB
+	uint8_t page = 0xB0; //'B'- command to set Page Address, lower four bits contain actual address
+						//Command := 0xB0 + start address
+	comm_write(0xAE); // Display OFF
+	comm_write(0x40); // D7,D6 = "01" - command to set start line, Bottom 5 bits are start line address
+						//Command := 0x40 + start line address
+
+	for(uint8_t i = 0; i < 4; i++)
+	{
+		comm_write(page);	// send page address
+		//	Following two lines set the column address to leftmost column
+		comm_write(0x10); // column address upper 4 bits + 0x10
+		comm_write(0x00); // column address lower 4 bits + 0x00
+
+		for(uint8_t j = 0; j < 128; j++)
+		{
+			data_write(0x00);
+		}
+		page++;//After 128 columns, go to the next page
+	}
+	comm_write(0xAF);//Turn the display back on
 }
 
-void LCD_Clear(void)
+void comm_write(uint8_t c)
 {
-    uint8_t y, x;
-    for(y = 0; y < 4; y++) // 4 pages for 32 pixel height
-    {
-        LCD_SetCursor(0, y);
-        for(x = 0; x < 128; x++)
-        {
-            LCD_Write(1, 0x00);
-        }
-    }
-    LCD_SetCursor(0, 0);
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
+	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
+
+	HAL_SPI_Transmit(&hspi2, &c, 1, 100); // transmit command
+
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
+
 }
 
-void LCD_WriteString(char *str)
+void data_write(uint8_t d)
 {
-    while(*str)
-    {
-        uint8_t i;
-        uint8_t ascii = *str - 32; // Offset to match font table
-        for(i = 0; i < 5; i++)
-        {
-            LCD_Write(1, Font5x8[ascii][i]);
-        }
-        // Add a space between characters
-        LCD_Write(1, 0x00);
-        str++;
-    }
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
+	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_SET);	//Set message type to
+
+	HAL_SPI_Transmit(&hspi2, &d, 1, 100); //transmit data
+
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
 }
+
 /* USER CODE END 4 */
 
 /**

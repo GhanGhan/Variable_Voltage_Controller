@@ -59,6 +59,7 @@ void init_screen();
 void clear_screen();
 void comm_write(uint8_t c);
 void data_write(uint8_t d);
+void print_data(char* text, uint8_t rowIndex);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -101,10 +102,11 @@ int main(void)
   reset_screen();
   init_screen();
   clear_screen();
+  comm_write(0x40); // Display start address + 0x40
   char text[] = "Hello World!!!!";
-  char text2[] = "Almost done";
-  char text3[] = "With this project";
-  char text4[] = "Vo = 13.54V";
+  char text2[] = "Superman (2025) beats the";
+  char text3[] = "breaks off of Man of Steel";
+  char text4[] = "Don't 'at' me, BITCH!!";
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -113,71 +115,18 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  ///////////////////////////////
-	unsigned char page = 0xB0;
-	comm_write(0x40); // Display start address + 0x40
-	comm_write(page); // send page address
-	comm_write(0x10); // column address upper 4 bits + 0x10
-	comm_write(0x00); // column address lower 4 bits + 0x00
-	for(uint8_t i = 0; text[i] != '\0'; i++)
-	{
-		uint8_t c = (uint8_t)text[i] - 32;
-		uint8_t val = 0;
 
-		for(uint8_t j = 0; j < 5; j++)
-		{
-			val = Ascii_1[c][j];
-			data_write(val);
-		}
-
-	}
+	print_data(text, 0);
 	///////////////////////////
-	comm_write(page + 1); // send page address
-	comm_write(0x10); // column address upper 4 bits + 0x10
-	comm_write(0x00); // column address lower 4 bits + 0x00
-	for(uint8_t i = 0; text2[i] != '\0'; i++)
-	{
-		uint8_t c = (uint8_t)text2[i] - 32;
-		uint8_t val = 0;
 
-		for(uint8_t j = 0; j < 5; j++)
-		{
-			val = Ascii_1[c][j];
-			data_write(val);
-		}
-
-	}
+	print_data(text2, 1);
 	///////////////////////////
-	comm_write(page + 2); // send page address
-	comm_write(0x10); // column address upper 4 bits + 0x10
-	comm_write(0x00); // column address lower 4 bits + 0x00
-	for(uint8_t i = 0; text3[i] != '\0'; i++)
-	{
-		uint8_t c = (uint8_t)text3[i] - 32;
-		uint8_t val = 0;
 
-		for(uint8_t j = 0; j < 5; j++)
-		{
-			val = Ascii_1[c][j];
-			data_write(val);
-		}
-
-	}
+	print_data(text3, 2);
 	///////////////////////////
-	comm_write(page + 3); // send page address
-	comm_write(0x10); // column address upper 4 bits + 0x10
-	comm_write(0x00); // column address lower 4 bits + 0x00
-	for(uint8_t i = 0; text4[i] != '\0'; i++)
-	{
-		uint8_t c = (uint8_t)text4[i] - 32;
-		uint8_t val = 0;
 
-		for(uint8_t j = 0; j < 5; j++)
-		{
-			val = Ascii_1[c][j];
-			data_write(val);
-		}
+	print_data(text4, 3);
 
-	}
 	HAL_Delay(1000);
 
     /* USER CODE BEGIN 3 */
@@ -428,6 +377,26 @@ void data_write(uint8_t d)
 	HAL_SPI_Transmit(&hspi2, &d, 1, 100); //transmit data
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
+}
+
+void print_data(char* text, uint8_t rowIndex)
+{
+	unsigned char page = 0xB0;
+	comm_write(page + rowIndex); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
+	for(uint8_t i = 0; text[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+
+	}
 }
 
 /* USER CODE END 4 */
