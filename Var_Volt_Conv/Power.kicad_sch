@@ -10871,7 +10871,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "27205d33-fb80-4906-a297-06e96cf41826")
 		(property "Reference" "R108"
 			(at 203.2 201.9299 0)
@@ -10882,7 +10881,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50k"
+		(property "Value" "4.75K"
 			(at 203.2 204.4699 0)
 			(effects
 				(font
@@ -10918,7 +10917,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "RTT025002FTH"
+		(property "Manufacturer Part #" "0402WGF4751TCE"
 			(at 200.66 203.2 0)
 			(effects
 				(font
@@ -10927,7 +10926,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C166559"
+		(property "lcsc" "C25901 "
 			(at 200.66 203.2 0)
 			(effects
 				(font
@@ -15198,7 +15197,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50k"
+		(property "Value" "4.75K"
 			(at 104.14 205.7399 0)
 			(effects
 				(font
@@ -15234,7 +15233,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part #" "RTT025002FTH"
+		(property "Manufacturer Part #" "0402WGF4751TCE"
 			(at 101.6 204.47 0)
 			(effects
 				(font
@@ -15243,7 +15242,7 @@
 				(hide yes)
 			)
 		)
-		(property "lcsc" "C166559"
+		(property "lcsc" "C25901 "
 			(at 101.6 204.47 0)
 			(effects
 				(font

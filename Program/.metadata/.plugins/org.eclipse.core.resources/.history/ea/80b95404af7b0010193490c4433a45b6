@@ -149,7 +149,7 @@ int main(void)
 	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 3);
 	  print_data(numText, 3);
 
-	  HAL_Delay(100);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -278,7 +278,7 @@ static void MX_ADC1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN ADC1_Init 2 */
-  HAL_ADCEx_Calibration_Start(&hadc1);
+  HAL_ADCEx_Calibration_Start()
   /* USER CODE END ADC1_Init 2 */
 
 }

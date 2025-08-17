@@ -195,3 +195,15 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-08-17 16:12:31.066
 !MESSAGE Indexed 'VVC' (27 sources, 118 headers) in 1.03 sec: 10,127 declarations; 43,861 references; 3 unresolved inclusions; 26 syntax errors; 171 unresolved names (0.32%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-08-17 16:57:20.642
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 28 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-08-17 16:57:20.642
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-08-17 16:57:20.643
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 28 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-08-17 16:57:20.644
+!MESSAGE Existing sessions are:

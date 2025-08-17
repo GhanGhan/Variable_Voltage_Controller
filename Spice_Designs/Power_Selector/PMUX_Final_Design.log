@@ -1,6 +1,6 @@
 LTspice 24.1.9 for Windows
 Circuit: C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Spice_Designs\Power_Selector\PMUX_Final_Design.net
-Start Time: Sun Aug  3 20:46:39 2025
+Start Time: Sun Aug  3 22:58:56 2025
 solver = Normal
 Maximum thread count: 16
 tnom = 27
@@ -31,7 +31,7 @@ Gmin = 1.33182e-13
 Gmin = 0
 Gmin stepping succeeded in finding the operating point.
 
-Total elapsed time: 0.185 seconds.
+Total elapsed time: 0.180 seconds.
 
 Files loaded:
 C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Spice_Designs\Power_Selector\PMUX_Final_Design.net
