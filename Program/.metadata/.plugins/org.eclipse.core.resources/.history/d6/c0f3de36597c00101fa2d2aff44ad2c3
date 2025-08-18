@@ -160,7 +160,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " V");
 	  print_data(desText, 1);
-	  erase_trails(desText, 1);
 
 
 	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 2);
@@ -169,7 +168,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " A");
 	  print_data(desText, 2);
-	  erase_trails(desText, 2);
 
 
 	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 2);
@@ -178,7 +176,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " A");
 	  print_data(desText, 3);
-	  erase_trails(desText, 3);
 
 	  HAL_Delay(100);
     /* USER CODE END WHILE */
@@ -506,7 +503,6 @@ void erase_trails(char* text, uint8_t rowIndex)
 				val = Ascii_1[c][j];
 				data_write(val);
 			}
-			i++;
 		}
 }
 

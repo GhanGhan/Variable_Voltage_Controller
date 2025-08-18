@@ -73,7 +73,6 @@ void clear_screen();
 void comm_write(uint8_t c);
 void data_write(uint8_t d);
 void print_data(char* text, uint8_t rowIndex);
-void erase_trails(char* text, uint8_t rowIndex);
 
 // Following functions from https://www.geeksforgeeks.org/c/gcvt-convert-float-value-string-c/
 void ftoa(float n, char* res, int afterpoint);
@@ -151,7 +150,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " V");
 	  print_data(desText, 0);
-	  erase_trails(desText, 0);
 
 
 	  ftoa((float)ADC_buffer[1]*vo_scale/adc_res, numText, 1);
@@ -160,7 +158,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " V");
 	  print_data(desText, 1);
-	  erase_trails(desText, 1);
 
 
 	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 2);
@@ -169,7 +166,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " A");
 	  print_data(desText, 2);
-	  erase_trails(desText, 2);
 
 
 	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 2);
@@ -178,7 +174,6 @@ int main(void)
 	  strcat(desText, numText);
 	  strcat(desText, " A");
 	  print_data(desText, 3);
-	  erase_trails(desText, 3);
 
 	  HAL_Delay(100);
     /* USER CODE END WHILE */
@@ -477,37 +472,6 @@ void print_data(char* text, uint8_t rowIndex)
 			data_write(val);
 		}
 	}
-}
-
-void erase_trails(char* text, uint8_t rowIndex)
-{
-	unsigned char page = 0xB0;
-		comm_write(page + rowIndex); // send page address
-		//comm_write(0x10); // column address upper 4 bits + 0x10
-		//comm_write(0x00); // column address lower 4 bits + 0x00
-
-		//find index of last character in text
-		uint8_t i = 0;
-		do{
-			i++;
-		}
-		while(text[i] != '\0');
-
-		uint8_t stop = i+2;
-		char fill = ' ';
-
-		while(i <= stop)
-		{
-			uint8_t c = (uint8_t)fill - 32;
-			uint8_t val = 0;
-
-			for(uint8_t j = 0; j < 5; j++)
-			{
-				val = Ascii_1[c][j];
-				data_write(val);
-			}
-			i++;
-		}
 }
 
 // Reverses a string 'str' of length 'len'
