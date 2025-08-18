@@ -24,6 +24,7 @@
 #include "fonts.h"
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +54,11 @@ const uint8_t vi_scale = 17; //largest allowable input voltage
 const uint8_t vo_scale = 20; //largest allowable output voltage
 const float curr_scale = 1/(50*0.011); //Amp gain * Rsense
 uint16_t ADC_buffer[4];
+
+char vi_header[] = "Input Voltage: ";
+char vo_header[] = "Output Voltage: ";
+char ii_header[] = "Input Current: ";
+char io_header[] = "Output Current: ";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -67,6 +73,8 @@ void clear_screen();
 void comm_write(uint8_t c);
 void data_write(uint8_t d);
 void print_data(char* text, uint8_t rowIndex);
+
+// Following functions from https://www.geeksforgeeks.org/c/gcvt-convert-float-value-string-c/
 void ftoa(float n, char* res, int afterpoint);
 int intToStr(int x, char str[], int d);
 void reverse(char* str, int len);
@@ -116,6 +124,8 @@ int main(void)
   comm_write(0x40); // Display start address + 0x40
 
   char numText[20];
+  char desText[50];
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -128,26 +138,42 @@ int main(void)
 		  HAL_ADC_Start(&hadc1);
 		  HAL_ADC_PollForConversion(&hadc1, 1);
 		  ADC_buffer[i] = HAL_ADC_GetValue(&hadc1);
-		  //sprintf(numText, "%d", ADC_buffer[i]);
-		  //print_data(numText, i);
+
 
 	  }
 	  //Now the buffer contains all 4 values.
-	  //snprintf(numText, sizeof(numText), "%.2f", ADC_buffer[0]*sys_voltage*vi_scale/adc_res);
-	  ftoa((float)ADC_buffer[0]*vi_scale/adc_res, numText, 3);
-	  print_data(numText, 0);
+	  //clear_screen();
 
-	  //sprintf(numText, "%d", ADC_buffer[1]);
-	  ftoa((float)ADC_buffer[1]*vo_scale/adc_res, numText, 3);
-	  print_data(numText, 1);
-
-
-	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 3);
-	  print_data(numText, 2);
+	  ftoa((float)ADC_buffer[0]*vi_scale/adc_res, numText, 1);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, vi_header);
+	  strcat(desText, numText);
+	  strcat(desText, " V");
+	  print_data(desText, 0);
 
 
-	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 3);
-	  print_data(numText, 3);
+	  ftoa((float)ADC_buffer[1]*vo_scale/adc_res, numText, 1);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, vo_header);
+	  strcat(desText, numText);
+	  strcat(desText, " V");
+	  print_data(desText, 1);
+
+
+	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 2);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, ii_header);
+	  strcat(desText, numText);
+	  strcat(desText, " A");
+	  print_data(desText, 2);
+
+
+	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 2);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, io_header);
+	  strcat(desText, numText);
+	  strcat(desText, " A");
+	  print_data(desText, 3);
 
 	  HAL_Delay(100);
     /* USER CODE END WHILE */
