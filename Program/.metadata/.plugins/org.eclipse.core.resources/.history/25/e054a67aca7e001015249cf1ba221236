@@ -14,9 +14,9 @@
 
 void reset_screen()
 {
-	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_RESET);
 	HAL_Delay(100);
-	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_SET);
 	HAL_Delay(100);
 }
 
@@ -60,7 +60,7 @@ void clear_screen()
 void comm_write(uint8_t c)
 {
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
-	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
+	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
 
 	HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); // transmit command
 
@@ -71,7 +71,7 @@ void comm_write(uint8_t c)
 void data_write(uint8_t d)
 {
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
-	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_SET);	//Set message type to
+	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_SET);	//Set message type to
 
 	HAL_SPI_Transmit(&SPI_HANDLE, &d, 1, 100); //transmit data
 

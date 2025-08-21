@@ -5615,7 +5615,7 @@ void reset_screen()
 {
  8002c64:	b580      	push	{r7, lr}
  8002c66:	af00      	add	r7, sp, #0
-	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_RESET);
  8002c68:	23a0      	movs	r3, #160	@ 0xa0
  8002c6a:	05db      	lsls	r3, r3, #23
  8002c6c:	2200      	movs	r2, #0
@@ -5625,7 +5625,7 @@ void reset_screen()
 	HAL_Delay(100);
  8002c76:	2064      	movs	r0, #100	@ 0x64
  8002c78:	f000 ff14 	bl	8003aa4 <HAL_Delay>
-	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_SET);
  8002c7c:	23a0      	movs	r3, #160	@ 0xa0
  8002c7e:	05db      	lsls	r3, r3, #23
  8002c80:	2201      	movs	r2, #1
@@ -5780,7 +5780,7 @@ void comm_write(uint8_t c)
  8002d68:	2108      	movs	r1, #8
  8002d6a:	0018      	movs	r0, r3
  8002d6c:	f002 f914 	bl	8004f98 <HAL_GPIO_WritePin>
-	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
+	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
  8002d70:	23a0      	movs	r3, #160	@ 0xa0
  8002d72:	05db      	lsls	r3, r3, #23
  8002d74:	2200      	movs	r2, #0
@@ -5827,7 +5827,7 @@ void data_write(uint8_t d)
  8002db8:	2108      	movs	r1, #8
  8002dba:	0018      	movs	r0, r3
  8002dbc:	f002 f8ec 	bl	8004f98 <HAL_GPIO_WritePin>
-	HAL_GPIO_WritePin(GPIOA, A0_Pin, GPIO_PIN_SET);	//Set message type to
+	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_SET);	//Set message type to
  8002dc0:	23a0      	movs	r3, #160	@ 0xa0
  8002dc2:	05db      	lsls	r3, r3, #23
  8002dc4:	2201      	movs	r2, #1
@@ -7073,8 +7073,8 @@ static void MX_GPIO_Init(void)
  80035ac:	50000400 	.word	0x50000400
 
 080035b0 <reverse>:
-}
-*/
+/* USER CODE BEGIN 4 */
+
 
 // Reverses a string 'str' of length 'len'
 void reverse(char* str, int len)
