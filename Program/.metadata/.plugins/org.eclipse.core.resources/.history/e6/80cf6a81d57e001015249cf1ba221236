@@ -116,6 +116,7 @@ void print_data(char* text, uint8_t rowIndex)
 
 void erase_trails(char* text, uint8_t rowIndex)
 {
+
 		comm_write(SET_PG_ADDR	 + rowIndex); // send page address
 
 
@@ -127,6 +128,7 @@ void erase_trails(char* text, uint8_t rowIndex)
 		while(text[i] != '\0');
 
 		uint8_t stop = i+2;
+		char fill = ' ';
 
 		while(i <= stop)
 		{

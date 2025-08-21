@@ -61,8 +61,8 @@ void clear_screen()
 	{
 		comm_write(page);	// send page address
 		//	Following two lines set the column address to leftmost column
-		comm_write(SET_COL_ADRU);
-		comm_write(SET_COL_ADRL);
+		comm_write(SET_COL_ADRU); // column address upper 4 bits + 0x10
+		comm_write(SET_COL_ADRL); // column address lower 4 bits + 0x00
 
 		for(uint8_t j = 0; j < 128; j++)
 		{
@@ -97,10 +97,8 @@ void data_write(uint8_t d)
 void print_data(char* text, uint8_t rowIndex)
 {
 	comm_write(SET_PG_ADDR	 + rowIndex); // send page address
-	//	Following two lines set the column address to leftmost column
-	comm_write(SET_COL_ADRU);
-	comm_write(SET_COL_ADRL);
-
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
 	for(uint8_t i = 0; text[i] != '\0'; i++)
 	{
 		uint8_t c = (uint8_t)text[i] - 32;
@@ -116,8 +114,10 @@ void print_data(char* text, uint8_t rowIndex)
 
 void erase_trails(char* text, uint8_t rowIndex)
 {
-		comm_write(SET_PG_ADDR	 + rowIndex); // send page address
 
+		comm_write(SET_PG_ADDR	 + rowIndex); // send page address
+		//comm_write(0x10); // column address upper 4 bits + 0x10
+		//comm_write(0x00); // column address lower 4 bits + 0x00
 
 		//find index of last character in text
 		uint8_t i = 0;
@@ -127,6 +127,7 @@ void erase_trails(char* text, uint8_t rowIndex)
 		while(text[i] != '\0');
 
 		uint8_t stop = i+2;
+		char fill = ' ';
 
 		while(i <= stop)
 		{

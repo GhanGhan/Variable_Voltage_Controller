@@ -20,16 +20,6 @@
 #define SET_EVM_VAL		0x20	//Electronic Volume value (contrast value) Double Byte: 2 of 2
 #define TURN_ON			0xAF	//Display ON
 
-#define SET_PG_ADDR		0xB0	//'B'- command to set Page Address, lower four bits contain actual address
-								//Command := 0xB0 + start address
-#define SET_SRT_ROW		0x40	// D7,D6 = "01" - command to set start line (row), Bottom 5 bits are start line address
-								//Command := 0x40 + start line address
-#define SET_COL_ADRU	0x10	//Set Upper 4 bits of column address - Command := 0x10 + upper 4 fits
-#define SET_COL_ADRL	0x00	//Set Lower 4 bits of column address - Command := 0x00 + lower 4 fits
-
-
-#define CLR_PGE_BYTE	0x00	// Erase byte at pre-defined (column, page) section (effectively erase character in LCD screen)
-
 void reset_screen()
 {
 	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_RESET);
@@ -40,37 +30,39 @@ void reset_screen()
 
 void init_screen()
 {
-	comm_write(SET_COLSD_LF); //Set SEG (column) direction - left to right
-	comm_write(TURN_OFF); //Turn the display off
-	comm_write(SET_ROWD_TP); //Set COM (row) direction - top to bottom
-	comm_write(SET_LCD_BIAS); //Set LCD bias
-	comm_write(SET_PWR_CTRL); //Power Control Set - Boost, Regulator and Follower are all on
-	comm_write(SET_RES_RTO); //Set Resistor Ratio - 001 -> 3.5
-	comm_write(SET_EVM_CMD); //Electronic Volume Command (set contrast) Double Byte: 1 of 2
-	comm_write(SET_EVM_VAL); //Electronic Volume value (contrast value) Double Byte: 2 of 2
-	comm_write(TURN_ON); //Display ON
+	comm_write(0xA0); //Set SEG (column) direction - left to right
+	comm_write(0xAE); //Turn the display off
+	comm_write(0xC8); //Set COM (row) direction - top to bottom
+	comm_write(0xA2); //Set LCD bias
+	comm_write(0x2F); //Power Control Set - Boost, Regulator and Follower are all on
+	comm_write(0x21); //Set Resistor Ratio - 001 -> 3.5
+	comm_write(0x81); //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	comm_write(0x20); //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	comm_write(0xAF); //Display ON
 }
 
 void clear_screen()
 {
-	uint8_t page = SET_PG_ADDR;
-	comm_write(TURN_OFF);
-	comm_write(SET_SRT_ROW);
+	uint8_t page = 0xB0; //'B'- command to set Page Address, lower four bits contain actual address
+						//Command := 0xB0 + start address
+	comm_write(0xAE); // Display OFF
+	comm_write(0x40); // D7,D6 = "01" - command to set start line, Bottom 5 bits are start line address
+						//Command := 0x40 + start line address
 
 	for(uint8_t i = 0; i < 4; i++)
 	{
 		comm_write(page);	// send page address
 		//	Following two lines set the column address to leftmost column
-		comm_write(SET_COL_ADRU);
-		comm_write(SET_COL_ADRL);
+		comm_write(0x10); // column address upper 4 bits + 0x10
+		comm_write(0x00); // column address lower 4 bits + 0x00
 
 		for(uint8_t j = 0; j < 128; j++)
 		{
-			data_write(CLR_PGE_BYTE);
+			data_write(0x00);
 		}
 		page++;//After 128 columns, go to the next page
 	}
-	comm_write(TURN_ON);//Turn the display back on
+	comm_write(0xAF);//Turn the display back on
 }
 
 void comm_write(uint8_t c)
@@ -96,11 +88,10 @@ void data_write(uint8_t d)
 
 void print_data(char* text, uint8_t rowIndex)
 {
-	comm_write(SET_PG_ADDR	 + rowIndex); // send page address
-	//	Following two lines set the column address to leftmost column
-	comm_write(SET_COL_ADRU);
-	comm_write(SET_COL_ADRL);
-
+	unsigned char page = 0xB0;
+	comm_write(page + rowIndex); // send page address
+	comm_write(0x10); // column address upper 4 bits + 0x10
+	comm_write(0x00); // column address lower 4 bits + 0x00
 	for(uint8_t i = 0; text[i] != '\0'; i++)
 	{
 		uint8_t c = (uint8_t)text[i] - 32;
@@ -116,8 +107,10 @@ void print_data(char* text, uint8_t rowIndex)
 
 void erase_trails(char* text, uint8_t rowIndex)
 {
-		comm_write(SET_PG_ADDR	 + rowIndex); // send page address
-
+	unsigned char page = 0xB0;
+		comm_write(page + rowIndex); // send page address
+		//comm_write(0x10); // column address upper 4 bits + 0x10
+		//comm_write(0x00); // column address lower 4 bits + 0x00
 
 		//find index of last character in text
 		uint8_t i = 0;
@@ -127,13 +120,17 @@ void erase_trails(char* text, uint8_t rowIndex)
 		while(text[i] != '\0');
 
 		uint8_t stop = i+2;
+		char fill = ' ';
 
 		while(i <= stop)
 		{
+			uint8_t c = (uint8_t)fill - 32;
+			uint8_t val = 0;
 
 			for(uint8_t j = 0; j < 5; j++)
 			{
-				data_write(CLR_PGE_BYTE);
+				val = Ascii_1[c][j];
+				data_write(val);
 			}
 			i++;
 		}
