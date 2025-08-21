@@ -18,7 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "NHD_lcd.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "fonts.h"
@@ -67,6 +67,7 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
+/*
 void reset_screen();
 void init_screen();
 void clear_screen();
@@ -74,6 +75,7 @@ void comm_write(uint8_t c);
 void data_write(uint8_t d);
 void print_data(char* text, uint8_t rowIndex);
 void erase_trails(char* text, uint8_t rowIndex);
+*/
 
 // Following functions from https://www.geeksforgeeks.org/c/gcvt-convert-float-value-string-c/
 void ftoa(float n, char* res, int afterpoint);
@@ -394,6 +396,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+/*
 void reset_screen()
 {
 	HAL_GPIO_WritePin(GPIOA, _RST_Pin, GPIO_PIN_RESET);
@@ -509,6 +512,7 @@ void erase_trails(char* text, uint8_t rowIndex)
 			i++;
 		}
 }
+*/
 
 // Reverses a string 'str' of length 'len'
 void reverse(char* str, int len)

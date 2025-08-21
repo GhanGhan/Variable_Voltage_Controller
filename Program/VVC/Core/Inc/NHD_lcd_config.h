@@ -1,0 +1,18 @@
+/*
+ * NHD_lcd_config.h
+ *
+ *  Created on: Aug 21, 2025
+ *      Author: Ghani
+ */
+
+#ifndef INC_NHD_LCD_CONFIG_H_
+#define INC_NHD_LCD_CONFIG_H_
+
+#include "main.h"
+
+extern SPI_HandleTypeDef hspi2;
+
+#define SPI_HANDLE hspi2
+
+
+#endif /* INC_NHD_LCD_CONFIG_H_ */
