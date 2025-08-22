@@ -1,7 +1,7 @@
-../Core/Src/NHD_lcd.c:33:6:reset_screen	1
-../Core/Src/NHD_lcd.c:41:6:init_screen	1
-../Core/Src/NHD_lcd.c:54:6:clear_screen	3
-../Core/Src/NHD_lcd.c:76:6:comm_write	1
-../Core/Src/NHD_lcd.c:87:6:data_write	1
-../Core/Src/NHD_lcd.c:97:6:print_data	3
-../Core/Src/NHD_lcd.c:117:6:erase_trails	4
+../Core/Src/NHD_lcd.c:15:6:reset_screen	1
+../Core/Src/NHD_lcd.c:23:6:init_screen	1
+../Core/Src/NHD_lcd.c:36:6:clear_screen	3
+../Core/Src/NHD_lcd.c:58:6:comm_write	1
+../Core/Src/NHD_lcd.c:69:6:data_write	1
+../Core/Src/NHD_lcd.c:79:6:print_data	3
+../Core/Src/NHD_lcd.c:99:6:erase_trails	4

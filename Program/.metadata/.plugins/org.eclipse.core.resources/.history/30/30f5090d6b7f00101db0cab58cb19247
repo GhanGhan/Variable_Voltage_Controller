@@ -87,6 +87,7 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
+  //double values_buffer[4];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -113,7 +114,7 @@ int main(void)
   reset_screen();
   init_screen();
   clear_screen();
-  comm_write(SET_SRT_ROW); // To first line
+  comm_write(0x40); // Display start address + 0x40
 
   char numText[20];
   char desText[50];

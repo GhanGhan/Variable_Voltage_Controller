@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_rnglists 0000072c  00000000  00000000  00014668  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000158dc  00000000  00000000  00014d94  2**0
+ 16 .debug_macro  000158e4  00000000  00000000  00014d94  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000b7b9  00000000  00000000  0002a670  2**0
+ 17 .debug_line   0000b7b8  00000000  00000000  0002a678  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000865ae  00000000  00000000  00035e29  2**0
+ 18 .debug_str    000865ae  00000000  00000000  00035e30  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000bc3d7  2**0
+ 19 .comment      00000043  00000000  00000000  000bc3de  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002860  00000000  00000000  000bc41c  2**2
+ 20 .debug_frame  00002860  00000000  00000000  000bc424  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000007c  00000000  00000000  000bec7c  2**0
+ 21 .debug_line_str 0000007c  00000000  00000000  000bec84  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5607,9 +5607,9 @@ Disassembly of section .text:
 	...
 
 08002c64 <reset_screen>:
+#include "NHD_lcd_config.h"
 
 
-#define CLR_PGE_BYTE	0x00	// Erase byte at pre-defined (column, page) section (effectively erase character in LCD screen)
 
 void reset_screen()
 {
@@ -6115,7 +6115,7 @@ int main(void)
  8002f6e:	f7ff fe92 	bl	8002c96 <init_screen>
   clear_screen();
  8002f72:	f7ff feb0 	bl	8002cd6 <clear_screen>
-  comm_write(0x40); // Display start address + 0x40
+  comm_write(SET_SRT_ROW); // To first line
  8002f76:	2040      	movs	r0, #64	@ 0x40
  8002f78:	f7ff feee 	bl	8002d58 <comm_write>
   /* Infinite loop */
