@@ -1,4 +1,9 @@
 # Variable Voltage Controller
+
+<img width="1838" height="1046" alt="Hub" src="https://github.com/user-attachments/assets/e46f4854-a217-4270-bd36-b289a117a163" />
+
+
+# Overview
 Desktop device that outputs a variable voltage whos value is controlled by the user.  The user will be able to monitor the input and output voltage and current.  This device will be suitable for prototyping, lab-bench testing and recreational purposes
 ![3D_View1](https://github.com/user-attachments/assets/0222784d-f8b2-4f9d-8bee-c49972aa614e)
 ![Top_Signal Layer](https://github.com/user-attachments/assets/28cae700-05df-46ca-88bc-d9f8d714b924)
