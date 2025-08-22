@@ -50,22 +50,18 @@ ADC_HandleTypeDef hadc1;
 SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
-enum {v_input, v_output, i_input, i_output} sensor_value;
+static enum{v_input, v_output, i_input, i_output};
 static const uint16_t adc_res = 4095;
 static const uint8_t vi_scale = 17; //largest allowable input voltage
 static const uint8_t vo_scale = 20; //largest allowable output voltage
 static const float curr_scale = 1/(50*0.011); //Amp gain * Rsense
-static const float scales[] = {vi_scale, vo_scale, curr_scale, curr_scale};
+static const float[] = {vi_scale, vo_scale, curr_scale, curr_scale};
 static uint16_t ADC_buffer[4];
 
 static const char vi_header[] = "Input Voltage: ";
 static const char vo_header[] = "Output Voltage: ";
 static const char ii_header[] = "Input Current: ";
 static const char io_header[] = "Output Current: ";
-
-static char numText[20];
-static char desText[50];
-static const char* headers[] = {vi_header, vo_header, ii_header, io_header};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,7 +70,7 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
-static void print_power_value(uint8_t index);
+
 
 /* USER CODE END PFP */
 
@@ -120,7 +116,8 @@ int main(void)
   clear_screen();
   comm_write(SET_SRT_ROW); // To first line
 
-
+  char numText[20];
+  char desText[50];
 
   /* USER CODE END 2 */
 
@@ -128,7 +125,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //Get voltage and current values from ADC
 	  for(int i = 0; i < 4; i++)
 	  {
 		  HAL_ADC_Start(&hadc1);
@@ -139,13 +135,42 @@ int main(void)
 	  }
 	  //Now the buffer contains all 4 values.
 
-	  //Send input voltage, output voltage, input current, output current to the LCD screen
-	  print_power_value(v_input);
-	  print_power_value(v_output);
-	  print_power_value(i_input);
-	  print_power_value(i_output);
 
-	  //delay for 100ms
+	  ftoa((float)ADC_buffer[0]*vi_scale/adc_res, numText, 1);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, vi_header);
+	  strcat(desText, numText);
+	  strcat(desText, " V");
+	  print_data(desText, 0);
+	  erase_trails(desText, 0);
+
+
+	  ftoa((float)ADC_buffer[1]*vo_scale/adc_res, numText, 1);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, vo_header);
+	  strcat(desText, numText);
+	  strcat(desText, " V");
+	  print_data(desText, 1);
+	  erase_trails(desText, 1);
+
+
+	  ftoa((float)ADC_buffer[2]*curr_scale/adc_res, numText, 2);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, ii_header);
+	  strcat(desText, numText);
+	  strcat(desText, " A");
+	  print_data(desText, 2);
+	  erase_trails(desText, 2);
+
+
+	  ftoa((float)ADC_buffer[3]*curr_scale/adc_res, numText, 2);
+	  memset(desText, '\0', sizeof(desText));
+	  strcat(desText, io_header);
+	  strcat(desText, numText);
+	  strcat(desText, " A");
+	  print_data(desText, 3);
+	  erase_trails(desText, 3);
+
 	  HAL_Delay(100);
     /* USER CODE END WHILE */
 
@@ -360,27 +385,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-static void print_power_value(uint8_t index)
-{
-	uint8_t decimals = 0;
-	if(index == v_input || index == v_output)
-		decimals = 1;
-	else // if(index == i_input || i_output)
-		decimals = 2;
 
-
-
-	ftoa((float)ADC_buffer[index]*scales[index]/adc_res, numText, decimals);
-	memset(desText, '\0', sizeof(desText));
-	strcat(desText, headers[index]);
-	strcat(desText, numText);
-	if(index == v_input || index == v_output)
-		strcat(desText, " V");
-	else
-		strcat(desText, " A");
-	print_data(desText, index);
-	erase_trails(desText, index);
-}
 
 
 
