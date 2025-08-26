@@ -51,7 +51,7 @@ SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
 enum {v_input, v_output, i_input, i_output} sensor_value;
-static const uint16_t adc_res = 4095;
+static const uint16_t adc_res = 4095;	//ADC resolution = 2^12-1
 static const uint8_t vi_scale = 17; //largest allowable input voltage
 static const uint8_t vo_scale = 20; //largest allowable output voltage
 static const float curr_scale = 1/(50*0.011); //Amp gain * Rsense
@@ -134,10 +134,7 @@ int main(void)
 		  HAL_ADC_Start(&hadc1);
 		  HAL_ADC_PollForConversion(&hadc1, 1);
 		  ADC_buffer[i] = HAL_ADC_GetValue(&hadc1);
-
-
-	  }
-	  //Now the buffer contains all 4 values.
+	  }//Now the buffer contains all 4 values.
 
 	  //Send input voltage, output voltage, input current, output current to the LCD screen
 	  print_power_value(v_input);
@@ -360,6 +357,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+
+/**
+ * @brief This function
+ *
+ * @param index:
+ * @retval None
+ */
 static void print_power_value(uint8_t index)
 {
 	uint8_t decimals = 0;

@@ -8,7 +8,16 @@
 #include <math.h>
 #include "string2float.h"
 
-// Reverses a string 'str' of length 'len'
+
+
+/*
+ * @brief Reverses a string 'str' of length 'len'
+ *
+ * @param str: character array that contains the floating point number
+ * @param len: lenght of the character array
+ *
+ * @retval None
+ */
 void reverse(char* str, int len)
 {
     int i = 0, j = len - 1, temp;
@@ -21,10 +30,16 @@ void reverse(char* str, int len)
     }
 }
 
-// Converts a given integer x to string str[].
-// d is the number of digits required in the output.
-// If d is more than the number of digits in x,
-// then 0s are added at the beginning.
+
+/*
+ * @brief Converts a given integer 'x' to string 'str[].'
+ *
+ * @param x: integer we are converting to a string
+ * @param str: character array we will store the converter integer in
+ * @param d: number of digits to place after the decimal
+ *
+ * @retval The number of characters in the string
+ */
 int intToStr(int x, char str[], int d)
 {
     int i = 0;
@@ -44,6 +59,16 @@ int intToStr(int x, char str[], int d)
 }
 
 // Converts a floating-point/double number to a string.
+/*
+ * @brief Converts a floating-point/double number to a string.
+ *
+ * @param n: floating point number
+ * @param res: character away to store converted floating point number
+ * @param afterpoint: number of digits to place after the decimal
+ *
+ * @retval None
+ *
+ */
 void ftoa(float n, char* res, int afterpoint)
 {
     // Extract integer part
