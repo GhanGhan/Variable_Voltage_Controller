@@ -1,5 +1,6 @@
 # Overview
 Desktop device that outputs a variable voltage whos value is controlled by the user.  The user will be able to monitor the input and output voltage and current.  This device will be suitable for prototyping, lab-bench testing and recreational purposes.
+**The firmware for this projected is in the "Program" folder**
 <img width="1753" height="1071" alt="Adjusted" src="https://github.com/user-attachments/assets/2edda560-392f-467c-8678-44168af7e8bd" />
 ## Notable Features!!!!!!
 - Reverse voltage protection
