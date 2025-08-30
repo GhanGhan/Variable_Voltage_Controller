@@ -4,6 +4,7 @@ Desktop device that outputs a variable voltage whos value is controlled by the u
 ## Notable Features!!!!!!
 - Reverse voltage protection
 - Power multiplexing between the input voltage terminal block and input voltage jack (explanation of circuit in section Schematic->Power->System Power Input)
+  - Allows user to hot-swap power sources while minimzing conduction losses!!!!
 - Real time voltage and current updates
 <img width="3802" height="2294" alt="Labelled" src="https://github.com/user-attachments/assets/d77dbf2f-d36c-4764-9b36-617134c6021b" />
 
