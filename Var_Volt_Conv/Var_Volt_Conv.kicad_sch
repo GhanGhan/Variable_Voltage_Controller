@@ -45,7 +45,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb"
-					(page "3")
+					(page "2")
 				)
 			)
 		)
@@ -125,7 +125,7 @@
 		(instances
 			(project "Var_Volt_Conv"
 				(path "/7c9580d6-c22f-4506-b9c3-9272e882c9fb"
-					(page "2")
+					(page "3")
 				)
 			)
 		)
