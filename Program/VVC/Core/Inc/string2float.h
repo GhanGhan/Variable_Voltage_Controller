@@ -8,11 +8,12 @@
 #ifndef INC_STRING2FLOAT_H_
 #define INC_STRING2FLOAT_H_
 
+#include <stdint.h>
 
 // Following functions from https://www.geeksforgeeks.org/c/gcvt-convert-float-value-string-c/
-void ftoa(float n, char* res, int afterpoint);
-int intToStr(int x, char str[], int d);
-void reverse(char* str, int len);
+void ftoa(float n, char* res, uint8_t afterpoint);
+int intToStr(int32_t x, char str[], uint8_t d);
+void reverse(char* str, uint8_t len);
 
 
 

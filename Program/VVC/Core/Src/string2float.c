@@ -7,6 +7,7 @@
 
 #include <math.h>
 #include "string2float.h"
+#include <stdint.h>
 
 
 
@@ -18,9 +19,9 @@
  *
  * @retval None
  */
-void reverse(char* str, int len)
+void reverse(char* str, uint8_t len)
 {
-    int i = 0, j = len - 1, temp;
+	uint8_t i = 0, j = len - 1, temp;
     while (i < j) {
         temp = str[i];
         str[i] = str[j];
@@ -40,9 +41,9 @@ void reverse(char* str, int len)
  *
  * @retval The number of characters in the string
  */
-int intToStr(int x, char str[], int d)
+int intToStr(int32_t x, char str[], uint8_t d)
 {
-    int i = 0;
+	int32_t i = 0;
     while (x) {
         str[i++] = (x % 10) + '0';
         x = x / 10;
@@ -69,16 +70,17 @@ int intToStr(int x, char str[], int d)
  * @retval None
  *
  */
-void ftoa(float n, char* res, int afterpoint)
+void ftoa(float n, char* res, uint8_t afterpoint)
 {
+
     // Extract integer part
-    int ipart = (int)n;
+    int32_t ipart = (int32_t)n;
 
     // Extract floating part
     float fpart = n - (float)ipart;
 
     // convert integer part to string
-    int i = intToStr(ipart, res, 0);
+    int32_t i = intToStr(ipart, res, 0);
 
     // check for display option after point
     if (afterpoint != 0) {
@@ -89,7 +91,7 @@ void ftoa(float n, char* res, int afterpoint)
         // is needed to handle cases like 233.007
         fpart = fpart * pow(10, afterpoint);
 
-        intToStr((int)fpart, res + i + 1, afterpoint);
+        intToStr((int32_t)fpart, res + i + 1, afterpoint);
     }
 }
 
