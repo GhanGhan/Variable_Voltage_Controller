@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00009080  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000904f  00000000  00000000  000090a8  2**0
+ 12 .debug_info   00009054  00000000  00000000  000090a8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001ca0  00000000  00000000  000120f7  2**0
+ 13 .debug_abbrev 00001ca0  00000000  00000000  000120fc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000009b0  00000000  00000000  00013d98  2**3
+ 14 .debug_aranges 000009b0  00000000  00000000  00013da0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000734  00000000  00000000  00014748  2**0
+ 15 .debug_rnglists 00000734  00000000  00000000  00014750  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001590f  00000000  00000000  00014e7c  2**0
+ 16 .debug_macro  0001590f  00000000  00000000  00014e84  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000b7f3  00000000  00000000  0002a78b  2**0
+ 17 .debug_line   0000b7f3  00000000  00000000  0002a793  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000865fb  00000000  00000000  00035f7e  2**0
+ 18 .debug_str    000865fb  00000000  00000000  00035f86  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000bc579  2**0
+ 19 .comment      00000043  00000000  00000000  000bc581  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000028a8  00000000  00000000  000bc5bc  2**2
+ 20 .debug_frame  000028a8  00000000  00000000  000bc5c4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000007c  00000000  00000000  000bee64  2**0
+ 21 .debug_line_str 0000007c  00000000  00000000  000bee6c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5908,7 +5908,7 @@ void data_write(uint8_t d)
  *
  * @retval None
  */
-void print_data(char* text, uint8_t rowIndex)
+void print_data(const char* text, uint8_t rowIndex)
 {
  8002e40:	b5f0      	push	{r4, r5, r6, r7, lr}
  8002e42:	b085      	sub	sp, #20
@@ -6026,7 +6026,7 @@ void print_data(char* text, uint8_t rowIndex)
  * @param rowIndex: page that the text is displayed on; 0, 1, 2, 3 from top to bottom
  *
  */
-void erase_trails(char* text, uint8_t rowIndex)
+void erase_trails(const char* text, uint8_t rowIndex)
 {
  8002f00:	b580      	push	{r7, lr}
  8002f02:	b084      	sub	sp, #16

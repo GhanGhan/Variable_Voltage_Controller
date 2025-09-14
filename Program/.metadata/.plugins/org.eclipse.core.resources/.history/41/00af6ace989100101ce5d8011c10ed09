@@ -14,8 +14,8 @@ void init_screen();
 void clear_screen();
 void comm_write(uint8_t c);
 void data_write(uint8_t d);
-void print_data(const char* text, uint8_t rowIndex);
-void erase_trails(const char* text, uint8_t rowIndex);
+void print_data(char* text, uint8_t rowIndex);
+void erase_trails(char* text, uint8_t rowIndex);
 
 #define SET_COLSD_LF	0xA0 	//Set SEG (column) direction - left to right
 #define TURN_OFF		0xAE	//Turn the display off
