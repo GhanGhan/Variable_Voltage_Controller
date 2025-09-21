@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="SPI_HANDLE"/>
+		<item key="selection" value="UINT8"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="uint8"/>
+			<item value="uint8_t"/>
+			<item value="int32"/>
 			<item value="SPI_Handle"/>
 			<item value="printf"/>
 			<item value="100"/>
@@ -20,9 +23,6 @@
 			<item value="extern"/>
 			<item value="numText"/>
 			<item value="uint"/>
-			<item value="Hal_delay"/>
-			<item value="RST"/>
-			<item value="A0_GPIO_Port"/>
 		</list>
 		<list key="replacehistory">
 			<item value="SPI_HANDLE"/>
