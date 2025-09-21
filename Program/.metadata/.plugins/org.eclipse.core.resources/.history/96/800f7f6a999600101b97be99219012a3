@@ -17,7 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <float2string.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -27,6 +26,7 @@
 #include <string.h>
 #include "fonts.h"
 #include "NHD_lcd.h"
+#include "string2float.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

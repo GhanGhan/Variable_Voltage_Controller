@@ -6,33 +6,33 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/NHD_lcd.c \
+../Core/Src/float2string.c \
 ../Core/Src/fonts.c \
 ../Core/Src/main.c \
 ../Core/Src/stm32g0xx_hal_msp.c \
 ../Core/Src/stm32g0xx_it.c \
-../Core/Src/string2float.c \
 ../Core/Src/syscalls.c \
 ../Core/Src/sysmem.c \
 ../Core/Src/system_stm32g0xx.c 
 
 OBJS += \
 ./Core/Src/NHD_lcd.o \
+./Core/Src/float2string.o \
 ./Core/Src/fonts.o \
 ./Core/Src/main.o \
 ./Core/Src/stm32g0xx_hal_msp.o \
 ./Core/Src/stm32g0xx_it.o \
-./Core/Src/string2float.o \
 ./Core/Src/syscalls.o \
 ./Core/Src/sysmem.o \
 ./Core/Src/system_stm32g0xx.o 
 
 C_DEPS += \
 ./Core/Src/NHD_lcd.d \
+./Core/Src/float2string.d \
 ./Core/Src/fonts.d \
 ./Core/Src/main.d \
 ./Core/Src/stm32g0xx_hal_msp.d \
 ./Core/Src/stm32g0xx_it.d \
-./Core/Src/string2float.d \
 ./Core/Src/syscalls.d \
 ./Core/Src/sysmem.d \
 ./Core/Src/system_stm32g0xx.d 
@@ -45,7 +45,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/NHD_lcd.cyclo ./Core/Src/NHD_lcd.d ./Core/Src/NHD_lcd.o ./Core/Src/NHD_lcd.su ./Core/Src/fonts.cyclo ./Core/Src/fonts.d ./Core/Src/fonts.o ./Core/Src/fonts.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/stm32g0xx_hal_msp.cyclo ./Core/Src/stm32g0xx_hal_msp.d ./Core/Src/stm32g0xx_hal_msp.o ./Core/Src/stm32g0xx_hal_msp.su ./Core/Src/stm32g0xx_it.cyclo ./Core/Src/stm32g0xx_it.d ./Core/Src/stm32g0xx_it.o ./Core/Src/stm32g0xx_it.su ./Core/Src/string2float.cyclo ./Core/Src/string2float.d ./Core/Src/string2float.o ./Core/Src/string2float.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32g0xx.cyclo ./Core/Src/system_stm32g0xx.d ./Core/Src/system_stm32g0xx.o ./Core/Src/system_stm32g0xx.su
+	-$(RM) ./Core/Src/NHD_lcd.cyclo ./Core/Src/NHD_lcd.d ./Core/Src/NHD_lcd.o ./Core/Src/NHD_lcd.su ./Core/Src/float2string.cyclo ./Core/Src/float2string.d ./Core/Src/float2string.o ./Core/Src/float2string.su ./Core/Src/fonts.cyclo ./Core/Src/fonts.d ./Core/Src/fonts.o ./Core/Src/fonts.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/stm32g0xx_hal_msp.cyclo ./Core/Src/stm32g0xx_hal_msp.d ./Core/Src/stm32g0xx_hal_msp.o ./Core/Src/stm32g0xx_hal_msp.su ./Core/Src/stm32g0xx_it.cyclo ./Core/Src/stm32g0xx_it.d ./Core/Src/stm32g0xx_it.o ./Core/Src/stm32g0xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32g0xx.cyclo ./Core/Src/system_stm32g0xx.d ./Core/Src/system_stm32g0xx.o ./Core/Src/system_stm32g0xx.su
 
 .PHONY: clean-Core-2f-Src
 

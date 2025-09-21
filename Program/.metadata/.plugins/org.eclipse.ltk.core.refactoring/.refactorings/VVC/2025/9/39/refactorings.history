@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;VVC/Core/Inc/string2float.h&apos; to &apos;float2string.h&apos;" description="Rename resource &apos;string2float.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/string2float.h" name="float2string.h" stamp="1758424611034" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;VVC/Core/Src/string2float.c&apos; to &apos;float2string.c&apos;" description="Rename resource &apos;string2float.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/string2float.c" name="float2string.c" stamp="1758424635196" updateReferences="true"/>
+</session>
