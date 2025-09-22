@@ -19,7 +19,7 @@ typedef enum{
 void reset_screen();
 NHD_LCDstatus_t init_screen();
 NHD_LCDstatus_t clear_screen();
-NHD_LCDstatus_t cmd_write(uint8_t c);
+NHD_LCDstatus_t comm_write(uint8_t c);
 NHD_LCDstatus_t data_write(uint8_t d);
 NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex);
 NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex);

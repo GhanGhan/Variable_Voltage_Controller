@@ -52,23 +52,23 @@ void reset_screen()
 NHD_LCDstatus_t init_screen()
 {
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
-	if((errorCode = cmd_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
+	if((errorCode = comm_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
 		return errorCode;
-	if((errorCode = cmd_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
+	if((errorCode = comm_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
 		return errorCode;
-	if((errorCode = cmd_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
+	if((errorCode = comm_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
 		return errorCode;
-	if((errorCode = cmd_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
+	if((errorCode = comm_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
 		return errorCode;
-	if((errorCode = cmd_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
+	if((errorCode = comm_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
 		return errorCode;
-	if((errorCode = cmd_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
+	if((errorCode = comm_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
 		return errorCode;
-	if((errorCode = cmd_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	if((errorCode = comm_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
 		return errorCode;
-	if((errorCode = cmd_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	if((errorCode = comm_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
 		return errorCode;
-	if((errorCode = cmd_write(TURN_ON)) != NHD_SPI_OK) //Display ON
+	if((errorCode = comm_write(TURN_ON)) != NHD_SPI_OK) //Display ON
 		return errorCode;
 
 	return errorCode; //NHD_SPI_OK
@@ -87,20 +87,20 @@ NHD_LCDstatus_t init_screen()
 NHD_LCDstatus_t clear_screen()
 {
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
-	if((errorCode = cmd_write(TURN_OFF)) != NHD_SPI_OK)
+	if((errorCode = comm_write(TURN_OFF)) != NHD_SPI_OK)
 		return errorCode;
-	if((errorCode = cmd_write(SET_SRT_ROW)) != NHD_SPI_OK)
+	if((errorCode = comm_write(SET_SRT_ROW)) != NHD_SPI_OK)
 		return errorCode;
 
 	uint8_t page = SET_PG_ADDR;
 	for(uint8_t i = 0; i < 4; i++)
 	{
-		if((errorCode = cmd_write(page)) != NHD_SPI_OK)	// send page address
+		if((errorCode = comm_write(page)) != NHD_SPI_OK)	// send page address
 			return errorCode;
 		//	Following two lines set the column address to leftmost column
-		if((errorCode = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
+		if((errorCode = comm_write(SET_COL_ADRU)) != NHD_SPI_OK)
 			return errorCode;
-		if((errorCode = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
+		if((errorCode = comm_write(SET_COL_ADRL)) != NHD_SPI_OK)
 			return errorCode;
 
 		for(uint8_t j = 0; j < 128; j++)
@@ -110,7 +110,7 @@ NHD_LCDstatus_t clear_screen()
 		}
 		page++;//After 128 columns, go to the next page
 	}
-	if((errorCode = cmd_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
+	if((errorCode = comm_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
 		return errorCode;
 
 	return errorCode;
@@ -128,7 +128,7 @@ NHD_LCDstatus_t clear_screen()
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t cmd_write(uint8_t c)
+NHD_LCDstatus_t comm_write(uint8_t c)
 {
 	HAL_StatusTypeDef errorcode;
 
@@ -211,12 +211,12 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
 {
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
 
-	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if((errorCode = comm_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
 		return errorCode;
 	//	Following two lines set the column address to leftmost column
-	if((errorCode = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
+	if((errorCode = comm_write(SET_COL_ADRU)) != NHD_SPI_OK)
 		return errorCode;
-	if((errorCode = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
+	if((errorCode = comm_write(SET_COL_ADRL)) != NHD_SPI_OK)
 		return errorCode;
 
 	for(uint8_t i = 0; text[i] != '\0'; i++)
@@ -251,7 +251,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
 NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
 {
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
-	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if((errorCode = comm_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
 		return errorCode;
 	//find index of last character in text
 	uint8_t i = 0;

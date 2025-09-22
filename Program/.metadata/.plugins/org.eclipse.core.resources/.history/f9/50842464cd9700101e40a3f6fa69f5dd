@@ -129,7 +129,7 @@ int main(void)
   {
 	  //TODO: Gracefully handle clear screen error
   }
-  errorCode = cmd_write(SET_SRT_ROW); // To first line
+  errorCode = comm_write(SET_SRT_ROW); // To first line
   if(errorCode != NHD_SPI_OK)
   {
 	  //TODO: Gracefully handle command error

@@ -27,9 +27,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00009080  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00009199  00000000  00000000  000090a8  2**0
+ 12 .debug_info   0000919b  00000000  00000000  000090a8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001cfc  00000000  00000000  00012241  2**0
+ 13 .debug_abbrev 00001cfb  00000000  00000000  00012243  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_aranges 000009b0  00000000  00000000  00013f40  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0000b9ab  00000000  00000000  0002a8af  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00086733  00000000  00000000  0003625a  2**0
+ 18 .debug_str    00086732  00000000  00000000  0003625a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000bc98d  2**0
+ 19 .comment      00000043  00000000  00000000  000bc98c  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00002960  00000000  00000000  000bc9d0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -5984,10 +5984,10 @@ NHD_LCDstatus_t init_screen()
  8002f10:	1dfb      	adds	r3, r7, #7
  8002f12:	2200      	movs	r2, #0
  8002f14:	701a      	strb	r2, [r3, #0]
-	if((errorCode = comm_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
+	if((errorCode = cmd_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
  8002f16:	1dfc      	adds	r4, r7, #7
  8002f18:	20a0      	movs	r0, #160	@ 0xa0
- 8002f1a:	f000 f903 	bl	8003124 <comm_write>
+ 8002f1a:	f000 f903 	bl	8003124 <cmd_write>
  8002f1e:	0003      	movs	r3, r0
  8002f20:	7023      	strb	r3, [r4, #0]
  8002f22:	1dfb      	adds	r3, r7, #7
@@ -5998,10 +5998,10 @@ NHD_LCDstatus_t init_screen()
  8002f2a:	1dfb      	adds	r3, r7, #7
  8002f2c:	781b      	ldrb	r3, [r3, #0]
  8002f2e:	e069      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
+	if((errorCode = cmd_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
  8002f30:	1dfc      	adds	r4, r7, #7
  8002f32:	20ae      	movs	r0, #174	@ 0xae
- 8002f34:	f000 f8f6 	bl	8003124 <comm_write>
+ 8002f34:	f000 f8f6 	bl	8003124 <cmd_write>
  8002f38:	0003      	movs	r3, r0
  8002f3a:	7023      	strb	r3, [r4, #0]
  8002f3c:	1dfb      	adds	r3, r7, #7
@@ -6012,10 +6012,10 @@ NHD_LCDstatus_t init_screen()
  8002f44:	1dfb      	adds	r3, r7, #7
  8002f46:	781b      	ldrb	r3, [r3, #0]
  8002f48:	e05c      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
+	if((errorCode = cmd_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
  8002f4a:	1dfc      	adds	r4, r7, #7
  8002f4c:	20c8      	movs	r0, #200	@ 0xc8
- 8002f4e:	f000 f8e9 	bl	8003124 <comm_write>
+ 8002f4e:	f000 f8e9 	bl	8003124 <cmd_write>
  8002f52:	0003      	movs	r3, r0
  8002f54:	7023      	strb	r3, [r4, #0]
  8002f56:	1dfb      	adds	r3, r7, #7
@@ -6026,10 +6026,10 @@ NHD_LCDstatus_t init_screen()
  8002f5e:	1dfb      	adds	r3, r7, #7
  8002f60:	781b      	ldrb	r3, [r3, #0]
  8002f62:	e04f      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
+	if((errorCode = cmd_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
  8002f64:	1dfc      	adds	r4, r7, #7
  8002f66:	20a2      	movs	r0, #162	@ 0xa2
- 8002f68:	f000 f8dc 	bl	8003124 <comm_write>
+ 8002f68:	f000 f8dc 	bl	8003124 <cmd_write>
  8002f6c:	0003      	movs	r3, r0
  8002f6e:	7023      	strb	r3, [r4, #0]
  8002f70:	1dfb      	adds	r3, r7, #7
@@ -6040,10 +6040,10 @@ NHD_LCDstatus_t init_screen()
  8002f78:	1dfb      	adds	r3, r7, #7
  8002f7a:	781b      	ldrb	r3, [r3, #0]
  8002f7c:	e042      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
+	if((errorCode = cmd_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
  8002f7e:	1dfc      	adds	r4, r7, #7
  8002f80:	202f      	movs	r0, #47	@ 0x2f
- 8002f82:	f000 f8cf 	bl	8003124 <comm_write>
+ 8002f82:	f000 f8cf 	bl	8003124 <cmd_write>
  8002f86:	0003      	movs	r3, r0
  8002f88:	7023      	strb	r3, [r4, #0]
  8002f8a:	1dfb      	adds	r3, r7, #7
@@ -6054,10 +6054,10 @@ NHD_LCDstatus_t init_screen()
  8002f92:	1dfb      	adds	r3, r7, #7
  8002f94:	781b      	ldrb	r3, [r3, #0]
  8002f96:	e035      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
+	if((errorCode = cmd_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
  8002f98:	1dfc      	adds	r4, r7, #7
  8002f9a:	2021      	movs	r0, #33	@ 0x21
- 8002f9c:	f000 f8c2 	bl	8003124 <comm_write>
+ 8002f9c:	f000 f8c2 	bl	8003124 <cmd_write>
  8002fa0:	0003      	movs	r3, r0
  8002fa2:	7023      	strb	r3, [r4, #0]
  8002fa4:	1dfb      	adds	r3, r7, #7
@@ -6068,10 +6068,10 @@ NHD_LCDstatus_t init_screen()
  8002fac:	1dfb      	adds	r3, r7, #7
  8002fae:	781b      	ldrb	r3, [r3, #0]
  8002fb0:	e028      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	if((errorCode = cmd_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
  8002fb2:	1dfc      	adds	r4, r7, #7
  8002fb4:	2081      	movs	r0, #129	@ 0x81
- 8002fb6:	f000 f8b5 	bl	8003124 <comm_write>
+ 8002fb6:	f000 f8b5 	bl	8003124 <cmd_write>
  8002fba:	0003      	movs	r3, r0
  8002fbc:	7023      	strb	r3, [r4, #0]
  8002fbe:	1dfb      	adds	r3, r7, #7
@@ -6082,10 +6082,10 @@ NHD_LCDstatus_t init_screen()
  8002fc6:	1dfb      	adds	r3, r7, #7
  8002fc8:	781b      	ldrb	r3, [r3, #0]
  8002fca:	e01b      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	if((errorCode = cmd_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
  8002fcc:	1dfc      	adds	r4, r7, #7
  8002fce:	2020      	movs	r0, #32
- 8002fd0:	f000 f8a8 	bl	8003124 <comm_write>
+ 8002fd0:	f000 f8a8 	bl	8003124 <cmd_write>
  8002fd4:	0003      	movs	r3, r0
  8002fd6:	7023      	strb	r3, [r4, #0]
  8002fd8:	1dfb      	adds	r3, r7, #7
@@ -6096,10 +6096,10 @@ NHD_LCDstatus_t init_screen()
  8002fe0:	1dfb      	adds	r3, r7, #7
  8002fe2:	781b      	ldrb	r3, [r3, #0]
  8002fe4:	e00e      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = comm_write(TURN_ON)) != NHD_SPI_OK) //Display ON
+	if((errorCode = cmd_write(TURN_ON)) != NHD_SPI_OK) //Display ON
  8002fe6:	1dfc      	adds	r4, r7, #7
  8002fe8:	20af      	movs	r0, #175	@ 0xaf
- 8002fea:	f000 f89b 	bl	8003124 <comm_write>
+ 8002fea:	f000 f89b 	bl	8003124 <cmd_write>
  8002fee:	0003      	movs	r3, r0
  8002ff0:	7023      	strb	r3, [r4, #0]
  8002ff2:	1dfb      	adds	r3, r7, #7
@@ -6134,10 +6134,10 @@ NHD_LCDstatus_t clear_screen()
  8003012:	1d3b      	adds	r3, r7, #4
  8003014:	2200      	movs	r2, #0
  8003016:	701a      	strb	r2, [r3, #0]
-	if((errorCode = comm_write(TURN_OFF)) != NHD_SPI_OK)
+	if((errorCode = cmd_write(TURN_OFF)) != NHD_SPI_OK)
  8003018:	1d3c      	adds	r4, r7, #4
  800301a:	20ae      	movs	r0, #174	@ 0xae
- 800301c:	f000 f882 	bl	8003124 <comm_write>
+ 800301c:	f000 f882 	bl	8003124 <cmd_write>
  8003020:	0003      	movs	r3, r0
  8003022:	7023      	strb	r3, [r4, #0]
  8003024:	1d3b      	adds	r3, r7, #4
@@ -6148,10 +6148,10 @@ NHD_LCDstatus_t clear_screen()
  800302c:	1d3b      	adds	r3, r7, #4
  800302e:	781b      	ldrb	r3, [r3, #0]
  8003030:	e074      	b.n	800311c <clear_screen+0x110>
-	if((errorCode = comm_write(SET_SRT_ROW)) != NHD_SPI_OK)
+	if((errorCode = cmd_write(SET_SRT_ROW)) != NHD_SPI_OK)
  8003032:	1d3c      	adds	r4, r7, #4
  8003034:	2040      	movs	r0, #64	@ 0x40
- 8003036:	f000 f875 	bl	8003124 <comm_write>
+ 8003036:	f000 f875 	bl	8003124 <cmd_write>
  800303a:	0003      	movs	r3, r0
  800303c:	7023      	strb	r3, [r4, #0]
  800303e:	1d3b      	adds	r3, r7, #4
@@ -6173,12 +6173,12 @@ NHD_LCDstatus_t clear_screen()
  8003056:	701a      	strb	r2, [r3, #0]
  8003058:	e04d      	b.n	80030f6 <clear_screen+0xea>
 	{
-		if((errorCode = comm_write(page)) != NHD_SPI_OK)	// send page address
+		if((errorCode = cmd_write(page)) != NHD_SPI_OK)	// send page address
  800305a:	1d3c      	adds	r4, r7, #4
  800305c:	1dfb      	adds	r3, r7, #7
  800305e:	781b      	ldrb	r3, [r3, #0]
  8003060:	0018      	movs	r0, r3
- 8003062:	f000 f85f 	bl	8003124 <comm_write>
+ 8003062:	f000 f85f 	bl	8003124 <cmd_write>
  8003066:	0003      	movs	r3, r0
  8003068:	7023      	strb	r3, [r4, #0]
  800306a:	1d3b      	adds	r3, r7, #4
@@ -6190,10 +6190,10 @@ NHD_LCDstatus_t clear_screen()
  8003074:	781b      	ldrb	r3, [r3, #0]
  8003076:	e051      	b.n	800311c <clear_screen+0x110>
 		//	Following two lines set the column address to leftmost column
-		if((errorCode = comm_write(SET_COL_ADRU)) != NHD_SPI_OK)
+		if((errorCode = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
  8003078:	1d3c      	adds	r4, r7, #4
  800307a:	2010      	movs	r0, #16
- 800307c:	f000 f852 	bl	8003124 <comm_write>
+ 800307c:	f000 f852 	bl	8003124 <cmd_write>
  8003080:	0003      	movs	r3, r0
  8003082:	7023      	strb	r3, [r4, #0]
  8003084:	1d3b      	adds	r3, r7, #4
@@ -6204,10 +6204,10 @@ NHD_LCDstatus_t clear_screen()
  800308c:	1d3b      	adds	r3, r7, #4
  800308e:	781b      	ldrb	r3, [r3, #0]
  8003090:	e044      	b.n	800311c <clear_screen+0x110>
-		if((errorCode = comm_write(SET_COL_ADRL)) != NHD_SPI_OK)
+		if((errorCode = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
  8003092:	1d3c      	adds	r4, r7, #4
  8003094:	2000      	movs	r0, #0
- 8003096:	f000 f845 	bl	8003124 <comm_write>
+ 8003096:	f000 f845 	bl	8003124 <cmd_write>
  800309a:	0003      	movs	r3, r0
  800309c:	7023      	strb	r3, [r4, #0]
  800309e:	1d3b      	adds	r3, r7, #4
@@ -6268,10 +6268,10 @@ NHD_LCDstatus_t clear_screen()
  80030fa:	2b03      	cmp	r3, #3
  80030fc:	d9ad      	bls.n	800305a <clear_screen+0x4e>
 	}
-	if((errorCode = comm_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
+	if((errorCode = cmd_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
  80030fe:	1d3c      	adds	r4, r7, #4
  8003100:	20af      	movs	r0, #175	@ 0xaf
- 8003102:	f000 f80f 	bl	8003124 <comm_write>
+ 8003102:	f000 f80f 	bl	8003124 <cmd_write>
  8003106:	0003      	movs	r3, r0
  8003108:	7023      	strb	r3, [r4, #0]
  800310a:	1d3b      	adds	r3, r7, #4
@@ -6292,12 +6292,12 @@ NHD_LCDstatus_t clear_screen()
  8003120:	b003      	add	sp, #12
  8003122:	bd90      	pop	{r4, r7, pc}
 
-08003124 <comm_write>:
+08003124 <cmd_write>:
  * @param c: instruction for LCD module
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t comm_write(uint8_t c)
+NHD_LCDstatus_t cmd_write(uint8_t c)
 {
  8003124:	b5b0      	push	{r4, r5, r7, lr}
  8003126:	b084      	sub	sp, #16
@@ -6308,7 +6308,7 @@ NHD_LCDstatus_t comm_write(uint8_t c)
 	HAL_StatusTypeDef errorcode;
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);	//Select LCD Screen
- 8003130:	4b1b      	ldr	r3, [pc, #108]	@ (80031a0 <comm_write+0x7c>)
+ 8003130:	4b1b      	ldr	r3, [pc, #108]	@ (80031a0 <cmd_write+0x7c>)
  8003132:	2200      	movs	r2, #0
  8003134:	2108      	movs	r1, #8
  8003136:	0018      	movs	r0, r3
@@ -6325,7 +6325,7 @@ NHD_LCDstatus_t comm_write(uint8_t c)
  800314a:	250f      	movs	r5, #15
  800314c:	197c      	adds	r4, r7, r5
  800314e:	1df9      	adds	r1, r7, #7
- 8003150:	4814      	ldr	r0, [pc, #80]	@ (80031a4 <comm_write+0x80>)
+ 8003150:	4814      	ldr	r0, [pc, #80]	@ (80031a4 <cmd_write+0x80>)
  8003152:	2364      	movs	r3, #100	@ 0x64
  8003154:	2201      	movs	r2, #1
  8003156:	f002 ff83 	bl	8006060 <HAL_SPI_Transmit>
@@ -6333,7 +6333,7 @@ NHD_LCDstatus_t comm_write(uint8_t c)
  800315c:	7023      	strb	r3, [r4, #0]
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);	//De-select LCD Screen
- 800315e:	4b10      	ldr	r3, [pc, #64]	@ (80031a0 <comm_write+0x7c>)
+ 800315e:	4b10      	ldr	r3, [pc, #64]	@ (80031a0 <cmd_write+0x7c>)
  8003160:	2201      	movs	r2, #1
  8003162:	2108      	movs	r1, #8
  8003164:	0018      	movs	r0, r3
@@ -6343,35 +6343,35 @@ NHD_LCDstatus_t comm_write(uint8_t c)
  800316a:	197b      	adds	r3, r7, r5
  800316c:	781b      	ldrb	r3, [r3, #0]
  800316e:	2b00      	cmp	r3, #0
- 8003170:	d010      	beq.n	8003194 <comm_write+0x70>
+ 8003170:	d010      	beq.n	8003194 <cmd_write+0x70>
 	{
 		switch(errorcode)
  8003172:	197b      	adds	r3, r7, r5
  8003174:	781b      	ldrb	r3, [r3, #0]
  8003176:	2b03      	cmp	r3, #3
- 8003178:	d008      	beq.n	800318c <comm_write+0x68>
- 800317a:	dc09      	bgt.n	8003190 <comm_write+0x6c>
+ 8003178:	d008      	beq.n	800318c <cmd_write+0x68>
+ 800317a:	dc09      	bgt.n	8003190 <cmd_write+0x6c>
  800317c:	2b01      	cmp	r3, #1
- 800317e:	d003      	beq.n	8003188 <comm_write+0x64>
+ 800317e:	d003      	beq.n	8003188 <cmd_write+0x64>
  8003180:	2b02      	cmp	r3, #2
- 8003182:	d105      	bne.n	8003190 <comm_write+0x6c>
+ 8003182:	d105      	bne.n	8003190 <cmd_write+0x6c>
 		{
 		case HAL_BUSY:
 			return NHD_SPI_BUSY;
  8003184:	2301      	movs	r3, #1
- 8003186:	e006      	b.n	8003196 <comm_write+0x72>
+ 8003186:	e006      	b.n	8003196 <cmd_write+0x72>
 		case HAL_ERROR:
 			return NHD_SPI_PARAM_ERROR;
  8003188:	2302      	movs	r3, #2
- 800318a:	e004      	b.n	8003196 <comm_write+0x72>
+ 800318a:	e004      	b.n	8003196 <cmd_write+0x72>
 		case HAL_TIMEOUT:
 			return NHD_SPI_TIMEOUT;
  800318c:	2303      	movs	r3, #3
- 800318e:	e002      	b.n	8003196 <comm_write+0x72>
+ 800318e:	e002      	b.n	8003196 <cmd_write+0x72>
 		default:
 			return NHD_SPI_PARAM_ERROR;
  8003190:	2302      	movs	r3, #2
- 8003192:	e000      	b.n	8003196 <comm_write+0x72>
+ 8003192:	e000      	b.n	8003196 <cmd_write+0x72>
 		}
 	}
 	return NHD_SPI_OK;
@@ -6499,7 +6499,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  800323e:	2200      	movs	r2, #0
  8003240:	701a      	strb	r2, [r3, #0]
 
-	if((errorCode = comm_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
  8003242:	1cfb      	adds	r3, r7, #3
  8003244:	781b      	ldrb	r3, [r3, #0]
  8003246:	3b50      	subs	r3, #80	@ 0x50
@@ -6507,7 +6507,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  800324a:	000d      	movs	r5, r1
  800324c:	187c      	adds	r4, r7, r1
  800324e:	0018      	movs	r0, r3
- 8003250:	f7ff ff68 	bl	8003124 <comm_write>
+ 8003250:	f7ff ff68 	bl	8003124 <cmd_write>
  8003254:	0003      	movs	r3, r0
  8003256:	7023      	strb	r3, [r4, #0]
  8003258:	197b      	adds	r3, r7, r5
@@ -6519,11 +6519,11 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  8003262:	781b      	ldrb	r3, [r3, #0]
  8003264:	e070      	b.n	8003348 <print_data+0x11c>
 	//	Following two lines set the column address to leftmost column
-	if((errorCode = comm_write(SET_COL_ADRU)) != NHD_SPI_OK)
+	if((errorCode = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
  8003266:	250f      	movs	r5, #15
  8003268:	197c      	adds	r4, r7, r5
  800326a:	2010      	movs	r0, #16
- 800326c:	f7ff ff5a 	bl	8003124 <comm_write>
+ 800326c:	f7ff ff5a 	bl	8003124 <cmd_write>
  8003270:	0003      	movs	r3, r0
  8003272:	7023      	strb	r3, [r4, #0]
  8003274:	002a      	movs	r2, r5
@@ -6535,11 +6535,11 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  800327e:	18bb      	adds	r3, r7, r2
  8003280:	781b      	ldrb	r3, [r3, #0]
  8003282:	e061      	b.n	8003348 <print_data+0x11c>
-	if((errorCode = comm_write(SET_COL_ADRL)) != NHD_SPI_OK)
+	if((errorCode = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
  8003284:	250f      	movs	r5, #15
  8003286:	197c      	adds	r4, r7, r5
  8003288:	2000      	movs	r0, #0
- 800328a:	f7ff ff4b 	bl	8003124 <comm_write>
+ 800328a:	f7ff ff4b 	bl	8003124 <cmd_write>
  800328e:	0003      	movs	r3, r0
  8003290:	7023      	strb	r3, [r4, #0]
  8003292:	002a      	movs	r2, r5
@@ -6675,7 +6675,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  8003364:	187b      	adds	r3, r7, r1
  8003366:	2200      	movs	r2, #0
  8003368:	701a      	strb	r2, [r3, #0]
-	if((errorCode = comm_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
  800336a:	1cfb      	adds	r3, r7, #3
  800336c:	781b      	ldrb	r3, [r3, #0]
  800336e:	3b50      	subs	r3, #80	@ 0x50
@@ -6683,7 +6683,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  8003372:	000d      	movs	r5, r1
  8003374:	187c      	adds	r4, r7, r1
  8003376:	0018      	movs	r0, r3
- 8003378:	f7ff fed4 	bl	8003124 <comm_write>
+ 8003378:	f7ff fed4 	bl	8003124 <cmd_write>
  800337c:	0003      	movs	r3, r0
  800337e:	7023      	strb	r3, [r4, #0]
  8003380:	197b      	adds	r3, r7, r5
@@ -7340,10 +7340,10 @@ int main(void)
   {
 	  //TODO: Gracefully handle clear screen error
   }
-  errorCode = comm_write(SET_SRT_ROW); // To first line
+  errorCode = cmd_write(SET_SRT_ROW); // To first line
  8003784:	1cfc      	adds	r4, r7, #3
  8003786:	2040      	movs	r0, #64	@ 0x40
- 8003788:	f7ff fccc 	bl	8003124 <comm_write>
+ 8003788:	f7ff fccc 	bl	8003124 <cmd_write>
  800378c:	0003      	movs	r3, r0
  800378e:	7023      	strb	r3, [r4, #0]
   /* Infinite loop */
