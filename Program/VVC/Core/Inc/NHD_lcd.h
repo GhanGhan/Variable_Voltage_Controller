@@ -8,14 +8,21 @@
 #ifndef INC_NHD_LCD_H_
 #define INC_NHD_LCD_H_
 
+typedef enum{
+	NHD_SPI_OK = 0u,
+	NHD_SPI_BUSY = 1u,
+	NHD_SPI_PARAM_ERROR = 2u,
+	NHD_SPI_TIMEOUT = 3u,
+}NHD_LCDstatus_t;
+
 
 void reset_screen();
-void init_screen();
-void clear_screen();
-void comm_write(uint8_t c);
-void data_write(uint8_t d);
-void print_data(const char* text, uint8_t rowIndex);
-void erase_trails(const char* text, uint8_t rowIndex);
+NHD_LCDstatus_t init_screen();
+NHD_LCDstatus_t clear_screen();
+NHD_LCDstatus_t comm_write(uint8_t c);
+NHD_LCDstatus_t data_write(uint8_t d);
+NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex);
+NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex);
 
 #define SET_COLSD_LF	0xA0 	//Set SEG (column) direction - left to right
 #define TURN_OFF		0xAE	//Turn the display off

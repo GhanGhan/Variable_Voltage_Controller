@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <float2string.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -26,7 +27,6 @@
 #include <string.h>
 #include "fonts.h"
 #include "NHD_lcd.h"
-#include "string2float.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -74,7 +74,7 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
-static void print_power_value(uint8_t index);
+static NHD_LCDstatus_t print_power_value(uint8_t index);
 
 /* USER CODE END PFP */
 
@@ -365,7 +365,7 @@ static void MX_GPIO_Init(void)
  * @param index:
  * @retval None
  */
-static void uu(uint8_t index)
+static NHD_LCDstatus_t print_power_value(uint8_t index)
 {
 	uint8_t decimals = 0;
 	if(index == v_input || index == v_output)
@@ -383,8 +383,14 @@ static void uu(uint8_t index)
 		strcat(desText, " V");
 	else
 		strcat(desText, " A");
-	print_data(desText, index);
-	erase_trails(desText, index);
+
+	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)
+		return errorCode;
+	if((errorCode = erase_trails(desText, index)) != NHD_SPI_OK)
+		return errorCode;
+
+	return errorCode;
 }
 
 

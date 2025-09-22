@@ -79,7 +79,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
 	if(isnan(n)){strcpy(res,"nan"); return;}
 	if(isinf(n)){strcpy(res,"inf"); return;}
 
-	//Check if the input float number 'n' is equal to zero
+	// Check if the input float number 'n' is equal to zero
 	if(n == 0.0f)
 	{
 		res[0] = '0'; res[1] = '.';

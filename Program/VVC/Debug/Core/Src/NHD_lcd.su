@@ -1,7 +1,7 @@
 ../Core/Src/NHD_lcd.c:25:6:reset_screen	8	static
-../Core/Src/NHD_lcd.c:52:6:init_screen	8	static
-../Core/Src/NHD_lcd.c:79:6:clear_screen	16	static
-../Core/Src/NHD_lcd.c:113:6:comm_write	16	static
-../Core/Src/NHD_lcd.c:132:6:data_write	16	static
-../Core/Src/NHD_lcd.c:156:6:print_data	40	static
-../Core/Src/NHD_lcd.c:189:6:erase_trails	24	static
+../Core/Src/NHD_lcd.c:52:17:init_screen	24	static
+../Core/Src/NHD_lcd.c:87:17:clear_screen	24	static
+../Core/Src/NHD_lcd.c:131:17:comm_write	32	static
+../Core/Src/NHD_lcd.c:168:17:data_write	32	static
+../Core/Src/NHD_lcd.c:210:17:print_data	40	static
+../Core/Src/NHD_lcd.c:251:17:erase_trails	32	static

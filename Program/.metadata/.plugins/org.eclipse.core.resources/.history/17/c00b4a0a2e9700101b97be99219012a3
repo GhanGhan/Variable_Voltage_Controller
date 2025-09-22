@@ -1,0 +1,227 @@
+/*
+ * NHD_lcd.c
+ *
+ *  Created on: Aug 21, 2025
+ *      Author: Ghani
+ */
+
+#include "main.h"
+#include "fonts.h"
+#include "NHD_lcd.h"
+#include "NHD_lcd_config.h"
+
+
+/*
+ * @brief Resets the LCD screen - (setting pin to "LOW") activates the initialization sequence
+ * where all of the registers are reset to their default setting
+ *
+ * @note It is recommended that the pin is set to "LOW" for at least 5us, and then set to "HIGH"
+ * for at least 5uS for stable operation, which is why there are 100mS delays after both
+ * "HAL_GPIO_WritePin" functions
+ * @note While the pin is "LOW" no write functions will be accepted
+ *
+ * @retval None
+ */
+void reset_screen()
+{
+	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_RESET);
+	HAL_Delay(100);
+	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_SET);
+	HAL_Delay(100);
+}
+
+/*
+ * @brief initialize the necessary LCD registers to values that will allow the module to function as required
+ *
+ * @note 1: Set screen to display characters from left to right
+ * @note 2: Turn off all of the pixels before setting biases, power sources and voltage levels to avoid flickering
+ * @note 3: Set screen to display characters from top to bottom
+ * @note 4: Screen is multiplex display (multiple COMMON and SEGMENT Electrodes), since the number of COMS = 33, the
+ * bias ratio of voltage levels required to drive the screen is set to 1/6
+ * @note 5: Set module to use internal power circuits (booster, regulator and follower) to generate voltage levels
+ * needed to drive the LCD
+ * @note 6: Set the internal regulation ratio (non-inverting amp gain constant) for the regulator circuit to 3.5
+ * @note 7: Set module in electronic volume (EV) adjust mode, then set alpha to 31 which in turn sets EV, the input
+ * voltage of the regulator circuit to 1.698
+ * @note 8: Now that all the settings have been given the proper values, turn the display on
+ *
+ *
+ * @retval None
+ */
+
+void init_screen()
+{
+	comm_write(SET_COLSD_LF); //Set SEG (column) direction - left to right
+	comm_write(TURN_OFF); //Turn the display off
+	comm_write(SET_ROWD_TP); //Set COM (row) direction - top to bottom
+	comm_write(SET_LCD_BIAS); //Set LCD bias
+	comm_write(SET_PWR_CTRL); //Power Control Set - Boost, Regulator and Follower are all on
+	comm_write(SET_RES_RTO); //Set Resistor Ratio - 0x001 -> 3.5
+	comm_write(SET_EVM_CMD); //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	comm_write(SET_EVM_VAL); //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	comm_write(TURN_ON); //Display ON
+}
+
+
+/*
+ *
+ */
+
+/*
+ * @brief Clear the screen by erasing display data
+ *
+ * @note The display is still on, but the all the data in the Display Data RAM which stores
+ * the 'dot' data of the LCD is set to 0x00
+ *
+ * @retval None
+ */
+
+void clear_screen()
+{
+	uint8_t page = SET_PG_ADDR;
+	comm_write(TURN_OFF);
+	comm_write(SET_SRT_ROW);
+
+	for(uint8_t i = 0; i < 4; i++)
+	{
+		comm_write(page);	// send page address
+		//	Following two lines set the column address to leftmost column
+		comm_write(SET_COL_ADRU);
+		comm_write(SET_COL_ADRL);
+
+		for(uint8_t j = 0; j < 128; j++)
+		{
+			data_write(CLR_PGE_BYTE);
+		}
+		page++;//After 128 columns, go to the next page
+	}
+	comm_write(TURN_ON);//Turn the display back on
+}
+
+/*
+ * @brief Command the the display module to perform an instruction
+ *
+ * @note Instructions include turning the display on/off, setting x and y axis print direction
+ * bias levels for the multiplex display etc.
+ * @note All commands are 1 byte, the data associated with the command is embedded in the byte
+ * expect for the 'Set EV' command, which requires 2 bytes, one for the command and value each
+ *
+ * @param c: instruction for LCD module
+ *
+ * @retval None
+ */
+void comm_write(uint8_t c)
+{
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
+	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
+
+	HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); // transmit command
+
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
+
+}
+
+/*
+ * @brief Send character data that is to be placed in the DDRAM and displayed on the
+ * display to the module
+ *
+ * @param c: One fifth of character data to be sent to DDRAM of LCD module
+ *
+ * retval None
+ */
+NHD_LCDstatus_t data_write(uint8_t d)
+{
+	HAL_StatusTypeDef errorcode;
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);//Select LCD Screen
+	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_SET);	//Set message type to
+	errorcode = HAL_SPI_Transmit(&SPI_HANDLE, &d, 1, 100);
+	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);//De-select LCD Screen
+
+	if(errorcode != HAL_OK) //transmit data
+	{
+		switch(errorcode)
+		{
+		case HAL_BUSY:
+			return NHD_SPI_BUSY;
+		case HAL_ERROR:
+			return NHD_SPI_PARAM_ERROR;
+		case HAL_TIMEOUT:
+			return NHD_SPI_TIMEOUT;
+		default:
+			return NHD_SPI_PARAM_ERROR;
+		}
+	}
+
+	return NHD_SPI_OK;
+}
+
+/*
+ * @brief Send string of characters to a print on a single page (character row)
+ * on the LCD Screen
+ *
+ * @note There are 32 pixel rows on the LCD that the user can print on, these rows
+ * are divided into 4 pages which have a height of 8 pixels.  Therefore, each character
+ * will have a height of 8 pixels and a width of 5 pixel-columns
+ * @note The character rows (pages) are numbered from 0 to 3, starting from the top
+ *
+ * @param text: character array to be printed on a page in the LCD module
+ * @param rowIndex: page to print text on; 0, 1, 2, 3 from top to bottom
+ *
+ * @retval None
+ */
+void print_data(const char* text, uint8_t rowIndex)
+{
+	comm_write(SET_PG_ADDR	 + rowIndex); // send page address
+	//	Following two lines set the column address to leftmost column
+	comm_write(SET_COL_ADRU);
+	comm_write(SET_COL_ADRL);
+
+	for(uint8_t i = 0; text[i] != '\0'; i++)
+	{
+		uint8_t c = (uint8_t)text[i] - 32;
+		uint8_t val = 0;
+
+		for(uint8_t j = 0; j < 5; j++)
+		{
+			val = Ascii_1[c][j];
+			data_write(val);
+		}
+	}
+}
+
+/*
+ * @brief Delete previous character data in the same 'rowIndex'text' that wasn't
+ * overwritten by the current 'text' array
+ *
+ * @note if last 'text' string is shorter than current 'text' string, the characters
+ * with indexes greater than the length of current string and less than or equal to the
+ * length of the previous string will still exist in the DDRAM and will be displayed on
+ * the screen, so this function erases those characters in the DDRAM
+ *
+ * @param text: text character array that was currently displayed on a page in the LCD module
+ * @param rowIndex: page that the text is displayed on; 0, 1, 2, 3 from top to bottom
+ *
+ */
+void erase_trails(const char* text, uint8_t rowIndex)
+{
+		comm_write(SET_PG_ADDR	 + rowIndex); // send page address
+
+		//find index of last character in text
+		uint8_t i = 0;
+		do{
+			i++;
+		}
+		while(text[i] != '\0');
+
+		uint8_t stop = i+2;
+
+		while(i <= stop)
+		{
+
+			for(uint8_t j = 0; j < 5; j++)
+			{
+				data_write(CLR_PGE_BYTE);
+			}
+			i++;
+		}
+}
