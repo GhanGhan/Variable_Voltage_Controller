@@ -9,7 +9,9 @@
 #include "fonts.h"
 #include "NHD_lcd.h"
 #include "NHD_lcd_config.h"
+#include <string.h>
 
+static uint8_t last_len[4] = {0};
 
 /*
  * @brief Resets the LCD screen - (setting pin to "LOW") activates the initialization sequence
@@ -253,24 +255,23 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
 	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
 		return errorCode;
-	//find index of last character in text
-	uint8_t i = 0;
-	do{
-		i++;
-	}
-	while(text[i] != '\0');
 
-	uint8_t stop = i+2;
-
-	while(i <= stop)
+	//Get length of the current text
+	size_t len = strlen(text);
+	if(last_len[rowIndex] > len) // There are characters in that were not overwritten and need to be cleared
 	{
+		uint8_t trails = last_len[rowIndex] - len;
 
-		for(uint8_t j = 0; j < 5; j++)
+		for(uint8_t i = 0; i < trails; i++)
 		{
-			if((errorCode = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
-				return errorCode;
+			for(uint8_t j = 0; j < 5; j++)
+			{
+				if((errorCode = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
+					return errorCode;
+			}
 		}
-		i++;
 	}
+	last_len[rowIndex] = len;
+
 	return errorCode;
 }
