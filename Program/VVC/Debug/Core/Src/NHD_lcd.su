@@ -4,4 +4,4 @@
 ../Core/Src/NHD_lcd.c:133:17:cmd_write	32	static
 ../Core/Src/NHD_lcd.c:170:17:data_write	32	static
 ../Core/Src/NHD_lcd.c:212:17:print_data	40	static
-../Core/Src/NHD_lcd.c:253:17:erase_trails	40	static
+../Core/Src/NHD_lcd.c:257:17:erase_trails	40	static

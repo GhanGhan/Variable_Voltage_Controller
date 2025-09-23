@@ -3,5 +3,5 @@
 ../Core/Src/main.c:228:13:MX_ADC1_Init	6
 ../Core/Src/main.c:314:13:MX_SPI2_Init	2
 ../Core/Src/main.c:354:13:MX_GPIO_Init	1
-../Core/Src/main.c:397:24:print_power_value	7
+../Core/Src/main.c:397:24:print_power_value	6
 ../Core/Src/main.c:433:6:Error_Handler	1

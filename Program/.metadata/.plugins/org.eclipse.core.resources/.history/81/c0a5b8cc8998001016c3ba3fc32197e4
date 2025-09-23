@@ -233,10 +233,6 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
 				return errorCode;
 		}
 	}
-
-	if((errorCode = erase_trails(text, rowIndex)) != NHD_SPI_OK)
-		return errorCode;
-
 	return errorCode;
 }
 

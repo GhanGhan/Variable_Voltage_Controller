@@ -416,6 +416,8 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
 	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)
 		return errorCode;
+	//if((errorCode = erase_trails(desText, index)) != NHD_SPI_OK)
+		//return errorCode;
 
 	return errorCode;
 }

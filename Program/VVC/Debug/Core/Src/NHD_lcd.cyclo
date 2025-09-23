@@ -3,5 +3,5 @@
 ../Core/Src/NHD_lcd.c:89:17:clear_screen	10
 ../Core/Src/NHD_lcd.c:133:17:cmd_write	6
 ../Core/Src/NHD_lcd.c:170:17:data_write	6
-../Core/Src/NHD_lcd.c:212:17:print_data	7
-../Core/Src/NHD_lcd.c:253:17:erase_trails	6
+../Core/Src/NHD_lcd.c:212:17:print_data	8
+../Core/Src/NHD_lcd.c:257:17:erase_trails	6
