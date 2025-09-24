@@ -389,10 +389,10 @@ static void MX_GPIO_Init(void)
 
 
 /**
- * @brief This function
+ * @brief This function print the value of the voltage/current on the LCD screen
  *
- * @param index:
- * @retval None
+ * @param index: The character row that the value whould be displayed on
+ * @retval NHD_LCD status
  */
 static NHD_LCDstatus_t print_power_value(uint8_t index)
 {
@@ -402,9 +402,14 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	else // if(index == i_input || i_output)
 		decimals = 3;
 
-
-
 	ftoa((float)ADC_buffer[index]*scales[index]/adc_res, numText, decimals);
+	/*Needed to set MCU/MPU GCC Compiler -> Optimization -> Optimization level to "Optimize for size (-Os) to prevent
+	snprintf from pulling in floating-point formatting code, such code is very large which bloats the .rodata
+	and .text sections which caused the FLASH to overflow by 624 bytes
+	*/
+	snprintf(desText, sizeof(desText), "%s%s %s", headers[index], numText, (index ==v_input || index==v_output) ? "V" : "A");
+	//Will keep following code in-case (-Os) makes debugging difficult and need to switch back to (-O0)
+	/*
 	memset(desText, '\0', sizeof(desText));
 	strcat(desText, headers[index]);
 	strcat(desText, numText);
@@ -412,6 +417,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 		strcat(desText, " V");
 	else
 		strcat(desText, " A");
+	*/
 
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
 	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)

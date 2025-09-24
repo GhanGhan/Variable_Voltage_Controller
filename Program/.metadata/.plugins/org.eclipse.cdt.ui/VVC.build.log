@@ -1,10 +1,17 @@
-10:31:48 **** Incremental Build of configuration Debug for project VVC ****
+11:58:25 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VVC.elf
+ 
 arm-none-eabi-size  VVC.elf 
+arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
    text	   data	    bss	    dec	    hex	filename
-  30888	    128	   2168	  33184	   81a0	VVC.elf
+  26796	    112	   2184	  29092	   71a4	VVC.elf
 Finished building: default.size.stdout
  
+Finished building: VVC.list
+ 
 
-10:31:49 Build Finished. 0 errors, 0 warnings. (took 506ms)
+11:58:26 Build Finished. 0 errors, 0 warnings. (took 978ms)
 
