@@ -62,6 +62,8 @@ static const char vi_header[] = "Input Voltage: ";
 static const char vo_header[] = "Output Voltage: ";
 static const char ii_header[] = "Input Current: ";
 static const char io_header[] = "Output Current: ";
+static const char* unit_symbols[] = {" V", " A"};
+static const uint8_t header_len[4] = {strlen(vi_header), strlen(vi_header), strlen(ii_header), strlen(io_header)};
 
 static char numText[20];
 static char desText[50];
@@ -389,7 +391,7 @@ static void MX_GPIO_Init(void)
 
 
 /**
- * @brief This function print the value of the voltage/current on the LCD screen
+ * @brief This function prints the value of the voltage/current on the LCD screen
  *
  * @param index: The character row that the value whould be displayed on
  * @retval NHD_LCD status
@@ -397,27 +399,34 @@ static void MX_GPIO_Init(void)
 static NHD_LCDstatus_t print_power_value(uint8_t index)
 {
 	uint8_t decimals = 0;
+	uint8_t symbol_index;
 	if(index == v_input || index == v_output)
+	{
 		decimals = 2;
+		symbol_index = 0;
+	}
 	else // if(index == i_input || i_output)
+	{
 		decimals = 3;
+		symbol_index = 1;
+	}
 
 	ftoa((float)ADC_buffer[index]*scales[index]/adc_res, numText, decimals);
-	/*Needed to set MCU/MPU GCC Compiler -> Optimization -> Optimization level to "Optimize for size (-Os) to prevent
-	snprintf from pulling in floating-point formatting code, such code is very large which bloats the .rodata
-	and .text sections which caused the FLASH to overflow by 624 bytes
-	*/
-	snprintf(desText, sizeof(desText), "%s%s %s", headers[index], numText, (index ==v_input || index==v_output) ? "V" : "A");
-	//Will keep following code in-case (-Os) makes debugging difficult and need to switch back to (-O0)
-	/*
-	memset(desText, '\0', sizeof(desText));
-	strcat(desText, headers[index]);
-	strcat(desText, numText);
-	if(index == v_input || index == v_output)
-		strcat(desText, " V");
+
+	uint8_t numText_len = strlen(numText);
+	uint8_t symbol_len = strlen(unit_symbols[symbol_index]);
+	uint8_t total_len = header_len[index] + numText_len + symbol_len;
+
+	if(sizeof(desText) - 1 > total_len) //checks there is enough space in the buffer for the combined text
+	{
+		memcpy(desText, headers[index], header_len[index]);
+		memcpy(desText + header_len[index], numText, numText_len);
+		memcpy(desText + header_len[index] + numText_len, unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
+	}
 	else
-		strcat(desText, " A");
-	*/
+	{
+		//TODO: Gracefully handle buffer overflow error
+	}
 
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
 	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)
