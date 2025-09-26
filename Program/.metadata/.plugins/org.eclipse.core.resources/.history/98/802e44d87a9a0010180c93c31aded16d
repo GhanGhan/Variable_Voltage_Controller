@@ -422,7 +422,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 
 	if(sizeof(desText) - 1 > total_len) //checks there is enough space in the buffer for the combined text
 	{
-	  memcpy(desText, headers[index], header_len[index]);
+		memcpy(desText, headers[index], header_len[index]);
 		memcpy(desText + header_len[index], numText, numText_len);
 		memcpy(desText + header_len[index] + numText_len, unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
 	}

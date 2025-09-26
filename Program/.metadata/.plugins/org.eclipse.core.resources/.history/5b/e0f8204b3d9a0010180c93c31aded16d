@@ -398,7 +398,6 @@ static void MX_GPIO_Init(void)
  */
 static NHD_LCDstatus_t print_power_value(uint8_t index)
 {
-	// Set the number digits after the decimal point, and identify if it a current value or voltage value
 	uint8_t decimals = 0;
 	uint8_t symbol_index;
 	if(index == v_input || index == v_output)
@@ -412,17 +411,15 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 		symbol_index = 1;
 	}
 
-	// Convert the ADC value from an integer->float->string
 	ftoa((float)ADC_buffer[index]*scales[index]/adc_res, numText, decimals);
 
-	// Concatenate the header string, value string and symbol string
 	uint8_t numText_len = strlen(numText);
 	uint8_t symbol_len = strlen(unit_symbols[symbol_index]);
 	uint8_t total_len = header_len[index] + numText_len + symbol_len;
 
 	if(sizeof(desText) - 1 > total_len) //checks there is enough space in the buffer for the combined text
 	{
-	  memcpy(desText, headers[index], header_len[index]);
+		memcpy(desText, headers[index], header_len[index]);
 		memcpy(desText + header_len[index], numText, numText_len);
 		memcpy(desText + header_len[index] + numText_len, unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
 	}
@@ -431,7 +428,6 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 		//TODO: Gracefully handle buffer overflow error
 	}
 
-	// Print string to the LCD string
 	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
 	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)
 		return errorCode;
