@@ -36,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define NUM_SENSORS 4
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -51,23 +51,24 @@ SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
 enum {v_input, v_output, i_input, i_output} sensor_value;
-static const uint16_t adc_res = 4095;	//ADC resolution = 2^12-1
-static const uint8_t vi_scale = 17; //largest allowable input voltage
-static const uint8_t vo_scale = 20; //largest allowable output voltage
-static const float curr_scale = 3.3/(50*0.011); //Amp gain * Rsense
-static const float scales[] = {vi_scale, vo_scale, curr_scale, curr_scale};
-static uint16_t ADC_buffer[4];
+static const uint16_t g_adc_res = 4095;	//ADC resolution = 2^12-1
+static const uint8_t g_vi_scale = 17; //largest allowable input voltage
+static const uint8_t g_vo_scale = 20; //largest allowable output voltage
+static const float g_current_scale = 3.3/(50*0.011f); //Amp gain * Rsense
+static const float g_scales[NUM_SENSORS] = {g_vi_scale, g_vo_scale, g_current_scale, g_current_scale};
+static uint16_t g_adc_buffer[NUM_SENSORS];
 
-static const char vi_header[] = "Input Voltage: ";
-static const char vo_header[] = "Output Voltage: ";
-static const char ii_header[] = "Input Current: ";
-static const char io_header[] = "Output Current: ";
-static const char* unit_symbols[] = {" V", " A"};
-static const uint8_t header_len[4] = {strlen(vi_header), strlen(vi_header), strlen(ii_header), strlen(io_header)};
+static const char g_vi_header[] = "Input Voltage: ";
+static const char g_vo_header[] = "Output Voltage: ";
+static const char g_ii_header[] = "Input Current: ";
+static const char g_io_header[] = "Output Current: ";
+static const char * g_unit_symbols[] = {" V", " A"};
+static const uint8_t g_header_len[NUM_SENSORS] = {strlen(g_vi_header), strlen(g_vo_header),
+    strlen(g_ii_header), strlen(g_io_header)};
 
-static char numText[20];
-static char desText[50];
-static const char* headers[] = {vi_header, vo_header, ii_header, io_header};
+static char g_num_text[20];
+static char g_dest_text[50];
+static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -119,20 +120,20 @@ int main(void)
   /* USER CODE BEGIN 2 */
   reset_screen();
 
-  NHD_LCDstatus_t errorCode = NHD_SPI_OK;
-  errorCode = init_screen();
-  if(errorCode != NHD_SPI_OK)
+  NHD_LCDstatus_t err_code = NHD_SPI_OK;
+  err_code = init_screen();
+  if (err_code != NHD_SPI_OK)
   {
 	 //TODO: Gracefully handle initialization error
   }
 
-  errorCode = clear_screen();
-  if(errorCode != NHD_SPI_OK)
+  err_code = clear_screen();
+  if (err_code != NHD_SPI_OK)
   {
 	  //TODO: Gracefully handle clear screen error
   }
-  errorCode = cmd_write(SET_SRT_ROW); // To first line
-  if(errorCode != NHD_SPI_OK)
+  err_code = cmd_write(SET_SRT_ROW); // To first line
+  if (err_code != NHD_SPI_OK)
   {
 	  //TODO: Gracefully handle command error
   }
@@ -145,33 +146,33 @@ int main(void)
   while (1)
   {
 	  //Get voltage and current values from ADC
-	  for(int i = 0; i < 4; i++)
+	  for (int i = 0; i < NUM_SENSORS; i++)
 	  {
 		  HAL_ADC_Start(&hadc1);
 		  HAL_ADC_PollForConversion(&hadc1, 1);
-		  ADC_buffer[i] = HAL_ADC_GetValue(&hadc1);
+		  g_adc_buffer[i] = HAL_ADC_GetValue(&hadc1);
 	  }//Now the buffer contains all 4 values.
 
 	  //Send input voltage, output voltage, input current, output current to the LCD screen
-	  errorCode = print_power_value(v_input);
-	  if(errorCode != NHD_SPI_OK)
+	  err_code = print_power_value(v_input);
+	  if (err_code != NHD_SPI_OK)
 	  {
 		  //TODO: Gracefully handle printing error
 	  }
-	  errorCode = print_power_value(v_output);
-	  if(errorCode != NHD_SPI_OK)
+	  err_code = print_power_value(v_output);
+	  if (err_code != NHD_SPI_OK)
 	  {
-	  	  //TODO: Gracefully handle printing error
+	    //TODO: Gracefully handle printing error
 	  }
-	  errorCode = print_power_value(i_input);
-	  if(errorCode != NHD_SPI_OK)
+	  err_code = print_power_value(i_input);
+	  if (err_code != NHD_SPI_OK)
 	  {
-	  	  //TODO: Gracefully handle printing error
+	    //TODO: Gracefully handle printing error
 	  }
-	  errorCode = print_power_value(i_output);
-	  if(errorCode != NHD_SPI_OK)
+	  err_code = print_power_value(i_output);
+	  if (err_code != NHD_SPI_OK)
 	  {
-	  	  //TODO: Gracefully handle printing error
+	    //TODO: Gracefully handle printing error
 	  }
 	  //delay for 100ms
 	  HAL_Delay(100);
@@ -393,7 +394,7 @@ static void MX_GPIO_Init(void)
 /**
  * @brief This function prints the value of the voltage/current on the LCD screen
  *
- * @param index: The character row that the value whould be displayed on
+ * @param index: The character row that the value would be displayed on
  * @retval NHD_LCD status
  */
 static NHD_LCDstatus_t print_power_value(uint8_t index)
@@ -401,7 +402,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	// Set the number digits after the decimal point, and identify if it a current value or voltage value
 	uint8_t decimals = 0;
 	uint8_t symbol_index;
-	if(index == v_input || index == v_output)
+	if (index == v_input || index == v_output)
 	{
 		decimals = 2;
 		symbol_index = 0;
@@ -413,18 +414,19 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	}
 
 	// Convert the ADC value from an integer->float->string
-	ftoa((float)ADC_buffer[index]*scales[index]/adc_res, numText, decimals);
+	ftoa((float)g_adc_buffer[index]*g_scales[index]/g_adc_res, g_num_text, decimals);
 
 	// Concatenate the header string, value string and symbol string
-	uint8_t numText_len = strlen(numText);
-	uint8_t symbol_len = strlen(unit_symbols[symbol_index]);
-	uint8_t total_len = header_len[index] + numText_len + symbol_len;
+	uint8_t num_text_len = strlen(g_num_text);
+	uint8_t symbol_len = strlen(g_unit_symbols[symbol_index]);
+	uint8_t total_len = g_header_len[index] + num_text_len + symbol_len;
 
-	if(sizeof(desText) - 1 > total_len) //checks there is enough space in the buffer for the combined text
+	if (sizeof(g_dest_text) - 1 > total_len) //checks there is enough space in the buffer for the combined text
 	{
-	  memcpy(desText, headers[index], header_len[index]);
-		memcpy(desText + header_len[index], numText, numText_len);
-		memcpy(desText + header_len[index] + numText_len, unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
+	  memcpy(g_dest_text, g_headers[index], g_header_len[index]);
+		memcpy(g_dest_text + g_header_len[index], g_num_text, num_text_len);
+		memcpy(g_dest_text + g_header_len[index] + num_text_len,
+		    g_unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
 	}
 	else
 	{
@@ -432,11 +434,11 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	}
 
 	// Print string to the LCD string
-	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
-	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)
-		return errorCode;
+	NHD_LCDstatus_t err_code = NHD_SPI_OK;
+	if ((err_code = print_data(g_dest_text, index)) != NHD_SPI_OK)
+		return err_code;
 
-	return errorCode;
+	return err_code;
 }
 
 

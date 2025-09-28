@@ -10,10 +10,10 @@
 
 #include <stdint.h>
 
-// Following functions from https://www.geeksforgeeks.org/c/gcvt-convert-float-value-string-c/
-void ftoa(float n, char* res, uint8_t afterpoint);
-int intToStr(int32_t x, char str[], uint8_t d);
-void reverse(char* str, uint8_t len);
+// Following functions adapted  from https://www.geeksforgeeks.org/c/gcvt-convert-float-value-string-c/
+void ftoa(float n, char * res, uint8_t afterpoint);
+int32_t int_to_str(int32_t x, char str[], uint8_t d);
+void reverse(char * str, uint8_t len);
 
 
 

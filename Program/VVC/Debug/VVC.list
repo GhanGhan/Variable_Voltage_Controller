@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00009088  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000926d  00000000  00000000  000090b0  2**0
+ 12 .debug_info   00009271  00000000  00000000  000090b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001d49  00000000  00000000  0001231d  2**0
+ 13 .debug_abbrev 00001d49  00000000  00000000  00012321  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000009b0  00000000  00000000  00014068  2**3
+ 14 .debug_aranges 000009b0  00000000  00000000  00014070  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000737  00000000  00000000  00014a18  2**0
+ 15 .debug_rnglists 00000737  00000000  00000000  00014a20  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00015966  00000000  00000000  0001514f  2**0
+ 16 .debug_macro  00015966  00000000  00000000  00015157  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000bb4b  00000000  00000000  0002aab5  2**0
+ 17 .debug_line   0000bb4d  00000000  00000000  0002aabd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0008677c  00000000  00000000  00036600  2**0
+ 18 .debug_str    0008679d  00000000  00000000  0003660a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000bcd7c  2**0
+ 19 .comment      00000043  00000000  00000000  000bcda7  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002938  00000000  00000000  000bcdc0  2**2
+ 20 .debug_frame  00002938  00000000  00000000  000bcdec  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000007c  00000000  00000000  000bf6f8  2**0
+ 21 .debug_line_str 0000007c  00000000  00000000  000bf724  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5980,11 +5980,11 @@ NHD_LCDstatus_t init_screen()
  8002f0a:	b590      	push	{r4, r7, lr}
  8002f0c:	b083      	sub	sp, #12
  8002f0e:	af00      	add	r7, sp, #0
-	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+	NHD_LCDstatus_t err_code = NHD_SPI_OK;
  8002f10:	1dfb      	adds	r3, r7, #7
  8002f12:	2200      	movs	r2, #0
  8002f14:	701a      	strb	r2, [r3, #0]
-	if((errorCode = cmd_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
+	if ((err_code = cmd_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
  8002f16:	1dfc      	adds	r4, r7, #7
  8002f18:	20a0      	movs	r0, #160	@ 0xa0
  8002f1a:	f000 f903 	bl	8003124 <cmd_write>
@@ -5994,11 +5994,13 @@ NHD_LCDstatus_t init_screen()
  8002f24:	781b      	ldrb	r3, [r3, #0]
  8002f26:	2b00      	cmp	r3, #0
  8002f28:	d002      	beq.n	8002f30 <init_screen+0x26>
-		return errorCode;
+	{
+		return err_code;
  8002f2a:	1dfb      	adds	r3, r7, #7
  8002f2c:	781b      	ldrb	r3, [r3, #0]
  8002f2e:	e069      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
+	}
+	if ((err_code = cmd_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
  8002f30:	1dfc      	adds	r4, r7, #7
  8002f32:	20ae      	movs	r0, #174	@ 0xae
  8002f34:	f000 f8f6 	bl	8003124 <cmd_write>
@@ -6008,11 +6010,13 @@ NHD_LCDstatus_t init_screen()
  8002f3e:	781b      	ldrb	r3, [r3, #0]
  8002f40:	2b00      	cmp	r3, #0
  8002f42:	d002      	beq.n	8002f4a <init_screen+0x40>
-		return errorCode;
+	{
+		return err_code;
  8002f44:	1dfb      	adds	r3, r7, #7
  8002f46:	781b      	ldrb	r3, [r3, #0]
  8002f48:	e05c      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
+	}
+	if ((err_code = cmd_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
  8002f4a:	1dfc      	adds	r4, r7, #7
  8002f4c:	20c8      	movs	r0, #200	@ 0xc8
  8002f4e:	f000 f8e9 	bl	8003124 <cmd_write>
@@ -6022,11 +6026,13 @@ NHD_LCDstatus_t init_screen()
  8002f58:	781b      	ldrb	r3, [r3, #0]
  8002f5a:	2b00      	cmp	r3, #0
  8002f5c:	d002      	beq.n	8002f64 <init_screen+0x5a>
-		return errorCode;
+	{
+		return err_code;
  8002f5e:	1dfb      	adds	r3, r7, #7
  8002f60:	781b      	ldrb	r3, [r3, #0]
  8002f62:	e04f      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
+	}
+	if ((err_code = cmd_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
  8002f64:	1dfc      	adds	r4, r7, #7
  8002f66:	20a2      	movs	r0, #162	@ 0xa2
  8002f68:	f000 f8dc 	bl	8003124 <cmd_write>
@@ -6036,11 +6042,13 @@ NHD_LCDstatus_t init_screen()
  8002f72:	781b      	ldrb	r3, [r3, #0]
  8002f74:	2b00      	cmp	r3, #0
  8002f76:	d002      	beq.n	8002f7e <init_screen+0x74>
-		return errorCode;
+	{
+		return err_code;
  8002f78:	1dfb      	adds	r3, r7, #7
  8002f7a:	781b      	ldrb	r3, [r3, #0]
  8002f7c:	e042      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
+	}
+	if ((err_code = cmd_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
  8002f7e:	1dfc      	adds	r4, r7, #7
  8002f80:	202f      	movs	r0, #47	@ 0x2f
  8002f82:	f000 f8cf 	bl	8003124 <cmd_write>
@@ -6050,11 +6058,13 @@ NHD_LCDstatus_t init_screen()
  8002f8c:	781b      	ldrb	r3, [r3, #0]
  8002f8e:	2b00      	cmp	r3, #0
  8002f90:	d002      	beq.n	8002f98 <init_screen+0x8e>
-		return errorCode;
+	{
+		return err_code;
  8002f92:	1dfb      	adds	r3, r7, #7
  8002f94:	781b      	ldrb	r3, [r3, #0]
  8002f96:	e035      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
+	}
+	if ((err_code = cmd_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
  8002f98:	1dfc      	adds	r4, r7, #7
  8002f9a:	2021      	movs	r0, #33	@ 0x21
  8002f9c:	f000 f8c2 	bl	8003124 <cmd_write>
@@ -6064,11 +6074,13 @@ NHD_LCDstatus_t init_screen()
  8002fa6:	781b      	ldrb	r3, [r3, #0]
  8002fa8:	2b00      	cmp	r3, #0
  8002faa:	d002      	beq.n	8002fb2 <init_screen+0xa8>
-		return errorCode;
+	{
+		return err_code;
  8002fac:	1dfb      	adds	r3, r7, #7
  8002fae:	781b      	ldrb	r3, [r3, #0]
  8002fb0:	e028      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	}
+	if ((err_code = cmd_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
  8002fb2:	1dfc      	adds	r4, r7, #7
  8002fb4:	2081      	movs	r0, #129	@ 0x81
  8002fb6:	f000 f8b5 	bl	8003124 <cmd_write>
@@ -6078,11 +6090,13 @@ NHD_LCDstatus_t init_screen()
  8002fc0:	781b      	ldrb	r3, [r3, #0]
  8002fc2:	2b00      	cmp	r3, #0
  8002fc4:	d002      	beq.n	8002fcc <init_screen+0xc2>
-		return errorCode;
+	{
+		return err_code;
  8002fc6:	1dfb      	adds	r3, r7, #7
  8002fc8:	781b      	ldrb	r3, [r3, #0]
  8002fca:	e01b      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	}
+	if ((err_code = cmd_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
  8002fcc:	1dfc      	adds	r4, r7, #7
  8002fce:	2020      	movs	r0, #32
  8002fd0:	f000 f8a8 	bl	8003124 <cmd_write>
@@ -6092,11 +6106,13 @@ NHD_LCDstatus_t init_screen()
  8002fda:	781b      	ldrb	r3, [r3, #0]
  8002fdc:	2b00      	cmp	r3, #0
  8002fde:	d002      	beq.n	8002fe6 <init_screen+0xdc>
-		return errorCode;
+	{
+		return err_code;
  8002fe0:	1dfb      	adds	r3, r7, #7
  8002fe2:	781b      	ldrb	r3, [r3, #0]
  8002fe4:	e00e      	b.n	8003004 <init_screen+0xfa>
-	if((errorCode = cmd_write(TURN_ON)) != NHD_SPI_OK) //Display ON
+	}
+	if ((err_code = cmd_write(TURN_ON)) != NHD_SPI_OK) //Display ON
  8002fe6:	1dfc      	adds	r4, r7, #7
  8002fe8:	20af      	movs	r0, #175	@ 0xaf
  8002fea:	f000 f89b 	bl	8003124 <cmd_write>
@@ -6106,12 +6122,14 @@ NHD_LCDstatus_t init_screen()
  8002ff4:	781b      	ldrb	r3, [r3, #0]
  8002ff6:	2b00      	cmp	r3, #0
  8002ff8:	d002      	beq.n	8003000 <init_screen+0xf6>
-		return errorCode;
+	{
+		return err_code;
  8002ffa:	1dfb      	adds	r3, r7, #7
  8002ffc:	781b      	ldrb	r3, [r3, #0]
  8002ffe:	e001      	b.n	8003004 <init_screen+0xfa>
+	}
 
-	return errorCode; //NHD_SPI_OK
+	return err_code; //NHD_SPI_OK
  8003000:	1dfb      	adds	r3, r7, #7
  8003002:	781b      	ldrb	r3, [r3, #0]
 }
@@ -6130,11 +6148,11 @@ NHD_LCDstatus_t clear_screen()
  800300c:	b590      	push	{r4, r7, lr}
  800300e:	b083      	sub	sp, #12
  8003010:	af00      	add	r7, sp, #0
-	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+	NHD_LCDstatus_t err_code = NHD_SPI_OK;
  8003012:	1d3b      	adds	r3, r7, #4
  8003014:	2200      	movs	r2, #0
  8003016:	701a      	strb	r2, [r3, #0]
-	if((errorCode = cmd_write(TURN_OFF)) != NHD_SPI_OK)
+	if ((err_code = cmd_write(TURN_OFF)) != NHD_SPI_OK)
  8003018:	1d3c      	adds	r4, r7, #4
  800301a:	20ae      	movs	r0, #174	@ 0xae
  800301c:	f000 f882 	bl	8003124 <cmd_write>
@@ -6144,11 +6162,13 @@ NHD_LCDstatus_t clear_screen()
  8003026:	781b      	ldrb	r3, [r3, #0]
  8003028:	2b00      	cmp	r3, #0
  800302a:	d002      	beq.n	8003032 <clear_screen+0x26>
-		return errorCode;
+	{
+		return err_code;
  800302c:	1d3b      	adds	r3, r7, #4
  800302e:	781b      	ldrb	r3, [r3, #0]
  8003030:	e074      	b.n	800311c <clear_screen+0x110>
-	if((errorCode = cmd_write(SET_SRT_ROW)) != NHD_SPI_OK)
+	}
+	if ((err_code = cmd_write(SET_SRT_ROW)) != NHD_SPI_OK)
  8003032:	1d3c      	adds	r4, r7, #4
  8003034:	2040      	movs	r0, #64	@ 0x40
  8003036:	f000 f875 	bl	8003124 <cmd_write>
@@ -6158,22 +6178,24 @@ NHD_LCDstatus_t clear_screen()
  8003040:	781b      	ldrb	r3, [r3, #0]
  8003042:	2b00      	cmp	r3, #0
  8003044:	d002      	beq.n	800304c <clear_screen+0x40>
-		return errorCode;
+	{
+		return err_code;
  8003046:	1d3b      	adds	r3, r7, #4
  8003048:	781b      	ldrb	r3, [r3, #0]
  800304a:	e067      	b.n	800311c <clear_screen+0x110>
+	}
 
 	uint8_t page = SET_PG_ADDR;
  800304c:	1dfb      	adds	r3, r7, #7
  800304e:	22b0      	movs	r2, #176	@ 0xb0
  8003050:	701a      	strb	r2, [r3, #0]
-	for(uint8_t i = 0; i < 4; i++)
+	for (uint8_t i = 0; i < 4; i++)
  8003052:	1dbb      	adds	r3, r7, #6
  8003054:	2200      	movs	r2, #0
  8003056:	701a      	strb	r2, [r3, #0]
  8003058:	e04d      	b.n	80030f6 <clear_screen+0xea>
 	{
-		if((errorCode = cmd_write(page)) != NHD_SPI_OK)	// send page address
+		if ((err_code = cmd_write(page)) != NHD_SPI_OK)	// send page address
  800305a:	1d3c      	adds	r4, r7, #4
  800305c:	1dfb      	adds	r3, r7, #7
  800305e:	781b      	ldrb	r3, [r3, #0]
@@ -6185,12 +6207,14 @@ NHD_LCDstatus_t clear_screen()
  800306c:	781b      	ldrb	r3, [r3, #0]
  800306e:	2b00      	cmp	r3, #0
  8003070:	d002      	beq.n	8003078 <clear_screen+0x6c>
-			return errorCode;
+		{
+			return err_code;
  8003072:	1d3b      	adds	r3, r7, #4
  8003074:	781b      	ldrb	r3, [r3, #0]
  8003076:	e051      	b.n	800311c <clear_screen+0x110>
+		}
 		//	Following two lines set the column address to leftmost column
-		if((errorCode = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
+		if ((err_code = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
  8003078:	1d3c      	adds	r4, r7, #4
  800307a:	2010      	movs	r0, #16
  800307c:	f000 f852 	bl	8003124 <cmd_write>
@@ -6200,11 +6224,13 @@ NHD_LCDstatus_t clear_screen()
  8003086:	781b      	ldrb	r3, [r3, #0]
  8003088:	2b00      	cmp	r3, #0
  800308a:	d002      	beq.n	8003092 <clear_screen+0x86>
-			return errorCode;
+		{
+			return err_code;
  800308c:	1d3b      	adds	r3, r7, #4
  800308e:	781b      	ldrb	r3, [r3, #0]
  8003090:	e044      	b.n	800311c <clear_screen+0x110>
-		if((errorCode = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
+		}
+		if ((err_code = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
  8003092:	1d3c      	adds	r4, r7, #4
  8003094:	2000      	movs	r0, #0
  8003096:	f000 f845 	bl	8003124 <cmd_write>
@@ -6214,18 +6240,20 @@ NHD_LCDstatus_t clear_screen()
  80030a0:	781b      	ldrb	r3, [r3, #0]
  80030a2:	2b00      	cmp	r3, #0
  80030a4:	d002      	beq.n	80030ac <clear_screen+0xa0>
-			return errorCode;
+		{
+			return err_code;
  80030a6:	1d3b      	adds	r3, r7, #4
  80030a8:	781b      	ldrb	r3, [r3, #0]
  80030aa:	e037      	b.n	800311c <clear_screen+0x110>
+		}
 
-		for(uint8_t j = 0; j < 128; j++)
+		for (uint8_t j = 0; j < 128; j++)
  80030ac:	1d7b      	adds	r3, r7, #5
  80030ae:	2200      	movs	r2, #0
  80030b0:	701a      	strb	r2, [r3, #0]
  80030b2:	e011      	b.n	80030d8 <clear_screen+0xcc>
 		{
-			if((errorCode = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
+			if ((err_code = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
  80030b4:	1d3c      	adds	r4, r7, #4
  80030b6:	2000      	movs	r0, #0
  80030b8:	f000 f876 	bl	80031a8 <data_write>
@@ -6235,11 +6263,12 @@ NHD_LCDstatus_t clear_screen()
  80030c2:	781b      	ldrb	r3, [r3, #0]
  80030c4:	2b00      	cmp	r3, #0
  80030c6:	d002      	beq.n	80030ce <clear_screen+0xc2>
-				return errorCode;
+			{
+				return err_code;
  80030c8:	1d3b      	adds	r3, r7, #4
  80030ca:	781b      	ldrb	r3, [r3, #0]
  80030cc:	e026      	b.n	800311c <clear_screen+0x110>
-		for(uint8_t j = 0; j < 128; j++)
+		for (uint8_t j = 0; j < 128; j++)
  80030ce:	1d7b      	adds	r3, r7, #5
  80030d0:	781a      	ldrb	r2, [r3, #0]
  80030d2:	1d7b      	adds	r3, r7, #5
@@ -6250,6 +6279,7 @@ NHD_LCDstatus_t clear_screen()
  80030dc:	b25b      	sxtb	r3, r3
  80030de:	2b00      	cmp	r3, #0
  80030e0:	dae8      	bge.n	80030b4 <clear_screen+0xa8>
+			}
 		}
 		page++;//After 128 columns, go to the next page
  80030e2:	1dfb      	adds	r3, r7, #7
@@ -6257,7 +6287,7 @@ NHD_LCDstatus_t clear_screen()
  80030e6:	1dfb      	adds	r3, r7, #7
  80030e8:	3201      	adds	r2, #1
  80030ea:	701a      	strb	r2, [r3, #0]
-	for(uint8_t i = 0; i < 4; i++)
+	for (uint8_t i = 0; i < 4; i++)
  80030ec:	1dbb      	adds	r3, r7, #6
  80030ee:	781a      	ldrb	r2, [r3, #0]
  80030f0:	1dbb      	adds	r3, r7, #6
@@ -6268,7 +6298,7 @@ NHD_LCDstatus_t clear_screen()
  80030fa:	2b03      	cmp	r3, #3
  80030fc:	d9ad      	bls.n	800305a <clear_screen+0x4e>
 	}
-	if((errorCode = cmd_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
+	if ((err_code = cmd_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
  80030fe:	1d3c      	adds	r4, r7, #4
  8003100:	20af      	movs	r0, #175	@ 0xaf
  8003102:	f000 f80f 	bl	8003124 <cmd_write>
@@ -6278,12 +6308,14 @@ NHD_LCDstatus_t clear_screen()
  800310c:	781b      	ldrb	r3, [r3, #0]
  800310e:	2b00      	cmp	r3, #0
  8003110:	d002      	beq.n	8003118 <clear_screen+0x10c>
-		return errorCode;
+	{
+		return err_code;
  8003112:	1d3b      	adds	r3, r7, #4
  8003114:	781b      	ldrb	r3, [r3, #0]
  8003116:	e001      	b.n	800311c <clear_screen+0x110>
+	}
 
-	return errorCode;
+	return err_code;
  8003118:	1d3b      	adds	r3, r7, #4
  800311a:	781b      	ldrb	r3, [r3, #0]
 }
@@ -6305,7 +6337,7 @@ NHD_LCDstatus_t cmd_write(uint8_t c)
  800312a:	0002      	movs	r2, r0
  800312c:	1dfb      	adds	r3, r7, #7
  800312e:	701a      	strb	r2, [r3, #0]
-	HAL_StatusTypeDef errorcode;
+	HAL_StatusTypeDef err_code;
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);	//Select LCD Screen
  8003130:	4b1b      	ldr	r3, [pc, #108]	@ (80031a0 <cmd_write+0x7c>)
@@ -6321,7 +6353,7 @@ NHD_LCDstatus_t cmd_write(uint8_t c)
  8003144:	0018      	movs	r0, r3
  8003146:	f002 fa09 	bl	800555c <HAL_GPIO_WritePin>
 
-	errorcode = HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); 		// transmit command
+	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); 		// transmit command
  800314a:	250f      	movs	r5, #15
  800314c:	197c      	adds	r4, r7, r5
  800314e:	1df9      	adds	r1, r7, #7
@@ -6339,13 +6371,13 @@ NHD_LCDstatus_t cmd_write(uint8_t c)
  8003164:	0018      	movs	r0, r3
  8003166:	f002 f9f9 	bl	800555c <HAL_GPIO_WritePin>
 
-	if(errorcode != HAL_OK) //transmit data
+	if (err_code != HAL_OK) //transmit data
  800316a:	197b      	adds	r3, r7, r5
  800316c:	781b      	ldrb	r3, [r3, #0]
  800316e:	2b00      	cmp	r3, #0
  8003170:	d010      	beq.n	8003194 <cmd_write+0x70>
 	{
-		switch(errorcode)
+		switch (err_code)
  8003172:	197b      	adds	r3, r7, r5
  8003174:	781b      	ldrb	r3, [r3, #0]
  8003176:	2b03      	cmp	r3, #3
@@ -6399,7 +6431,7 @@ NHD_LCDstatus_t data_write(uint8_t d)
  80031ae:	0002      	movs	r2, r0
  80031b0:	1dfb      	adds	r3, r7, #7
  80031b2:	701a      	strb	r2, [r3, #0]
-	HAL_StatusTypeDef errorcode;
+	HAL_StatusTypeDef err_code;
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);	//Select LCD Screen
  80031b4:	4b1b      	ldr	r3, [pc, #108]	@ (8003224 <data_write+0x7c>)
@@ -6415,7 +6447,7 @@ NHD_LCDstatus_t data_write(uint8_t d)
  80031c8:	0018      	movs	r0, r3
  80031ca:	f002 f9c7 	bl	800555c <HAL_GPIO_WritePin>
 
-	errorcode = HAL_SPI_Transmit(&SPI_HANDLE, &d, 1, 100); 		// transmit data
+	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &d, 1, 100); 		// transmit data
  80031ce:	250f      	movs	r5, #15
  80031d0:	197c      	adds	r4, r7, r5
  80031d2:	1df9      	adds	r1, r7, #7
@@ -6433,13 +6465,13 @@ NHD_LCDstatus_t data_write(uint8_t d)
  80031e8:	0018      	movs	r0, r3
  80031ea:	f002 f9b7 	bl	800555c <HAL_GPIO_WritePin>
 
-	if(errorcode != HAL_OK) //transmit data
+	if (err_code != HAL_OK) //transmit data
  80031ee:	197b      	adds	r3, r7, r5
  80031f0:	781b      	ldrb	r3, [r3, #0]
  80031f2:	2b00      	cmp	r3, #0
  80031f4:	d010      	beq.n	8003218 <data_write+0x70>
 	{
-		switch(errorcode)
+		switch (err_code)
  80031f6:	197b      	adds	r3, r7, r5
  80031f8:	781b      	ldrb	r3, [r3, #0]
  80031fa:	2b03      	cmp	r3, #3
@@ -6484,7 +6516,7 @@ NHD_LCDstatus_t data_write(uint8_t d)
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
+NHD_LCDstatus_t print_data(const char * text, uint8_t rowIndex)
 {
  800322c:	b5f0      	push	{r4, r5, r6, r7, lr}
  800322e:	b085      	sub	sp, #20
@@ -6493,13 +6525,13 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  8003234:	000a      	movs	r2, r1
  8003236:	1cfb      	adds	r3, r7, #3
  8003238:	701a      	strb	r2, [r3, #0]
-	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+	NHD_LCDstatus_t err_code = NHD_SPI_OK;
  800323a:	210d      	movs	r1, #13
  800323c:	187b      	adds	r3, r7, r1
  800323e:	2200      	movs	r2, #0
  8003240:	701a      	strb	r2, [r3, #0]
 
-	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if ((err_code = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
  8003242:	1cfb      	adds	r3, r7, #3
  8003244:	781b      	ldrb	r3, [r3, #0]
  8003246:	3b50      	subs	r3, #80	@ 0x50
@@ -6514,12 +6546,14 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  800325a:	781b      	ldrb	r3, [r3, #0]
  800325c:	2b00      	cmp	r3, #0
  800325e:	d002      	beq.n	8003266 <print_data+0x3a>
-		return errorCode;
+	{
+		return err_code;
  8003260:	197b      	adds	r3, r7, r5
  8003262:	781b      	ldrb	r3, [r3, #0]
  8003264:	e082      	b.n	800336c <print_data+0x140>
+	}
 	//	Following two lines set the column address to leftmost column
-	if((errorCode = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
+	if ((err_code = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
  8003266:	250d      	movs	r5, #13
  8003268:	197c      	adds	r4, r7, r5
  800326a:	2010      	movs	r0, #16
@@ -6531,11 +6565,13 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  8003278:	781b      	ldrb	r3, [r3, #0]
  800327a:	2b00      	cmp	r3, #0
  800327c:	d002      	beq.n	8003284 <print_data+0x58>
-		return errorCode;
+	{
+		return err_code;
  800327e:	18bb      	adds	r3, r7, r2
  8003280:	781b      	ldrb	r3, [r3, #0]
  8003282:	e073      	b.n	800336c <print_data+0x140>
-	if((errorCode = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
+	}
+	if ((err_code = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
  8003284:	250d      	movs	r5, #13
  8003286:	197c      	adds	r4, r7, r5
  8003288:	2000      	movs	r0, #0
@@ -6547,12 +6583,14 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  8003296:	781b      	ldrb	r3, [r3, #0]
  8003298:	2b00      	cmp	r3, #0
  800329a:	d002      	beq.n	80032a2 <print_data+0x76>
-		return errorCode;
+	{
+		return err_code;
  800329c:	18bb      	adds	r3, r7, r2
  800329e:	781b      	ldrb	r3, [r3, #0]
  80032a0:	e064      	b.n	800336c <print_data+0x140>
+	}
 
-	for(uint8_t i = 0; text[i] != '\0'; i++)
+	for (uint8_t i = 0; text[i] != '\0'; i++)
  80032a2:	230f      	movs	r3, #15
  80032a4:	18fb      	adds	r3, r7, r3
  80032a6:	2200      	movs	r2, #0
@@ -6576,7 +6614,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  80032c4:	2200      	movs	r2, #0
  80032c6:	701a      	strb	r2, [r3, #0]
 
-		for(uint8_t j = 0; j < 5; j++)
+		for (uint8_t j = 0; j < 5; j++)
  80032c8:	230e      	movs	r3, #14
  80032ca:	18fb      	adds	r3, r7, r3
  80032cc:	2200      	movs	r2, #0
@@ -6599,7 +6637,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  80032ea:	18e3      	adds	r3, r4, r3
  80032ec:	5c1b      	ldrb	r3, [r3, r0]
  80032ee:	700b      	strb	r3, [r1, #0]
-			if((errorCode = data_write(val)) != NHD_SPI_OK)
+			if ((err_code = data_write(val)) != NHD_SPI_OK)
  80032f0:	250d      	movs	r5, #13
  80032f2:	197c      	adds	r4, r7, r5
  80032f4:	19bb      	adds	r3, r7, r6
@@ -6612,11 +6650,12 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  8003304:	781b      	ldrb	r3, [r3, #0]
  8003306:	2b00      	cmp	r3, #0
  8003308:	d002      	beq.n	8003310 <print_data+0xe4>
-				return errorCode;
+			{
+				return err_code;
  800330a:	197b      	adds	r3, r7, r5
  800330c:	781b      	ldrb	r3, [r3, #0]
  800330e:	e02d      	b.n	800336c <print_data+0x140>
-		for(uint8_t j = 0; j < 5; j++)
+		for (uint8_t j = 0; j < 5; j++)
  8003310:	210e      	movs	r1, #14
  8003312:	187b      	adds	r3, r7, r1
  8003314:	781a      	ldrb	r2, [r3, #0]
@@ -6628,7 +6667,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  8003320:	781b      	ldrb	r3, [r3, #0]
  8003322:	2b04      	cmp	r3, #4
  8003324:	d9d5      	bls.n	80032d2 <print_data+0xa6>
-	for(uint8_t i = 0; text[i] != '\0'; i++)
+	for (uint8_t i = 0; text[i] != '\0'; i++)
  8003326:	210f      	movs	r1, #15
  8003328:	187b      	adds	r3, r7, r1
  800332a:	781a      	ldrb	r2, [r3, #0]
@@ -6643,10 +6682,11 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  800333c:	781b      	ldrb	r3, [r3, #0]
  800333e:	2b00      	cmp	r3, #0
  8003340:	d1b4      	bne.n	80032ac <print_data+0x80>
+			}
 		}
 	}
 
-	if((errorCode = erase_trails(text, rowIndex)) != NHD_SPI_OK)
+	if ((err_code = erase_trails(text, rowIndex)) != NHD_SPI_OK)
  8003342:	250d      	movs	r5, #13
  8003344:	197c      	adds	r4, r7, r5
  8003346:	1cfb      	adds	r3, r7, #3
@@ -6661,12 +6701,14 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  800335a:	781b      	ldrb	r3, [r3, #0]
  800335c:	2b00      	cmp	r3, #0
  800335e:	d002      	beq.n	8003366 <print_data+0x13a>
-		return errorCode;
+	{
+		return err_code;
  8003360:	197b      	adds	r3, r7, r5
  8003362:	781b      	ldrb	r3, [r3, #0]
  8003364:	e002      	b.n	800336c <print_data+0x140>
+	}
 
-	return errorCode;
+	return err_code;
  8003366:	230d      	movs	r3, #13
  8003368:	18fb      	adds	r3, r7, r3
  800336a:	781b      	ldrb	r3, [r3, #0]
@@ -6682,7 +6724,7 @@ NHD_LCDstatus_t print_data(const char* text, uint8_t rowIndex)
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
+NHD_LCDstatus_t erase_trails(const char * text, uint8_t rowIndex)
 {
  8003378:	b5b0      	push	{r4, r5, r7, lr}
  800337a:	b086      	sub	sp, #24
@@ -6691,12 +6733,12 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  8003380:	000a      	movs	r2, r1
  8003382:	1cfb      	adds	r3, r7, #3
  8003384:	701a      	strb	r2, [r3, #0]
-	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+	NHD_LCDstatus_t err_code = NHD_SPI_OK;
  8003386:	2117      	movs	r1, #23
  8003388:	187b      	adds	r3, r7, r1
  800338a:	2200      	movs	r2, #0
  800338c:	701a      	strb	r2, [r3, #0]
-	if((errorCode = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if ((err_code = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
  800338e:	1cfb      	adds	r3, r7, #3
  8003390:	781b      	ldrb	r3, [r3, #0]
  8003392:	3b50      	subs	r3, #80	@ 0x50
@@ -6711,10 +6753,12 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  80033a6:	781b      	ldrb	r3, [r3, #0]
  80033a8:	2b00      	cmp	r3, #0
  80033aa:	d002      	beq.n	80033b2 <erase_trails+0x3a>
-		return errorCode;
+	{
+		return err_code;
  80033ac:	197b      	adds	r3, r7, r5
  80033ae:	781b      	ldrb	r3, [r3, #0]
  80033b0:	e052      	b.n	8003458 <erase_trails+0xe0>
+	}
 
 	//Get length of the current text
 	size_t len = strlen(text);
@@ -6723,7 +6767,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  80033b6:	f7fc fea3 	bl	8000100 <strlen>
  80033ba:	0003      	movs	r3, r0
  80033bc:	613b      	str	r3, [r7, #16]
-	if(last_len[rowIndex] > len) // There are characters in that were not overwritten and need to be cleared
+	if (last_len[rowIndex] > len) // There are characters in that were not overwritten and need to be cleared
  80033be:	1cfb      	adds	r3, r7, #3
  80033c0:	781b      	ldrb	r3, [r3, #0]
  80033c2:	4a27      	ldr	r2, [pc, #156]	@ (8003460 <erase_trails+0xe8>)
@@ -6745,21 +6789,21 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  80033de:	1a8a      	subs	r2, r1, r2
  80033e0:	701a      	strb	r2, [r3, #0]
 
-		for(uint8_t i = 0; i < trails; i++)
+		for (uint8_t i = 0; i < trails; i++)
  80033e2:	2316      	movs	r3, #22
  80033e4:	18fb      	adds	r3, r7, r3
  80033e6:	2200      	movs	r2, #0
  80033e8:	701a      	strb	r2, [r3, #0]
  80033ea:	e024      	b.n	8003436 <erase_trails+0xbe>
 		{
-			for(uint8_t j = 0; j < 5; j++)
+			for (uint8_t j = 0; j < 5; j++)
  80033ec:	2315      	movs	r3, #21
  80033ee:	18fb      	adds	r3, r7, r3
  80033f0:	2200      	movs	r2, #0
  80033f2:	701a      	strb	r2, [r3, #0]
  80033f4:	e014      	b.n	8003420 <erase_trails+0xa8>
 			{
-				if((errorCode = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
+				if ((err_code = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
  80033f6:	2517      	movs	r5, #23
  80033f8:	197c      	adds	r4, r7, r5
  80033fa:	2000      	movs	r0, #0
@@ -6771,11 +6815,12 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  8003408:	781b      	ldrb	r3, [r3, #0]
  800340a:	2b00      	cmp	r3, #0
  800340c:	d002      	beq.n	8003414 <erase_trails+0x9c>
-					return errorCode;
+				{
+					return err_code;
  800340e:	18bb      	adds	r3, r7, r2
  8003410:	781b      	ldrb	r3, [r3, #0]
  8003412:	e021      	b.n	8003458 <erase_trails+0xe0>
-			for(uint8_t j = 0; j < 5; j++)
+			for (uint8_t j = 0; j < 5; j++)
  8003414:	2115      	movs	r1, #21
  8003416:	187b      	adds	r3, r7, r1
  8003418:	781a      	ldrb	r2, [r3, #0]
@@ -6787,7 +6832,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  8003424:	781b      	ldrb	r3, [r3, #0]
  8003426:	2b04      	cmp	r3, #4
  8003428:	d9e5      	bls.n	80033f6 <erase_trails+0x7e>
-		for(uint8_t i = 0; i < trails; i++)
+		for (uint8_t i = 0; i < trails; i++)
  800342a:	2116      	movs	r1, #22
  800342c:	187b      	adds	r3, r7, r1
  800342e:	781a      	ldrb	r2, [r3, #0]
@@ -6802,6 +6847,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  8003440:	781b      	ldrb	r3, [r3, #0]
  8003442:	429a      	cmp	r2, r3
  8003444:	d3d2      	bcc.n	80033ec <erase_trails+0x74>
+				}
 			}
 		}
 	}
@@ -6813,7 +6859,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  800344e:	4a04      	ldr	r2, [pc, #16]	@ (8003460 <erase_trails+0xe8>)
  8003450:	54d1      	strb	r1, [r2, r3]
 
-	return errorCode;
+	return err_code;
  8003452:	2317      	movs	r3, #23
  8003454:	18fb      	adds	r3, r7, r3
  8003456:	781b      	ldrb	r3, [r3, #0]
@@ -6829,7 +6875,7 @@ NHD_LCDstatus_t erase_trails(const char* text, uint8_t rowIndex)
  *
  * @retval None
  */
-void reverse(char* str, uint8_t len)
+void reverse(char * str, uint8_t len)
 {
  8003464:	b5b0      	push	{r4, r5, r7, lr}
  8003466:	b084      	sub	sp, #16
@@ -6838,7 +6884,7 @@ void reverse(char* str, uint8_t len)
  800346c:	000a      	movs	r2, r1
  800346e:	1cfb      	adds	r3, r7, #3
  8003470:	701a      	strb	r2, [r3, #0]
-	uint8_t i = 0, j = len - 1, temp;
+  uint8_t i = 0, j = len - 1, temp;
  8003472:	230f      	movs	r3, #15
  8003474:	18fb      	adds	r3, r7, r3
  8003476:	2200      	movs	r2, #0
@@ -6849,9 +6895,10 @@ void reverse(char* str, uint8_t len)
  8003480:	7812      	ldrb	r2, [r2, #0]
  8003482:	3a01      	subs	r2, #1
  8003484:	701a      	strb	r2, [r3, #0]
-    while (i < j) {
+  while (i < j)
  8003486:	e025      	b.n	80034d4 <reverse+0x70>
-        temp = str[i];
+  {
+    temp = str[i];
  8003488:	200f      	movs	r0, #15
  800348a:	183b      	adds	r3, r7, r0
  800348c:	781b      	ldrb	r3, [r3, #0]
@@ -6861,7 +6908,7 @@ void reverse(char* str, uint8_t len)
  8003494:	197b      	adds	r3, r7, r5
  8003496:	7812      	ldrb	r2, [r2, #0]
  8003498:	701a      	strb	r2, [r3, #0]
-        str[i] = str[j];
+    str[i] = str[j];
  800349a:	240e      	movs	r4, #14
  800349c:	193b      	adds	r3, r7, r4
  800349e:	781b      	ldrb	r3, [r3, #0]
@@ -6873,7 +6920,7 @@ void reverse(char* str, uint8_t len)
  80034aa:	18cb      	adds	r3, r1, r3
  80034ac:	7812      	ldrb	r2, [r2, #0]
  80034ae:	701a      	strb	r2, [r3, #0]
-        str[j] = temp;
+    str[j] = temp;
  80034b0:	0021      	movs	r1, r4
  80034b2:	187b      	adds	r3, r7, r1
  80034b4:	781b      	ldrb	r3, [r3, #0]
@@ -6882,19 +6929,19 @@ void reverse(char* str, uint8_t len)
  80034ba:	197a      	adds	r2, r7, r5
  80034bc:	7812      	ldrb	r2, [r2, #0]
  80034be:	701a      	strb	r2, [r3, #0]
-        i++;
+    i++;
  80034c0:	183b      	adds	r3, r7, r0
  80034c2:	781a      	ldrb	r2, [r3, #0]
  80034c4:	183b      	adds	r3, r7, r0
  80034c6:	3201      	adds	r2, #1
  80034c8:	701a      	strb	r2, [r3, #0]
-        j--;
+    j--;
  80034ca:	187b      	adds	r3, r7, r1
  80034cc:	781a      	ldrb	r2, [r3, #0]
  80034ce:	187b      	adds	r3, r7, r1
  80034d0:	3a01      	subs	r2, #1
  80034d2:	701a      	strb	r2, [r3, #0]
-    while (i < j) {
+  while (i < j)
  80034d4:	230f      	movs	r3, #15
  80034d6:	18fa      	adds	r2, r7, r3
  80034d8:	230e      	movs	r3, #14
@@ -6903,7 +6950,7 @@ void reverse(char* str, uint8_t len)
  80034de:	781b      	ldrb	r3, [r3, #0]
  80034e0:	429a      	cmp	r2, r3
  80034e2:	d3d1      	bcc.n	8003488 <reverse+0x24>
-    }
+  }
 }
  80034e4:	46c0      	nop			@ (mov r8, r8)
  80034e6:	46c0      	nop			@ (mov r8, r8)
@@ -6911,12 +6958,12 @@ void reverse(char* str, uint8_t len)
  80034ea:	b004      	add	sp, #16
  80034ec:	bdb0      	pop	{r4, r5, r7, pc}
 
-080034ee <intToStr>:
+080034ee <int_to_str>:
  * @param d: number of digits to place after the decimal
  *
  * @retval The number of characters in the string
  */
-int intToStr(int32_t x, char str[], uint8_t d)
+int32_t int_to_str(int32_t x, char str[], uint8_t d)
 {
  80034ee:	b580      	push	{r7, lr}
  80034f0:	b086      	sub	sp, #24
@@ -6928,9 +6975,10 @@ int intToStr(int32_t x, char str[], uint8_t d)
 	int32_t i = 0;
  80034fc:	2300      	movs	r3, #0
  80034fe:	617b      	str	r3, [r7, #20]
-    while (x) {
- 8003500:	e016      	b.n	8003530 <intToStr+0x42>
-        str[i++] = (x % 10) + '0';
+    while (x)
+ 8003500:	e016      	b.n	8003530 <int_to_str+0x42>
+    {
+      str[i++] = (x % 10) + '0';
  8003502:	68fb      	ldr	r3, [r7, #12]
  8003504:	210a      	movs	r1, #10
  8003506:	0018      	movs	r0, r3
@@ -6946,24 +6994,24 @@ int intToStr(int32_t x, char str[], uint8_t d)
  800351c:	3230      	adds	r2, #48	@ 0x30
  800351e:	b2d2      	uxtb	r2, r2
  8003520:	701a      	strb	r2, [r3, #0]
-        x = x / 10;
+      x = x / 10;
  8003522:	68fb      	ldr	r3, [r7, #12]
  8003524:	210a      	movs	r1, #10
  8003526:	0018      	movs	r0, r3
  8003528:	f7fc fe7c 	bl	8000224 <__divsi3>
  800352c:	0003      	movs	r3, r0
  800352e:	60fb      	str	r3, [r7, #12]
-    while (x) {
+    while (x)
  8003530:	68fb      	ldr	r3, [r7, #12]
  8003532:	2b00      	cmp	r3, #0
- 8003534:	d1e5      	bne.n	8003502 <intToStr+0x14>
+ 8003534:	d1e5      	bne.n	8003502 <int_to_str+0x14>
     }
 
     // If number of digits required is more, then
     // add 0s at the beginning
     while (i < d)
- 8003536:	e007      	b.n	8003548 <intToStr+0x5a>
-        str[i++] = '0';
+ 8003536:	e007      	b.n	8003548 <int_to_str+0x5a>
+      str[i++] = '0';
  8003538:	697b      	ldr	r3, [r7, #20]
  800353a:	1c5a      	adds	r2, r3, #1
  800353c:	617a      	str	r2, [r7, #20]
@@ -6977,7 +7025,7 @@ int intToStr(int32_t x, char str[], uint8_t d)
  800354a:	781b      	ldrb	r3, [r3, #0]
  800354c:	697a      	ldr	r2, [r7, #20]
  800354e:	429a      	cmp	r2, r3
- 8003550:	dbf2      	blt.n	8003538 <intToStr+0x4a>
+ 8003550:	dbf2      	blt.n	8003538 <int_to_str+0x4a>
 
     reverse(str, i);
  8003552:	697b      	ldr	r3, [r7, #20]
@@ -7005,7 +7053,7 @@ int intToStr(int32_t x, char str[], uint8_t d)
  * @retval None
  *
  */
-void ftoa(float n, char* res, uint8_t afterpoint)
+void ftoa(float n, char * res, uint8_t afterpoint)
 {
  8003574:	b5f0      	push	{r4, r5, r6, r7, lr}
  8003576:	b089      	sub	sp, #36	@ 0x24
@@ -7015,12 +7063,12 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  800357e:	1dfb      	adds	r3, r7, #7
  8003580:	701a      	strb	r2, [r3, #0]
 	// Check validity of the input number 'n'
-	if(res == NULL) return;
+	if (res == NULL) return;
  8003582:	68bb      	ldr	r3, [r7, #8]
  8003584:	2b00      	cmp	r3, #0
  8003586:	d100      	bne.n	800358a <ftoa+0x16>
  8003588:	e0f1      	b.n	800376e <ftoa+0x1fa>
-	if(isnan(n)){strcpy(res,"nan"); return;}
+	if (isnan(n)){strcpy(res,"nan"); return;}
  800358a:	68f9      	ldr	r1, [r7, #12]
  800358c:	68f8      	ldr	r0, [r7, #12]
  800358e:	f7fd fc75 	bl	8000e7c <__aeabi_fcmpun>
@@ -7034,7 +7082,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  80035a0:	001a      	movs	r2, r3
  80035a2:	f003 f893 	bl	80066cc <memcpy>
  80035a6:	e0e3      	b.n	8003770 <ftoa+0x1fc>
-	if(isinf(n)){strcpy(res,"inf"); return;}
+	if (isinf(n)){strcpy(res,"inf"); return;}
  80035a8:	68fb      	ldr	r3, [r7, #12]
  80035aa:	005b      	lsls	r3, r3, #1
  80035ac:	085c      	lsrs	r4, r3, #1
@@ -7068,7 +7116,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  80035ea:	e0c1      	b.n	8003770 <ftoa+0x1fc>
 
 	// Check if the input float number 'n' is equal to zero
-	if(n == 0.0f)
+	if (n == 0.0f)
  80035ec:	2100      	movs	r1, #0
  80035ee:	68f8      	ldr	r0, [r7, #12]
  80035f0:	f7fc ff4e 	bl	8000490 <__aeabi_fcmpeq>
@@ -7083,7 +7131,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  8003600:	3301      	adds	r3, #1
  8003602:	222e      	movs	r2, #46	@ 0x2e
  8003604:	701a      	strb	r2, [r3, #0]
-		for(uint8_t  i= 1; i <= afterpoint; i++)
+		for (uint8_t  i= 1; i <= afterpoint; i++)
  8003606:	231f      	movs	r3, #31
  8003608:	18fb      	adds	r3, r7, r3
  800360a:	2201      	movs	r2, #1
@@ -7099,7 +7147,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  800361a:	18d3      	adds	r3, r2, r3
  800361c:	2230      	movs	r2, #48	@ 0x30
  800361e:	701a      	strb	r2, [r3, #0]
-		for(uint8_t  i= 1; i <= afterpoint; i++)
+		for (uint8_t  i= 1; i <= afterpoint; i++)
  8003620:	187b      	adds	r3, r7, r1
  8003622:	781a      	ldrb	r2, [r3, #0]
  8003624:	187b      	adds	r3, r7, r1
@@ -7131,7 +7179,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  800364a:	193b      	adds	r3, r7, r4
  800364c:	2200      	movs	r2, #0
  800364e:	701a      	strb	r2, [r3, #0]
-	if(n < 0.0f)
+	if (n < 0.0f)
  8003650:	2100      	movs	r1, #0
  8003652:	68f8      	ldr	r0, [r7, #12]
  8003654:	f7fc ff22 	bl	800049c <__aeabi_fcmplt>
@@ -7171,7 +7219,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  800368a:	61bb      	str	r3, [r7, #24]
 
 	// Check if the absolute value of n is less than 1
-	if((float)abs(n) < 1.0f)
+	if ((float)abs(n) < 1.0f)
  800368c:	68f8      	ldr	r0, [r7, #12]
  800368e:	f7fd fc0b 	bl	8000ea8 <__aeabi_f2iz>
  8003692:	0003      	movs	r3, r0
@@ -7207,7 +7255,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
 	else // abs(n) > 1
 	{
 		// convert integer part to string
-		i = intToStr(ipart, res + startIndex, 0);
+		i = int_to_str(ipart, res + startIndex, 0);
  80036ca:	231e      	movs	r3, #30
  80036cc:	18fb      	adds	r3, r7, r3
  80036ce:	781b      	ldrb	r3, [r3, #0]
@@ -7216,13 +7264,13 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  80036d4:	697b      	ldr	r3, [r7, #20]
  80036d6:	2200      	movs	r2, #0
  80036d8:	0018      	movs	r0, r3
- 80036da:	f7ff ff08 	bl	80034ee <intToStr>
+ 80036da:	f7ff ff08 	bl	80034ee <int_to_str>
  80036de:	0003      	movs	r3, r0
  80036e0:	61bb      	str	r3, [r7, #24]
 	}
 
-    // Extract floating part
-    float fpart = n - (float)ipart;
+  // Extract floating part
+  float fpart = n - (float)ipart;
  80036e2:	6978      	ldr	r0, [r7, #20]
  80036e4:	f7fd fc00 	bl	8000ee8 <__aeabi_i2f>
  80036e8:	1c03      	adds	r3, r0, #0
@@ -7232,13 +7280,14 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  80036f2:	1c03      	adds	r3, r0, #0
  80036f4:	613b      	str	r3, [r7, #16]
 
-    // check for display option after point
-    if (afterpoint != 0) {
+  // check for display option after point
+  if (afterpoint != 0)
  80036f6:	1dfb      	adds	r3, r7, #7
  80036f8:	781b      	ldrb	r3, [r3, #0]
  80036fa:	2b00      	cmp	r3, #0
  80036fc:	d038      	beq.n	8003770 <ftoa+0x1fc>
-        res[i + startIndex] = '.'; // add dot
+  {
+    res[i + startIndex] = '.'; // add dot
  80036fe:	261e      	movs	r6, #30
  8003700:	19bb      	adds	r3, r7, r6
  8003702:	781a      	ldrb	r2, [r3, #0]
@@ -7250,10 +7299,10 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  800370e:	222e      	movs	r2, #46	@ 0x2e
  8003710:	701a      	strb	r2, [r3, #0]
 
-        // Get the value of fraction part up to given no.
-        // of points after dot. The third parameter
-        // is needed to handle cases like 233.007
-        fpart = fpart * pow(10, afterpoint);
+    // Get the value of fraction part up to given no.
+    // of points after dot. The third parameter
+    // is needed to handle cases like 233.007
+    fpart = fpart * pow(10, afterpoint);
  8003712:	6938      	ldr	r0, [r7, #16]
  8003714:	f7ff faf6 	bl	8002d04 <__aeabi_f2d>
  8003718:	0004      	movs	r4, r0
@@ -7280,7 +7329,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  800374a:	1c03      	adds	r3, r0, #0
  800374c:	613b      	str	r3, [r7, #16]
 
-        intToStr((int32_t)fpart, res + i + 1 + startIndex, afterpoint);
+    int_to_str((int32_t)fpart, res + i + 1 + startIndex, afterpoint);
  800374e:	6938      	ldr	r0, [r7, #16]
  8003750:	f7fd fbaa 	bl	8000ea8 <__aeabi_f2iz>
  8003754:	19bb      	adds	r3, r7, r6
@@ -7293,11 +7342,11 @@ void ftoa(float n, char* res, uint8_t afterpoint)
  8003762:	1dfb      	adds	r3, r7, #7
  8003764:	781b      	ldrb	r3, [r3, #0]
  8003766:	001a      	movs	r2, r3
- 8003768:	f7ff fec1 	bl	80034ee <intToStr>
+ 8003768:	f7ff fec1 	bl	80034ee <int_to_str>
  800376c:	e000      	b.n	8003770 <ftoa+0x1fc>
-	if(res == NULL) return;
+	if (res == NULL) return;
  800376e:	46c0      	nop			@ (mov r8, r8)
-    }
+  }
 }
  8003770:	46bd      	mov	sp, r7
  8003772:	b009      	add	sp, #36	@ 0x24
@@ -7347,30 +7396,30 @@ int main(void)
   reset_screen();
  80037a2:	f7ff fb99 	bl	8002ed8 <reset_screen>
 
-  NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+  NHD_LCDstatus_t err_code = NHD_SPI_OK;
  80037a6:	1cfb      	adds	r3, r7, #3
  80037a8:	2200      	movs	r2, #0
  80037aa:	701a      	strb	r2, [r3, #0]
-  errorCode = init_screen();
+  err_code = init_screen();
  80037ac:	1cfc      	adds	r4, r7, #3
  80037ae:	f7ff fbac 	bl	8002f0a <init_screen>
  80037b2:	0003      	movs	r3, r0
  80037b4:	7023      	strb	r3, [r4, #0]
-  if(errorCode != NHD_SPI_OK)
+  if(err_code != NHD_SPI_OK)
   {
 	 //TODO: Gracefully handle initialization error
   }
 
-  errorCode = clear_screen();
+  err_code = clear_screen();
  80037b6:	1cfc      	adds	r4, r7, #3
  80037b8:	f7ff fc28 	bl	800300c <clear_screen>
  80037bc:	0003      	movs	r3, r0
  80037be:	7023      	strb	r3, [r4, #0]
-  if(errorCode != NHD_SPI_OK)
+  if(err_code != NHD_SPI_OK)
   {
 	  //TODO: Gracefully handle clear screen error
   }
-  errorCode = cmd_write(SET_SRT_ROW); // To first line
+  err_code = cmd_write(SET_SRT_ROW); // To first line
  80037c0:	1cfc      	adds	r4, r7, #3
  80037c2:	2040      	movs	r0, #64	@ 0x40
  80037c4:	f7ff fcae 	bl	8003124 <cmd_write>
@@ -7381,7 +7430,7 @@ int main(void)
   while (1)
   {
 	  //Get voltage and current values from ADC
-	  for(int i = 0; i < 4; i++)
+	  for (int i = 0; i < 4; i++)
  80037cc:	2300      	movs	r3, #0
  80037ce:	607b      	str	r3, [r7, #4]
  80037d0:	e015      	b.n	80037fe <main+0x76>
@@ -7395,7 +7444,7 @@ int main(void)
  80037dc:	2101      	movs	r1, #1
  80037de:	0018      	movs	r0, r3
  80037e0:	f000 ffb4 	bl	800474c <HAL_ADC_PollForConversion>
-		  ADC_buffer[i] = HAL_ADC_GetValue(&hadc1);
+		  g_adc_buffer[i] = HAL_ADC_GetValue(&hadc1);
  80037e4:	4b15      	ldr	r3, [pc, #84]	@ (800383c <main+0xb4>)
  80037e6:	0018      	movs	r0, r3
  80037e8:	f001 f844 	bl	8004874 <HAL_ADC_GetValue>
@@ -7405,7 +7454,7 @@ int main(void)
  80037f2:	687a      	ldr	r2, [r7, #4]
  80037f4:	0052      	lsls	r2, r2, #1
  80037f6:	52d1      	strh	r1, [r2, r3]
-	  for(int i = 0; i < 4; i++)
+	  for (int i = 0; i < 4; i++)
  80037f8:	687b      	ldr	r3, [r7, #4]
  80037fa:	3301      	adds	r3, #1
  80037fc:	607b      	str	r3, [r7, #4]
@@ -7415,51 +7464,51 @@ int main(void)
 	  }//Now the buffer contains all 4 values.
 
 	  //Send input voltage, output voltage, input current, output current to the LCD screen
-	  errorCode = print_power_value(v_input);
+	  err_code = print_power_value(v_input);
  8003804:	1cfc      	adds	r4, r7, #3
  8003806:	2000      	movs	r0, #0
  8003808:	f000 f9aa 	bl	8003b60 <print_power_value>
  800380c:	0003      	movs	r3, r0
  800380e:	7023      	strb	r3, [r4, #0]
-	  if(errorCode != NHD_SPI_OK)
+	  if (err_code != NHD_SPI_OK)
 	  {
 		  //TODO: Gracefully handle printing error
 	  }
-	  errorCode = print_power_value(v_output);
+	  err_code = print_power_value(v_output);
  8003810:	1cfc      	adds	r4, r7, #3
  8003812:	2001      	movs	r0, #1
  8003814:	f000 f9a4 	bl	8003b60 <print_power_value>
  8003818:	0003      	movs	r3, r0
  800381a:	7023      	strb	r3, [r4, #0]
-	  if(errorCode != NHD_SPI_OK)
+	  if (err_code != NHD_SPI_OK)
 	  {
-	  	  //TODO: Gracefully handle printing error
+	    //TODO: Gracefully handle printing error
 	  }
-	  errorCode = print_power_value(i_input);
+	  err_code = print_power_value(i_input);
  800381c:	1cfc      	adds	r4, r7, #3
  800381e:	2002      	movs	r0, #2
  8003820:	f000 f99e 	bl	8003b60 <print_power_value>
  8003824:	0003      	movs	r3, r0
  8003826:	7023      	strb	r3, [r4, #0]
-	  if(errorCode != NHD_SPI_OK)
+	  if (err_code != NHD_SPI_OK)
 	  {
-	  	  //TODO: Gracefully handle printing error
+	    //TODO: Gracefully handle printing error
 	  }
-	  errorCode = print_power_value(i_output);
+	  err_code = print_power_value(i_output);
  8003828:	1cfc      	adds	r4, r7, #3
  800382a:	2003      	movs	r0, #3
  800382c:	f000 f998 	bl	8003b60 <print_power_value>
  8003830:	0003      	movs	r3, r0
  8003832:	7023      	strb	r3, [r4, #0]
-	  if(errorCode != NHD_SPI_OK)
+	  if (err_code != NHD_SPI_OK)
 	  {
-	  	  //TODO: Gracefully handle printing error
+	    //TODO: Gracefully handle printing error
 	  }
 	  //delay for 100ms
 	  HAL_Delay(100);
  8003834:	2064      	movs	r0, #100	@ 0x64
  8003836:	f000 fc17 	bl	8004068 <HAL_Delay>
-	  for(int i = 0; i < 4; i++)
+	  for (int i = 0; i < 4; i++)
  800383a:	e7c7      	b.n	80037cc <main+0x44>
  800383c:	200000a8 	.word	0x200000a8
  8003840:	20000170 	.word	0x20000170
@@ -8039,13 +8088,14 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003b66:	0002      	movs	r2, r0
  8003b68:	1dfb      	adds	r3, r7, #7
  8003b6a:	701a      	strb	r2, [r3, #0]
+	// Set the number digits after the decimal point, and identify if it a current value or voltage value
 	uint8_t decimals = 0;
  8003b6c:	230f      	movs	r3, #15
  8003b6e:	18fb      	adds	r3, r7, r3
  8003b70:	2200      	movs	r2, #0
  8003b72:	701a      	strb	r2, [r3, #0]
 	uint8_t symbol_index;
-	if(index == v_input || index == v_output)
+	if (index == v_input || index == v_output)
  8003b74:	1dfb      	adds	r3, r7, #7
  8003b76:	781b      	ldrb	r3, [r3, #0]
  8003b78:	2b00      	cmp	r3, #0
@@ -8081,7 +8131,8 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003ba4:	701a      	strb	r2, [r3, #0]
 	}
 
-	ftoa((float)ADC_buffer[index]*scales[index]/adc_res, numText, decimals);
+	// Convert the ADC value from an integer->float->string
+	ftoa((float)g_adc_buffer[index]*g_scales[index]/g_adc_res, g_num_text, decimals);
  8003ba6:	1dfb      	adds	r3, r7, #7
  8003ba8:	781a      	ldrb	r2, [r3, #0]
  8003baa:	4b4a      	ldr	r3, [pc, #296]	@ (8003cd4 <print_power_value+0x174>)
@@ -8113,12 +8164,9 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003be6:	4b3e      	ldr	r3, [pc, #248]	@ (8003ce0 <print_power_value+0x180>)
  8003be8:	0019      	movs	r1, r3
  8003bea:	f7ff fcc3 	bl	8003574 <ftoa>
-	if(index == v_input || index == v_output)
-		strcat(desText, " V");
-	else
-		strcat(desText, " A");
-	*/
-	uint8_t numText_len = strlen(numText);
+
+	// Concatenate the header string, value string and symbol string
+	uint8_t num_text_len = strlen(g_num_text);
  8003bee:	4b3c      	ldr	r3, [pc, #240]	@ (8003ce0 <print_power_value+0x180>)
  8003bf0:	0018      	movs	r0, r3
  8003bf2:	f7fc fa85 	bl	8000100 <strlen>
@@ -8126,7 +8174,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003bf8:	240d      	movs	r4, #13
  8003bfa:	193b      	adds	r3, r7, r4
  8003bfc:	701a      	strb	r2, [r3, #0]
-	uint8_t symbol_len = strlen(unit_symbols[symbol_index]);
+	uint8_t symbol_len = strlen(g_unit_symbols[symbol_index]);
  8003bfe:	260e      	movs	r6, #14
  8003c00:	19bb      	adds	r3, r7, r6
  8003c02:	781a      	ldrb	r2, [r3, #0]
@@ -8139,7 +8187,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003c12:	250c      	movs	r5, #12
  8003c14:	197b      	adds	r3, r7, r5
  8003c16:	701a      	strb	r2, [r3, #0]
-	uint8_t total_len = header_len[index] + numText_len + symbol_len;
+	uint8_t total_len = g_header_len[index] + num_text_len + symbol_len;
  8003c18:	1dfb      	adds	r3, r7, #7
  8003c1a:	781b      	ldrb	r3, [r3, #0]
  8003c1c:	4a32      	ldr	r2, [pc, #200]	@ (8003ce8 <print_power_value+0x188>)
@@ -8155,13 +8203,13 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003c30:	188a      	adds	r2, r1, r2
  8003c32:	701a      	strb	r2, [r3, #0]
 
-	if(sizeof(desText) - 1 > total_len)
+	if (sizeof(g_dest_text) - 1 > total_len) //checks there is enough space in the buffer for the combined text
  8003c34:	183b      	adds	r3, r7, r0
  8003c36:	781b      	ldrb	r3, [r3, #0]
  8003c38:	2b30      	cmp	r3, #48	@ 0x30
  8003c3a:	d82f      	bhi.n	8003c9c <print_power_value+0x13c>
 	{
-		memcpy(desText, headers[index], header_len[index]);
+	  memcpy(g_dest_text, g_headers[index], g_header_len[index]);
  8003c3c:	1dfb      	adds	r3, r7, #7
  8003c3e:	781a      	ldrb	r2, [r3, #0]
  8003c40:	4b2a      	ldr	r3, [pc, #168]	@ (8003cec <print_power_value+0x18c>)
@@ -8175,7 +8223,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003c50:	4b27      	ldr	r3, [pc, #156]	@ (8003cf0 <print_power_value+0x190>)
  8003c52:	0018      	movs	r0, r3
  8003c54:	f002 fd3a 	bl	80066cc <memcpy>
-		memcpy(desText + header_len[index], numText, numText_len);
+		memcpy(g_dest_text + g_header_len[index], g_num_text, num_text_len);
  8003c58:	1dfb      	adds	r3, r7, #7
  8003c5a:	781b      	ldrb	r3, [r3, #0]
  8003c5c:	4a22      	ldr	r2, [pc, #136]	@ (8003ce8 <print_power_value+0x188>)
@@ -8188,7 +8236,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003c6a:	4b1d      	ldr	r3, [pc, #116]	@ (8003ce0 <print_power_value+0x180>)
  8003c6c:	0019      	movs	r1, r3
  8003c6e:	f002 fd2d 	bl	80066cc <memcpy>
-		memcpy(desText + header_len[index] + numText_len, unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
+		memcpy(g_dest_text + g_header_len[index] + num_text_len,
  8003c72:	1dfb      	adds	r3, r7, #7
  8003c74:	781b      	ldrb	r3, [r3, #0]
  8003c76:	4a1c      	ldr	r2, [pc, #112]	@ (8003ce8 <print_power_value+0x188>)
@@ -8201,22 +8249,27 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003c84:	18d0      	adds	r0, r2, r3
  8003c86:	19bb      	adds	r3, r7, r6
  8003c88:	781a      	ldrb	r2, [r3, #0]
+		    g_unit_symbols[symbol_index], symbol_len + 1); // "+ 1" to add '\0'
  8003c8a:	4b16      	ldr	r3, [pc, #88]	@ (8003ce4 <print_power_value+0x184>)
  8003c8c:	0092      	lsls	r2, r2, #2
  8003c8e:	58d1      	ldr	r1, [r2, r3]
  8003c90:	197b      	adds	r3, r7, r5
  8003c92:	781b      	ldrb	r3, [r3, #0]
  8003c94:	3301      	adds	r3, #1
+		memcpy(g_dest_text + g_header_len[index] + num_text_len,
  8003c96:	001a      	movs	r2, r3
  8003c98:	f002 fd18 	bl	80066cc <memcpy>
+	{
+		//TODO: Gracefully handle buffer overflow error
 	}
 
-	NHD_LCDstatus_t errorCode = NHD_SPI_OK;
+	// Print string to the LCD string
+	NHD_LCDstatus_t err_code = NHD_SPI_OK;
  8003c9c:	250a      	movs	r5, #10
  8003c9e:	197b      	adds	r3, r7, r5
  8003ca0:	2200      	movs	r2, #0
  8003ca2:	701a      	strb	r2, [r3, #0]
-	if((errorCode = print_data(desText, index)) != NHD_SPI_OK)
+	if ((err_code = print_data(g_dest_text, index)) != NHD_SPI_OK)
  8003ca4:	197c      	adds	r4, r7, r5
  8003ca6:	1dfb      	adds	r3, r7, #7
  8003ca8:	781a      	ldrb	r2, [r3, #0]
@@ -8230,12 +8283,12 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
  8003cba:	781b      	ldrb	r3, [r3, #0]
  8003cbc:	2b00      	cmp	r3, #0
  8003cbe:	d002      	beq.n	8003cc6 <print_power_value+0x166>
-		return errorCode;
+		return err_code;
  8003cc0:	197b      	adds	r3, r7, r5
  8003cc2:	781b      	ldrb	r3, [r3, #0]
  8003cc4:	e002      	b.n	8003ccc <print_power_value+0x16c>
 
-	return errorCode;
+	return err_code;
  8003cc6:	230a      	movs	r3, #10
  8003cc8:	18fb      	adds	r3, r7, r3
  8003cca:	781b      	ldrb	r3, [r3, #0]

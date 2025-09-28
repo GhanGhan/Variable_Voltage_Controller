@@ -21,16 +21,17 @@
  *
  * @retval None
  */
-void reverse(char* str, uint8_t len)
+void reverse(char * str, uint8_t len)
 {
-	uint8_t i = 0, j = len - 1, temp;
-    while (i < j) {
-        temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-        i++;
-        j--;
-    }
+  uint8_t i = 0, j = len - 1, temp;
+  while (i < j)
+  {
+    temp = str[i];
+    str[i] = str[j];
+    str[j] = temp;
+    i++;
+    j--;
+  }
 }
 
 
@@ -43,18 +44,19 @@ void reverse(char* str, uint8_t len)
  *
  * @retval The number of characters in the string
  */
-int intToStr(int32_t x, char str[], uint8_t d)
+int32_t int_to_str(int32_t x, char str[], uint8_t d)
 {
 	int32_t i = 0;
-    while (x) {
-        str[i++] = (x % 10) + '0';
-        x = x / 10;
+    while (x)
+    {
+      str[i++] = (x % 10) + '0';
+      x = x / 10;
     }
 
     // If number of digits required is more, then
     // add 0s at the beginning
     while (i < d)
-        str[i++] = '0';
+      str[i++] = '0';
 
     reverse(str, i);
     str[i] = '\0';
@@ -72,18 +74,18 @@ int intToStr(int32_t x, char str[], uint8_t d)
  * @retval None
  *
  */
-void ftoa(float n, char* res, uint8_t afterpoint)
+void ftoa(float n, char * res, uint8_t afterpoint)
 {
 	// Check validity of the input number 'n'
-	if(res == NULL) return;
-	if(isnan(n)){strcpy(res,"nan"); return;}
-	if(isinf(n)){strcpy(res,"inf"); return;}
+	if (res == NULL) return;
+	if (isnan(n)){strcpy(res,"nan"); return;}
+	if (isinf(n)){strcpy(res,"inf"); return;}
 
 	// Check if the input float number 'n' is equal to zero
-	if(n == 0.0f)
+	if (n == 0.0f)
 	{
 		res[0] = '0'; res[1] = '.';
-		for(uint8_t  i= 1; i <= afterpoint; i++)
+		for (uint8_t  i= 1; i <= afterpoint; i++)
 		{
 			res[i + 1] = '0';
 		}
@@ -93,7 +95,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
 
 	// Check if the sign of n is negative
 	uint8_t startIndex = 0;
-	if(n < 0.0f)
+	if (n < 0.0f)
 	{
 		res[startIndex] = '-';
 		startIndex++;
@@ -105,7 +107,7 @@ void ftoa(float n, char* res, uint8_t afterpoint)
 	int32_t i = 0; // i is the number of digits before the decimal
 
 	// Check if the absolute value of n is less than 1
-	if((float)abs(n) < 1.0f)
+	if ((float)abs(n) < 1.0f)
 	{
 		res[startIndex] = '0';
 		startIndex++;
@@ -113,22 +115,23 @@ void ftoa(float n, char* res, uint8_t afterpoint)
 	else // abs(n) > 1
 	{
 		// convert integer part to string
-		i = intToStr(ipart, res + startIndex, 0);
+		i = int_to_str(ipart, res + startIndex, 0);
 	}
 
-    // Extract floating part
-    float fpart = n - (float)ipart;
+  // Extract floating part
+  float fpart = n - (float)ipart;
 
-    // check for display option after point
-    if (afterpoint != 0) {
-        res[i + startIndex] = '.'; // add dot
+  // check for display option after point
+  if (afterpoint != 0)
+  {
+    res[i + startIndex] = '.'; // add dot
 
-        // Get the value of fraction part up to given no.
-        // of points after dot. The third parameter
-        // is needed to handle cases like 233.007
-        fpart = fpart * pow(10, afterpoint);
+    // Get the value of fraction part up to given no.
+    // of points after dot. The third parameter
+    // is needed to handle cases like 233.007
+    fpart = fpart * pow(10, afterpoint);
 
-        intToStr((int32_t)fpart, res + i + 1 + startIndex, afterpoint);
-    }
+    int_to_str((int32_t)fpart, res + i + 1 + startIndex, afterpoint);
+  }
 }
 
