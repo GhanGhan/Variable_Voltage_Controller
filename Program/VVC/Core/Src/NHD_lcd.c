@@ -237,15 +237,15 @@ NHD_LCDstatus_t data_write(uint8_t d)
  * @note The character rows (pages) are numbered from 0 to 3, starting from the top
  *
  * @param text: character array to be printed on a page in the LCD module
- * @param rowIndex: page to print text on; 0, 1, 2, 3 from top to bottom
+ * @param row_index: page to print text on; 0, 1, 2, 3 from top to bottom
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t print_data(const char * text, uint8_t rowIndex)
+NHD_LCDstatus_t print_data(const char * text, uint8_t row_index)
 {
 	NHD_LCDstatus_t err_code = NHD_SPI_OK;
 
-	if ((err_code = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if ((err_code = cmd_write(SET_PG_ADDR + row_index)) != NHD_SPI_OK) // send page address
 	{
 		return err_code;
 	}
@@ -274,7 +274,7 @@ NHD_LCDstatus_t print_data(const char * text, uint8_t rowIndex)
 		}
 	}
 
-	if ((err_code = erase_trails(text, rowIndex)) != NHD_SPI_OK)
+	if ((err_code = erase_trails(text, row_index)) != NHD_SPI_OK)
 	{
 		return err_code;
 	}
@@ -283,7 +283,7 @@ NHD_LCDstatus_t print_data(const char * text, uint8_t rowIndex)
 }
 
 /*
- * @brief Delete previous character data in the same 'rowIndex'text' that wasn't
+ * @brief Delete previous character data in the same 'row_index'text' that wasn't
  * overwritten by the current 'text' array
  *
  * @note if last 'text' string is shorter than current 'text' string, the characters
@@ -292,23 +292,23 @@ NHD_LCDstatus_t print_data(const char * text, uint8_t rowIndex)
  * the screen, so this function erases those characters in the DDRAM
  *
  * @param text: text character array that was currently displayed on a page in the LCD module
- * @param rowIndex: page that the text is displayed on; 0, 1, 2, 3 from top to bottom
+ * @param row_index: page that the text is displayed on; 0, 1, 2, 3 from top to bottom
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t erase_trails(const char * text, uint8_t rowIndex)
+NHD_LCDstatus_t erase_trails(const char * text, uint8_t row_index)
 {
 	NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	if ((err_code = cmd_write(SET_PG_ADDR + rowIndex)) != NHD_SPI_OK) // send page address
+	if ((err_code = cmd_write(SET_PG_ADDR + row_index)) != NHD_SPI_OK) // send page address
 	{
 		return err_code;
 	}
 
 	//Get length of the current text
 	size_t len = strlen(text);
-	if (last_len[rowIndex] > len) // There are characters in that were not overwritten and need to be cleared
+	if (last_len[row_index] > len) // There are characters in that were not overwritten and need to be cleared
 	{
-		uint8_t trails = last_len[rowIndex] - len;
+		uint8_t trails = last_len[row_index] - len;
 
 		for (uint8_t i = 0; i < trails; i++)
 		{
@@ -321,7 +321,7 @@ NHD_LCDstatus_t erase_trails(const char * text, uint8_t rowIndex)
 			}
 		}
 	}
-	last_len[rowIndex] = len;
+	last_len[row_index] = len;
 
 	return err_code;
 }

@@ -1,17 +1,29 @@
-18:42:48 **** Incremental Build of configuration Debug for project VVC ****
+14:07:18 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/float2string.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/float2string.d" -MT"Core/Src/float2string.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/float2string.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'log_error':
+../Core/Src/main.c:458:16: warning: variable 'log' set but not used [-Wunused-but-set-variable]
+  458 |   log_struct_t log;
+      |                ^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:456:6: warning: 'log_error' defined but not used [-Wunused-function]
+  456 | void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
+      |      ^~~~~~~~~
+../Core/Src/main.c:73:23: warning: 'start_of_log_address' defined but not used [-Wunused-const-variable=]
+   73 | static const uint32_t start_of_log_address = 0X08007800;
+      |                       ^~~~~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "VVC.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Ghani\Documents\ECE Projects\Variable_Voltage_Controller\Program\VVC\STM32G030F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VVC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: VVC.elf
  
 arm-none-eabi-size  VVC.elf 
 arm-none-eabi-objdump -h -S VVC.elf  > "VVC.list"
    text	   data	    bss	    dec	    hex	filename
-  30928	    136	   2168	  33232	   81d0	VVC.elf
+  19208	     36	   1852	  21096	   5268	VVC.elf
 Finished building: default.size.stdout
  
 Finished building: VVC.list
  
 
-18:42:49 Build Finished. 0 errors, 0 warnings. (took 880ms)
+14:07:19 Build Finished. 0 errors, 3 warnings. (took 850ms)
 

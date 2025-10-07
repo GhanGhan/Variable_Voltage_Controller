@@ -21,11 +21,12 @@ NHD_LCDstatus_t init_screen();
 NHD_LCDstatus_t clear_screen();
 NHD_LCDstatus_t cmd_write(uint8_t c);
 NHD_LCDstatus_t data_write(uint8_t d);
-NHD_LCDstatus_t print_data(const char * text, uint8_t rowIndex);
-NHD_LCDstatus_t erase_trails(const char * text, uint8_t rowIndex);
+NHD_LCDstatus_t print_data(const char * text, uint8_t row_index);
+NHD_LCDstatus_t erase_trails(const char * text, uint8_t row_index);
 
 #define NUM_CHAR_ROWS 4
 #define NUM_COLS 128
+#define NUM_BYTES_PER_CHAR 5
 
 #define SET_COLSD_LF	0xA0 	//Set SEG (column) direction - left to right
 #define TURN_OFF		0xAE	  //Turn the display off

@@ -45,7 +45,8 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 8K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 32K
+  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 30K /* Reduced from 32K to 30K for LOG_FLASH*/
+  LOG_FLASH (rw)	: ORIGIN = 0X8007800,  LENGTH = 2K  /* New 2K (size of a single page for logging*/
 }
 
 /* Sections */
@@ -174,6 +175,15 @@ SECTIONS
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
   } >RAM
+  
+  /* Define the new sectional that will go into the reserved LOG_FLASH */
+  /* NOLOAD tells linker this section is not part of the intial data loaded from .elf, but it */
+  /*	still reserves the memory space */
+  .persistent_log(NOLOAD) : 
+  {
+  	. = ALIGN(8);
+  	KEEP(*(.persistent_log)); /* KEEP ensures this section is not optimized out */	
+  } >LOG_FLASH
 
   /* Remove information from the compiler libraries */
   /DISCARD/ :
