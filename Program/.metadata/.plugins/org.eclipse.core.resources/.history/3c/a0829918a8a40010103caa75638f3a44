@@ -456,7 +456,6 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 
 void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
 {
-  __disable_irq();
   log_struct_t log;
   log.b0 = 'I';
   log.b1 = 'L';
@@ -498,7 +497,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  //__disable_irq(); -- code placed here automatically by system, moved to beginning of log_error function
+  __disable_irq();
   while (1)
   {
   }

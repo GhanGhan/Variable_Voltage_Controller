@@ -1,10 +1,10 @@
-20:24:01 **** Incremental Build of configuration Debug for project VVC ****
+20:37:22 **** Incremental Build of configuration Debug for project VVC ****
 make -j16 all 
 arm-none-eabi-size  VVC.elf 
    text	   data	    bss	    dec	    hex	filename
-  20124	      0	   1884	  22008	   55f8	VVC.elf
+  20252	      0	   1884	  22136	   5678	VVC.elf
 Finished building: default.size.stdout
  
 
-20:24:01 Build Finished. 0 errors, 0 warnings. (took 312ms)
+20:37:22 Build Finished. 0 errors, 0 warnings. (took 259ms)
 

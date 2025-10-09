@@ -70,7 +70,6 @@ static char g_dest_text[50];
 static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
 //Error logging:
 #define LOG_FLASH_START 0X0800F800U;
-#define MAX_LOG_NUM 256
 typedef struct log_struct{
   char b0;  //'I'
   uint8_t err_count;
@@ -139,16 +138,18 @@ int main(void)
   if (err_code != NHD_SPI_OK)
   {
     log_error(__LINE__, 'M', err_code);
+	 //TODO: Gracefully handle initialization error
   }
+
   err_code = clear_screen();
   if (err_code != NHD_SPI_OK)
   {
-    log_error(__LINE__, 'M', err_code);
+	  //TODO: Gracefully handle clear screen error
   }
   err_code = cmd_write(SET_SRT_ROW); // To first line
   if (err_code != NHD_SPI_OK)
   {
-    log_error(__LINE__, 'M', err_code);
+	  //TODO: Gracefully handle command error
   }
 
 
@@ -170,22 +171,22 @@ int main(void)
 	  err_code = print_power_value(v_input);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+		  //TODO: Gracefully handle printing error
 	  }
 	  err_code = print_power_value(v_output);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    //TODO: Gracefully handle printing error
 	  }
 	  err_code = print_power_value(i_input);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    //TODO: Gracefully handle printing error
 	  }
 	  err_code = print_power_value(i_output);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    //TODO: Gracefully handle printing error
 	  }
 	  //delay for 100ms
 	  HAL_Delay(100);
@@ -456,7 +457,6 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 
 void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
 {
-  __disable_irq();
   log_struct_t log;
   log.b0 = 'I';
   log.b1 = 'L';
@@ -469,7 +469,7 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
   uint32_t addr;
   uint64_t data;
   HAL_FLASH_Unlock();
-  for(uint8_t i = 0; i < MAX_LOG_NUM; i++)
+  for(uint8_t i = 0; i < 256; i++)
   {
 
     if(plog->b0 != 'I')
@@ -477,7 +477,7 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
       log.err_count = i + 1;
       data =  *(uint64_t*)&log;
       addr = (uint32_t)plog;
-      HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
+      HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr,data);
       break;
     }
     plog++;
@@ -498,7 +498,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  //__disable_irq(); -- code placed here automatically by system, moved to beginning of log_error function
+  __disable_irq();
   while (1)
   {
   }
