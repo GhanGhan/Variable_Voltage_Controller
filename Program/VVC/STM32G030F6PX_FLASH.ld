@@ -44,9 +44,9 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 8K
+  RAM    (rwx)    : ORIGIN = 0x20000000,   LENGTH = 8K
   FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 30K /* Reduced from 32K to 30K for LOG_FLASH*/
-  LOG_FLASH (rw)	: ORIGIN = 0X8007800,  LENGTH = 2K  /* New 2K (size of a single page for logging*/
+  LOG_FLASH (rw)	: ORIGIN = 0X800F800,  LENGTH = 2K  /* New 2K (size of a single page for logging and /* Changed from (rw) to (rx) */
 }
 
 /* Sections */

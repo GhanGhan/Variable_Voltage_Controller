@@ -19,11 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include <float2string.h>
 #include "main.h"
-
+#include "stm32g0xx_hal.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
-//#include <math.h>
 #include <string.h>
 #include "fonts.h"
 #include "NHD_lcd.h"
@@ -70,14 +69,15 @@ static char g_num_text[20];
 static char g_dest_text[50];
 static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
 //Error logging:
-static const uint32_t start_of_log_address = 0X08007800;
+#define LOG_FLASH_START 0X0800F800U;
 typedef struct log_struct{
-  char b0;
-  char b1;
-  uint16_t line_num;
-  char source;
+  char b0;  //'I'
+  uint8_t err_count;
+  char source; // 'O' or 'M'
+  uint8_t b2; //'T'
   uint8_t err_type;
-  uint16_t boot_num;
+  char b1;  //'L'
+  uint16_t line_num;
 } log_struct_t;
 
 /* USER CODE END PV */
@@ -90,6 +90,7 @@ static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
 static NHD_LCDstatus_t print_power_value(uint8_t index);
 static void log_error(uint16_t line, char source, NHD_LCDstatus_t err);
+
 
 /* USER CODE END PFP */
 
@@ -106,7 +107,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  //initialise_monitor_handles();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -136,6 +137,7 @@ int main(void)
   err_code = init_screen();
   if (err_code != NHD_SPI_OK)
   {
+    log_error(__LINE__, 'M', err_code);
 	 //TODO: Gracefully handle initialization error
   }
 
@@ -456,9 +458,33 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
 {
   log_struct_t log;
+  log.b0 = 'I';
+  log.b1 = 'L';
+  log.b2 = 'T';
   log.line_num = line;
   log.source = source;
   log.err_type = err;
+
+  log_struct_t *plog = (log_struct_t*)LOG_FLASH_START;
+  uint32_t addr;
+  uint64_t data;
+  HAL_FLASH_Unlock();
+  for(uint8_t i = 0; i < 256; i++)
+  {
+
+    if(plog->b0 != 'I')
+    {
+      log.err_count = i + 1;
+      data =  *(uint64_t*)&log;
+      addr = (uint32_t)plog;
+      HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr,data);
+      break;
+    }
+    plog++;
+  }
+  HAL_FLASH_Lock();
+  Error_Handler();
+
 }
 
 

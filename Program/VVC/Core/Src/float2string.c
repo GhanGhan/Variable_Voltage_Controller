@@ -108,7 +108,6 @@ void ftoa(float n, char * res, uint8_t afterpoint)
 
 	// Check if the absolute value of n is less than 1
 	if ((float)abs(n) < 1.0f)
-	//if ((n > -1.0f) && (n < 1.0f))
 	{
 		res[startIndex] = '0';
 		startIndex++;
@@ -130,7 +129,6 @@ void ftoa(float n, char * res, uint8_t afterpoint)
     // Get the value of fraction part up to given no.
     // of points after dot. The third parameter
     // is needed to handle cases like 233.007
-    //fpart = fpart * pow(10, afterpoint);
     uint32_t result = 1;
     for (uint8_t i = 0; i < afterpoint; i++)
     {
