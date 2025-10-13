@@ -49,7 +49,7 @@ ADC_HandleTypeDef hadc1;
 SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
-enum {v_input, v_output, i_input, i_output} sensor_value;
+typedef enum sensor_val {v_input, v_output, i_input, i_output} Sensor_Value;
 static const uint16_t g_adc_res = 4095;	//ADC resolution = 2^12-1
 static const uint8_t g_vi_scale = 17; //largest allowable input voltage
 static const uint8_t g_vo_scale = 20; //largest allowable output voltage
@@ -74,12 +74,15 @@ static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_hea
 typedef struct log_struct{
   char b0;  //'I'
   uint8_t err_count;
-  char source; // 'O' or 'M'
+  char source; // 'N' or 'P'
   uint8_t b2; //'T'
   uint8_t err_type;
   char b1;  //'L'
   uint16_t line_num;
 } log_struct_t;
+typedef enum process
+  {init = 'N' /*Initialization function*/, print = 'P' /*Print to LCD display function*/
+ } Process;
 
 /* USER CODE END PV */
 
@@ -132,23 +135,26 @@ int main(void)
   MX_ADC1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-  reset_screen();
+
+
+  reset_screen();//Doesn't call SPI-related methods
 
   NHD_LCDstatus_t err_code = NHD_SPI_OK;
+
   err_code = init_screen();
   if (err_code != NHD_SPI_OK)
   {
-    log_error(__LINE__, 'M', err_code);
+    log_error(__LINE__, (char)init, err_code);
   }
   err_code = clear_screen();
   if (err_code != NHD_SPI_OK)
   {
-    log_error(__LINE__, 'M', err_code);
+    log_error(__LINE__, (char)init, err_code);
   }
   err_code = cmd_write(SET_SRT_ROW); // To first line
   if (err_code != NHD_SPI_OK)
   {
-    log_error(__LINE__, 'M', err_code);
+    log_error(__LINE__, (char)init, err_code);
   }
 
 
@@ -170,22 +176,22 @@ int main(void)
 	  err_code = print_power_value(v_input);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    log_error(__LINE__, (char)print, err_code);
 	  }
 	  err_code = print_power_value(v_output);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    log_error(__LINE__, (char)print, err_code);
 	  }
 	  err_code = print_power_value(i_input);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    log_error(__LINE__, (char)print, err_code);
 	  }
 	  err_code = print_power_value(i_output);
 	  if (err_code != NHD_SPI_OK)
 	  {
-	    log_error(__LINE__, 'O', err_code);
+	    log_error(__LINE__, (char)print, err_code);
 	  }
 	  //delay for 100ms
 	  HAL_Delay(100);
