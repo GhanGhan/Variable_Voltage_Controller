@@ -69,16 +69,15 @@ static char g_num_text[20];
 static char g_dest_text[50];
 static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
 //Error logging:
-#define LOG_FLASH_START 0X0800F800U
+#define LOG_FLASH_START 0X0800F800U;
 #define MAX_LOG_NUM 256
-#define LOG_FLASH_PAGE_NUM 31U
 typedef struct log_struct{
   char b0;  //'I'
   uint8_t err_count;
   char source; // 'N' or 'P'
-  uint8_t b1; //'T'
+  uint8_t b2; //'T'
   uint8_t err_type;
-  char b2;  //'L'
+  char b1;  //'L'
   uint16_t line_num;
 } log_struct_t;
 typedef enum process
@@ -466,50 +465,32 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
   __disable_irq();
   log_struct_t log;
   log.b0 = 'I';
-  log.b1 = 'T';
-  log.b2 = 'L';
+  log.b1 = 'L';
+  log.b2 = 'T';
   log.line_num = line;
   log.source = source;
   log.err_type = err;
 
-  HAL_FLASH_Unlock();
-
   log_struct_t *plog = (log_struct_t*)LOG_FLASH_START;
   uint32_t addr;
   uint64_t data;
-  uint8_t data_saved = 0;
+  HAL_FLASH_Unlock();
   for(uint8_t i = 0; i < MAX_LOG_NUM; i++)
   {
+
     if(plog->b0 != 'I')
     {
-      log.err_count = i;
+      log.err_count = i + 1;
       data =  *(uint64_t*)&log;
       addr = (uint32_t)plog;
       HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
-      data_saved = 1;
       break;
     }
     plog++;
   }
-
-  if(!data_saved) //Flash page is full, must be cleared before adding a new entry
-  {
-    FLASH_EraseInitTypeDef erase_config;
-    erase_config.TypeErase = FLASH_TYPEERASE_PAGES;
-    erase_config.Banks = FLASH_BANK_1;
-    erase_config.Page = LOG_FLASH_PAGE_NUM;
-    erase_config.NbPages = 1;
-    uint32_t page_error;
-    HAL_FLASHEx_Erase(&erase_config, &page_error);
-
-    log.err_count = 0;
-    data =  *(uint64_t*)&log;
-    addr = (uint32_t)LOG_FLASH_START;
-    HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
-    data_saved = 1;
-  }
   HAL_FLASH_Lock();
   Error_Handler();
+
 }
 
 

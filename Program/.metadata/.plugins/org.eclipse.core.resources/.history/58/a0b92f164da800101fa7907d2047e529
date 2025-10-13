@@ -492,7 +492,7 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
     plog++;
   }
 
-  if(!data_saved) //Flash page is full, must be cleared before adding a new entry
+  if(!data_saved) //Flash page is full, must be cleared
   {
     FLASH_EraseInitTypeDef erase_config;
     erase_config.TypeErase = FLASH_TYPEERASE_PAGES;

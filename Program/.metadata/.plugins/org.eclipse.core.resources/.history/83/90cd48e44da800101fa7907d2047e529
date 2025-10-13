@@ -477,7 +477,7 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
   log_struct_t *plog = (log_struct_t*)LOG_FLASH_START;
   uint32_t addr;
   uint64_t data;
-  uint8_t data_saved = 0;
+  uint8_t data_saved = 0;/*
   for(uint8_t i = 0; i < MAX_LOG_NUM; i++)
   {
     if(plog->b0 != 'I')
@@ -490,7 +490,7 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
       break;
     }
     plog++;
-  }
+  }*/
 
   if(!data_saved) //Flash page is full, must be cleared before adding a new entry
   {
