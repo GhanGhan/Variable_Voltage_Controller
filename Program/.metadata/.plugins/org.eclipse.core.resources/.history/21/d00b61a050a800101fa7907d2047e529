@@ -169,7 +169,7 @@ NHD_LCDstatus_t cmd_write(uint8_t c)
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);	//Select LCD Screen
 	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
 
-	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); 		// transmit command
+	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &c, 0, 100); 		// transmit command
 
 	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);	//De-select LCD Screen
 

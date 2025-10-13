@@ -64,11 +64,11 @@ static const char g_io_header[] = "Output Current: ";
 static const char * g_unit_symbols[] = {" V", " A"};
 static const uint8_t g_header_len[NUM_SENSORS] = {strlen(g_vi_header), strlen(g_vo_header),
     strlen(g_ii_header), strlen(g_io_header)};
-#define MAX_NUM_LEN 10
-static char g_num_text[MAX_NUM_LEN];
-static char g_dest_text[NUM_COLS];
+
+static char g_num_text[20];
+static char g_dest_text[50];
 static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
-//ERROR LOGGING
+//Error logging:
 #define LOG_FLASH_START 0X0800F800U
 #define MAX_LOG_NUM 256
 #define LOG_FLASH_PAGE_NUM 31U
@@ -450,9 +450,7 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	}
 	else
 	{
-	  NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	  if ((err_code = print_data("Error: string was too long", index)) != NHD_SPI_OK)
-	    return err_code;
+		//TODO: Gracefully handle buffer overflow error
 	}
 
 	// Print string to the LCD string
@@ -466,7 +464,6 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
 {
   __disable_irq();
-  // Populate Error Log values
   log_struct_t log;
   log.b0 = 'I';
   log.b1 = 'T';
@@ -475,31 +472,20 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
   log.source = source;
   log.err_type = err;
 
-  // Unlock the Flash
-  if (HAL_FLASH_Unlock() != HAL_OK)
-  {
-    //Flash Unlocked Failed
-    Error_Handler();
-  }
+  HAL_FLASH_Unlock();
 
   log_struct_t *plog = (log_struct_t*)LOG_FLASH_START;
   uint32_t addr;
   uint64_t data;
   uint8_t data_saved = 0;
-  HAL_StatusTypeDef status;
-  for(uint8_t i = 0; i < MAX_LOG_NUM; i++) //Search for first available index in page to save error log
+  for(uint8_t i = 0; i < MAX_LOG_NUM; i++)
   {
     if(plog->b0 != 'I')
-    { //
+    {
       log.err_count = i;
       data =  *(uint64_t*)&log;
       addr = (uint32_t)plog;
-      status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
-      if(status != HAL_OK)
-      {
-        //Logging Error into Flash Failed
-        Error_Handler();
-      }
+      HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
       data_saved = 1;
       break;
     }
@@ -514,22 +500,12 @@ void log_error(uint16_t line, char source, NHD_LCDstatus_t err)
     erase_config.Page = LOG_FLASH_PAGE_NUM;
     erase_config.NbPages = 1;
     uint32_t page_error;
-    status = HAL_FLASHEx_Erase(&erase_config, &page_error);
-    if(status != HAL_OK)
-    {
-      //Logging Error into Flash Failed
-      Error_Handler();
-    }
+    HAL_FLASHEx_Erase(&erase_config, &page_error);
 
     log.err_count = 0;
     data =  *(uint64_t*)&log;
     addr = (uint32_t)LOG_FLASH_START;
-    status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
-    if(status != HAL_OK)
-    {
-      //Logging Error into Flash Failed
-      Error_Handler();
-    }
+    HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, addr, data);
     data_saved = 1;
   }
   HAL_FLASH_Lock();

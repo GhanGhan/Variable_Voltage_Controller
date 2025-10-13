@@ -4,5 +4,5 @@
 ../Core/Src/main.c:337:13:MX_SPI2_Init	8	static
 ../Core/Src/main.c:377:13:MX_GPIO_Init	48	static
 ../Core/Src/main.c:420:24:print_power_value	40	static
-../Core/Src/main.c:464:6:log_error	72	static,ignoring_inline_asm
-../Core/Src/main.c:522:6:Error_Handler	8	static
+../Core/Src/main.c:466:6:log_error	80	static,ignoring_inline_asm
+../Core/Src/main.c:546:6:Error_Handler	8	static

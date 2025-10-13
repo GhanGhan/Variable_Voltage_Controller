@@ -68,7 +68,7 @@ static const uint8_t g_header_len[NUM_SENSORS] = {strlen(g_vi_header), strlen(g_
 static char g_num_text[MAX_NUM_LEN];
 static char g_dest_text[NUM_COLS];
 static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
-//ERROR LOGGING
+//Error logging:
 #define LOG_FLASH_START 0X0800F800U
 #define MAX_LOG_NUM 256
 #define LOG_FLASH_PAGE_NUM 31U

@@ -64,11 +64,11 @@ static const char g_io_header[] = "Output Current: ";
 static const char * g_unit_symbols[] = {" V", " A"};
 static const uint8_t g_header_len[NUM_SENSORS] = {strlen(g_vi_header), strlen(g_vo_header),
     strlen(g_ii_header), strlen(g_io_header)};
-#define MAX_NUM_LEN 10
-static char g_num_text[MAX_NUM_LEN];
-static char g_dest_text[NUM_COLS];
+
+static char g_num_text[20];
+static char g_dest_text[50];
 static const char * g_headers[NUM_SENSORS] = {g_vi_header, g_vo_header, g_ii_header, g_io_header};
-//ERROR LOGGING
+//Error logging:
 #define LOG_FLASH_START 0X0800F800U
 #define MAX_LOG_NUM 256
 #define LOG_FLASH_PAGE_NUM 31U
