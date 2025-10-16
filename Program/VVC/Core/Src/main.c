@@ -17,15 +17,15 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <float2string.h>
 #include "main.h"
-#include "stm32g0xx_hal.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
 #include "fonts.h"
 #include "NHD_lcd.h"
+#include "float2string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,7 +50,7 @@ SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
 typedef enum sensor_val {v_input, v_output, i_input, i_output} Sensor_Value;
-static const uint16_t g_adc_res = 4095;	//ADC resolution = 2^12-1
+static const uint16_t g_adc_res = 65535;// ADC resolution = 2^16-1 /*4095;*/	//ADC resolution = 2^12-1
 static const uint8_t g_vi_scale = 17; //largest allowable input voltage
 static const uint8_t g_vo_scale = 20; //largest allowable output voltage
 static const float g_current_scale = 3.3/(50*0.011f); //Amp gain * Rsense
@@ -171,7 +171,9 @@ int main(void)
 		  HAL_ADC_Start(&hadc1);
 		  HAL_ADC_PollForConversion(&hadc1, 1);
 		  g_adc_buffer[i] = HAL_ADC_GetValue(&hadc1);
+
 	  }//Now the buffer contains all 4 values.
+	  HAL_ADC_Stop(&hadc1); //Needed in for OVERSAMPLING MODE to work
 
 	  //Send input voltage, output voltage, input current, output current to the LCD screen
 	  err_code = print_power_value(v_input);
@@ -280,7 +282,10 @@ static void MX_ADC1_Init(void)
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc1.Init.SamplingTimeCommon1 = ADC_SAMPLETIME_160CYCLES_5;
   hadc1.Init.SamplingTimeCommon2 = ADC_SAMPLETIME_160CYCLES_5;
-  hadc1.Init.OversamplingMode = DISABLE;
+  hadc1.Init.OversamplingMode = ENABLE;
+  hadc1.Init.Oversampling.Ratio = ADC_OVERSAMPLING_RATIO_16;
+  hadc1.Init.Oversampling.RightBitShift = ADC_RIGHTBITSHIFT_NONE;
+  hadc1.Init.Oversampling.TriggeredMode = ADC_TRIGGEREDMODE_SINGLE_TRIGGER;
   hadc1.Init.TriggerFrequencyMode = ADC_TRIGGER_FREQ_HIGH;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
@@ -424,12 +429,12 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	uint8_t symbol_index;
 	if (index == v_input || index == v_output)
 	{
-		decimals = 2;
+		decimals = 1;
 		symbol_index = 0;
 	}
 	else // if(index == i_input || i_output)
 	{
-		decimals = 3;
+		decimals = 2;
 		symbol_index = 1;
 	}
 

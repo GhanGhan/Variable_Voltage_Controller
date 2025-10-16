@@ -13,6 +13,8 @@
 	<item key="org.eclipse.cdt.ui.codeformatter.create_profile_dialog.open_edit" value="true"/>
 	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value=""/>
 	<section name="completion_proposal_size">
+		<item key="size.x" value="537"/>
+		<item key="size.y" value="318"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>
