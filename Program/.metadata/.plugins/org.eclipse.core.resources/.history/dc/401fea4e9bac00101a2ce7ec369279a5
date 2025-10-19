@@ -130,6 +130,7 @@ void ftoa(float n, char * res, uint8_t afterpoint)
   {
     res[i + startIndex] = '.'; // add dot
 
+
     fpart = fpart * pow_10(afterpoint);// if fpart*pow_10(afterpoint) == '9.9'
     fpart = round(fpart);             // it would round to '10'
     if(fpart == pow_10(afterpoint)) /// In that case make it '0'

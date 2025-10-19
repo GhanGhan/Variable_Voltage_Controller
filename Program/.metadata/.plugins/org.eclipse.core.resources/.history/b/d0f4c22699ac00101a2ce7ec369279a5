@@ -102,9 +102,10 @@ void ftoa(float n, char * res, uint8_t afterpoint)
 		n = -n;
 	}
 
-	// Round ipart if if need be
-	float multiplier = pow_10(afterpoint); // if n = 19.99 and afterpoint = 1, rounded value would be 20.0
-	float round_n = round(n * multiplier)/multiplier; // so make '19' into '20'
+
+	// Round int if need be
+	float multiplier = pow_10(afterpoint);
+	float round_n = round(n * multiplier)/multiplier;
 
 	// Extract integer part
 	int32_t ipart = (int32_t)round_n;
@@ -130,29 +131,34 @@ void ftoa(float n, char * res, uint8_t afterpoint)
   {
     res[i + startIndex] = '.'; // add dot
 
-    fpart = fpart * pow_10(afterpoint);// if fpart*pow_10(afterpoint) == '9.9'
-    fpart = round(fpart);             // it would round to '10'
-    if(fpart == pow_10(afterpoint)) /// In that case make it '0'
+    // Get the value of fraction part up to given no.
+    // of points after dot. The third parameter
+    // is needed to handle cases like 233.007
+    /*
+    uint32_t result = 1;
+    for (uint8_t i = 0; i < afterpoint; i++)
+    {
+      if (result > (UINT32_MAX / 10))
+      {
+        return;
+      }
+      result *= 10;
+    }
+
+    fpart = fpart * result;*/
+    fpart = fpart * pow_10(afterpoint);
+    fpart = round(fpart);
+    if(fpart == pow_10(afterpoint))
       fpart = 0;
 
     int_to_str((int32_t)fpart, res + i + 1 + startIndex, afterpoint);
   }
 }
 
-
-//
-/*
- * @brief Calculates the value of 10 raised to the specified exponent
- *
- * @param exponent: The value 10 is raised to i.e. number of times 10 is multiplied by itself, must be an integer
- *
- * @retval value of 10^exponent
- *
- */
-float pow_10(uint8_t exponent)
+float pow_10(uint8_t decimals)
 {
   uint32_t result = 1;
-  for (uint8_t i = 0; i < exponent; i++)
+  for (uint8_t i = 0; i < decimals; i++)
   {
     result *= 10;
   }

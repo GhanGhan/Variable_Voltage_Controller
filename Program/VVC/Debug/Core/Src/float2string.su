@@ -1,3 +1,4 @@
 ../Core/Src/float2string.c:24:6:reverse	32	static
 ../Core/Src/float2string.c:47:9:int_to_str	32	static
 ../Core/Src/float2string.c:77:6:ftoa	56	static
+../Core/Src/float2string.c:154:7:pow_10	24	static

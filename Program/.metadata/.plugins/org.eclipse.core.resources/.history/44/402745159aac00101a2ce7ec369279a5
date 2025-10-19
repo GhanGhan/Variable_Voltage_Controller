@@ -14,7 +14,7 @@
 void ftoa(float n, char * res, uint8_t afterpoint);
 int32_t int_to_str(int32_t x, char str[], uint8_t d);
 void reverse(char * str, uint8_t len);
-float pow_10(uint8_t exponent);
+float pow_10(uint8_t decimals);
 
 
 
