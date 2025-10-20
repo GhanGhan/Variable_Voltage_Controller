@@ -5,13 +5,49 @@
  *      Author: Ghani
  */
 
-#include "main.h"
+#include <string.h>
 #include "fonts.h"
 #include "NHD_lcd.h"
 #include "NHD_lcd_config.h"
-#include <string.h>
+
 
 static uint8_t last_len[NUM_CHAR_ROWS] = {0};
+
+
+// Pin Control Helper Functions
+static void LCD_Select(NHD_LCD_Handle_t* lcd_handle)
+{
+  HAL_GPIO_WritePin(lcd_handle->cs_port, lcd_handle->cs_pin, GPIO_PIN_RESET);  //Select LCD Screen
+}
+
+static void LCD_DeSelect(NHD_LCD_Handle_t* lcd_handle)
+{
+  HAL_GPIO_WritePin(lcd_handle->cs_port, lcd_handle->cs_pin, GPIO_PIN_SET);  //De-Select LCD Screen
+}
+
+static void LCD_OP_Command(NHD_LCD_Handle_t* lcd_handle)
+{
+  HAL_GPIO_WritePin(lcd_handle->op_port, lcd_handle->op_pin, GPIO_PIN_RESET);  //Set message type to command
+}
+
+static void LCD_OP_Data(NHD_LCD_Handle_t* lcd_handle)
+{
+  HAL_GPIO_WritePin(lcd_handle->op_port, lcd_handle->op_pin, GPIO_PIN_SET);
+}
+
+static void LCD_Reset_LOW(NHD_LCD_Handle_t * lcd_handle)
+{
+  HAL_GPIO_WritePin(lcd_handle->reset_port, lcd_handle->reset_pin, GPIO_PIN_RESET);
+}
+
+static void LCD_Reset_HIGH(NHD_LCD_Handle_t* lcd_handle)
+{
+  HAL_GPIO_WritePin(lcd_handle->reset_port, lcd_handle->reset_pin, GPIO_PIN_SET);
+}
+
+
+
+
 
 /*
  * @brief Resets the LCD screen - (setting pin to "LOW") activates the initialization sequence
@@ -24,13 +60,15 @@ static uint8_t last_len[NUM_CHAR_ROWS] = {0};
  *
  * @retval None
  */
-void reset_screen()
+void NHD_LCD_Reset_Screen(NHD_LCD_Handle_t* lcd_handle)
 {
-	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_RESET);
+  LCD_Reset_LOW(lcd_handle);
 	HAL_Delay(100);
-	HAL_GPIO_WritePin(_RST_GPIO_Port, _RST_Pin, GPIO_PIN_SET);
+	LCD_Reset_HIGH(lcd_handle);
 	HAL_Delay(100);
 }
+
+
 
 /*
  * @brief initialize the necessary LCD registers to values that will allow the module to function as required
@@ -51,42 +89,42 @@ void reset_screen()
  * @retval NHD_LCD status
  */
 
-NHD_LCDstatus_t init_screen()
+NHD_LCDstatus_t NHD_LCD_Init_Screen(NHD_LCD_Handle_t* lcd_handle)
 {
 	NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	if ((err_code = cmd_write(SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_COLSD_LF)) != NHD_SPI_OK) //Set SEG (column) direction - left to right
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(TURN_OFF)) != NHD_SPI_OK) //Turn the display off
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, TURN_OFF)) != NHD_SPI_OK) //Turn the display off
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_ROWD_TP)) != NHD_SPI_OK) //Set COM (row) direction - top to bottom
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_LCD_BIAS)) != NHD_SPI_OK) //Set LCD bias
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_PWR_CTRL)) != NHD_SPI_OK) //Power Control Set - Boost, Regulator and Follower are all on
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_RES_RTO)) != NHD_SPI_OK) //Set Resistor Ratio - 0x001 -> 3.5
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_EVM_CMD)) != NHD_SPI_OK) //Electronic Volume Command (set contrast) Double Byte: 1 of 2
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_EVM_VAL)) != NHD_SPI_OK) //Electronic Volume value (contrast value) Double Byte: 2 of 2
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(TURN_ON)) != NHD_SPI_OK) //Display ON
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, TURN_ON)) != NHD_SPI_OK) //Display ON
 	{
 		return err_code;
 	}
@@ -104,14 +142,14 @@ NHD_LCDstatus_t init_screen()
  * @retval NHD_LCD status
  */
 
-NHD_LCDstatus_t clear_screen()
+NHD_LCDstatus_t NHD_LCD_Clear_Screen(NHD_LCD_Handle_t* lcd_handle)
 {
 	NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	if ((err_code = cmd_write(TURN_OFF)) != NHD_SPI_OK)
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, TURN_OFF)) != NHD_SPI_OK)
 	{
 		return err_code;
 	}
-	if ((err_code = cmd_write(SET_SRT_ROW)) != NHD_SPI_OK)
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_SRT_ROW)) != NHD_SPI_OK)
 	{
 		return err_code;
 	}
@@ -119,30 +157,30 @@ NHD_LCDstatus_t clear_screen()
 	uint8_t page = SET_PG_ADDR;
 	for (uint8_t i = 0; i < NUM_CHAR_ROWS; i++)
 	{
-		if ((err_code = cmd_write(page)) != NHD_SPI_OK)	// send page address
+		if ((err_code = NHD_LCD_Write_Command(lcd_handle, page)) != NHD_SPI_OK)	// send page address
 		{
 			return err_code;
 		}
 		//	Following two lines set the column address to leftmost column
-		if ((err_code = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
+		if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_COL_ADRU)) != NHD_SPI_OK)
 		{
 			return err_code;
 		}
-		if ((err_code = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
+		if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_COL_ADRL)) != NHD_SPI_OK)
 		{
 			return err_code;
 		}
 
 		for (uint8_t j = 0; j < NUM_COLS; j++)
 		{
-			if ((err_code = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
+			if ((err_code = NHD_LCD_Write_Data(lcd_handle, CLR_PGE_BYTE)) != NHD_SPI_OK)
 			{
 				return err_code;
 			}
 		}
 		page++;//After 128 columns, go to the next page
 	}
-	if ((err_code = cmd_write(TURN_ON)) != NHD_SPI_OK)//Turn the display back on
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, TURN_ON)) != NHD_SPI_OK)//Turn the display back on
 	{
 		return err_code;
 	}
@@ -162,16 +200,16 @@ NHD_LCDstatus_t clear_screen()
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t cmd_write(uint8_t c)
+NHD_LCDstatus_t NHD_LCD_Write_Command(NHD_LCD_Handle_t* lcd_handle, uint8_t c)
 {
 	HAL_StatusTypeDef err_code;
 
-	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);	//Select LCD Screen
-	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_RESET);	//Set message type to command
+	LCD_Select(lcd_handle);
+	LCD_OP_Command(lcd_handle);	//Set message type to command
 
 	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); 		// transmit command
 
-	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);	//De-select LCD Screen
+	LCD_DeSelect(lcd_handle);	//De-select LCD Screen
 
 	if (err_code != HAL_OK) //transmit data
 	{
@@ -199,16 +237,16 @@ NHD_LCDstatus_t cmd_write(uint8_t c)
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t data_write(uint8_t d)
+NHD_LCDstatus_t NHD_LCD_Write_Data(NHD_LCD_Handle_t* lcd_handle, uint8_t d)
 {
 	HAL_StatusTypeDef err_code;
 
-	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_RESET);	//Select LCD Screen
-	HAL_GPIO_WritePin(A0_GPIO_Port, A0_Pin, GPIO_PIN_SET);		//Set message type to data
+	LCD_Select(lcd_handle);;	//Select LCD Screen
+	LCD_OP_Data(lcd_handle);		//Set message type to data
 
 	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &d, 1, 100); 		// transmit data
 
-	HAL_GPIO_WritePin(_CS_GPIO_Port, _CS_Pin, GPIO_PIN_SET);	//De-select LCD Screen
+	LCD_DeSelect(lcd_handle);	//De-select LCD Screen
 
 	if (err_code != HAL_OK) //transmit data
 	{
@@ -228,61 +266,6 @@ NHD_LCDstatus_t data_write(uint8_t d)
 }
 
 /*
- * @brief Send string of characters to a print on a single page (character row)
- * on the LCD Screen
- *
- * @note There are 32 pixel rows on the LCD that the user can print on, these rows
- * are divided into 4 pages which have a height of 8 pixels.  Therefore, each character
- * will have a height of 8 pixels and a width of 5 pixel-columns
- * @note The character rows (pages) are numbered from 0 to 3, starting from the top
- *
- * @param text: character array to be printed on a page in the LCD module
- * @param row_index: page to print text on; 0, 1, 2, 3 from top to bottom
- *
- * @retval NHD_LCD status
- */
-NHD_LCDstatus_t print_data(const char * text, uint8_t row_index)
-{
-	NHD_LCDstatus_t err_code = NHD_SPI_OK;
-
-	if ((err_code = cmd_write(SET_PG_ADDR + row_index)) != NHD_SPI_OK) // send page address
-	{
-		return err_code;
-	}
-	//	Following two lines set the column address to leftmost column
-	if ((err_code = cmd_write(SET_COL_ADRU)) != NHD_SPI_OK)
-	{
-		return err_code;
-	}
-	if ((err_code = cmd_write(SET_COL_ADRL)) != NHD_SPI_OK)
-	{
-		return err_code;
-	}
-
-	for (uint8_t i = 0; text[i] != '\0'; i++)
-	{
-		uint8_t c = (uint8_t)text[i] - 32;
-		uint8_t val = 0;
-
-		for (uint8_t j = 0; j < NUM_BYTES_PER_CHAR; j++)
-		{
-			val = Ascii_1[c][j];
-			if ((err_code = data_write(val)) != NHD_SPI_OK)
-			{
-				return err_code;
-			}
-		}
-	}
-
-	if ((err_code = erase_trails(text, row_index)) != NHD_SPI_OK)
-	{
-		return err_code;
-	}
-
-	return err_code;
-}
-
-/*
  * @brief Delete previous character data in the same 'row_index'text' that wasn't
  * overwritten by the current 'text' array
  *
@@ -296,32 +279,88 @@ NHD_LCDstatus_t print_data(const char * text, uint8_t row_index)
  *
  * @retval NHD_LCD status
  */
-NHD_LCDstatus_t erase_trails(const char * text, uint8_t row_index)
+static NHD_LCDstatus_t NHD_LCD_Erase_Trails(NHD_LCD_Handle_t* lcd_handle, const char * text, uint8_t row_index)
+{
+  NHD_LCDstatus_t err_code = NHD_SPI_OK;
+  if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_PG_ADDR + row_index)) != NHD_SPI_OK) // send page address
+  {
+    return err_code;
+  }
+
+  //Get length of the current text
+  size_t len = strlen(text);
+  if (last_len[row_index] > len) // There are characters in that were not overwritten and need to be cleared
+  {
+    uint8_t trails = last_len[row_index] - len;
+
+    for (uint8_t i = 0; i < trails; i++)
+    {
+      for (uint8_t j = 0; j < NUM_BYTES_PER_CHAR; j++)
+      {
+        if ((err_code = NHD_LCD_Write_Data(lcd_handle, CLR_PGE_BYTE)) != NHD_SPI_OK)
+        {
+          return err_code;
+        }
+      }
+    }
+  }
+  last_len[row_index] = len;
+
+  return err_code;
+}
+
+/*
+ * @brief Send string of characters to a print on a single page (character row)
+ * on the LCD Screen
+ *
+ * @note There are 32 pixel rows on the LCD that the user can print on, these rows
+ * are divided into 4 pages which have a height of 8 pixels.  Therefore, each character
+ * will have a height of 8 pixels and a width of 5 pixel-columns
+ * @note The character rows (pages) are numbered from 0 to 3, starting from the top
+ *
+ * @param text: character array to be printed on a page in the LCD module
+ * @param row_index: page to print text on; 0, 1, 2, 3 from top to bottom
+ *
+ * @retval NHD_LCD status
+ */
+NHD_LCDstatus_t NHD_LCD_Print_Data(NHD_LCD_Handle_t* lcd_handle, const char * text, uint8_t row_index)
 {
 	NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	if ((err_code = cmd_write(SET_PG_ADDR + row_index)) != NHD_SPI_OK) // send page address
+
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_PG_ADDR + row_index)) != NHD_SPI_OK) // send page address
+	{
+		return err_code;
+	}
+	//	Following two lines set the column address to leftmost column
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_COL_ADRU)) != NHD_SPI_OK)
+	{
+		return err_code;
+	}
+	if ((err_code = NHD_LCD_Write_Command(lcd_handle, SET_COL_ADRL)) != NHD_SPI_OK)
 	{
 		return err_code;
 	}
 
-	//Get length of the current text
-	size_t len = strlen(text);
-	if (last_len[row_index] > len) // There are characters in that were not overwritten and need to be cleared
+	for (uint8_t i = 0; text[i] != '\0'; i++)
 	{
-		uint8_t trails = last_len[row_index] - len;
+		uint8_t c = (uint8_t)text[i] - 32;
+		uint8_t val = 0;
 
-		for (uint8_t i = 0; i < trails; i++)
+		for (uint8_t j = 0; j < NUM_BYTES_PER_CHAR; j++)
 		{
-			for (uint8_t j = 0; j < NUM_BYTES_PER_CHAR; j++)
+			val = Ascii_1[c][j];
+			if ((err_code = NHD_LCD_Write_Data(lcd_handle, val)) != NHD_SPI_OK)
 			{
-				if ((err_code = data_write(CLR_PGE_BYTE)) != NHD_SPI_OK)
-				{
-					return err_code;
-				}
+				return err_code;
 			}
 		}
 	}
-	last_len[row_index] = len;
+
+	if ((err_code = NHD_LCD_Erase_Trails(lcd_handle, text, row_index)) != NHD_SPI_OK)
+	{
+		return err_code;
+	}
 
 	return err_code;
 }
+

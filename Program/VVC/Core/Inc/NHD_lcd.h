@@ -8,6 +8,9 @@
 #ifndef INC_NHD_LCD_H_
 #define INC_NHD_LCD_H_
 
+
+#include "stm32g0xx_hal.h"
+
 typedef enum{
 	NHD_SPI_OK = 0u,
 	NHD_SPI_BUSY = 1u,
@@ -15,18 +18,25 @@ typedef enum{
 	NHD_SPI_TIMEOUT = 3u,
 }NHD_LCDstatus_t;
 
+typedef struct NHD_LCD_HANDLE
+{
+  SPI_HandleTypeDef *hspi;  // SPI bus to use
+  GPIO_TypeDef *cs_port;    // Chip Select port
+  uint16_t cs_pin;          // Chip Select pin
+  GPIO_TypeDef *op_port;    // Output (Data/Command) port
+  uint16_t op_pin;          // Output (Data/Command) port
+  GPIO_TypeDef *reset_port; // Reset port
+  uint16_t reset_pin;       // Reset pin
+} NHD_LCD_Handle_t;
 
-void reset_screen();
-NHD_LCDstatus_t init_screen();
-NHD_LCDstatus_t clear_screen();
-NHD_LCDstatus_t cmd_write(uint8_t c);
-NHD_LCDstatus_t data_write(uint8_t d);
-NHD_LCDstatus_t print_data(const char * text, uint8_t row_index);
-NHD_LCDstatus_t erase_trails(const char * text, uint8_t row_index);
 
-#define NUM_CHAR_ROWS 4
-#define NUM_COLS 128
-#define NUM_BYTES_PER_CHAR 5
+void NHD_LCD_Reset_Screen(NHD_LCD_Handle_t* lcd_handle);
+NHD_LCDstatus_t NHD_LCD_Init_Screen(NHD_LCD_Handle_t* lcd_handle);
+NHD_LCDstatus_t NHD_LCD_Clear_Screen(NHD_LCD_Handle_t* lcd_handle);
+NHD_LCDstatus_t NHD_LCD_Write_Command(NHD_LCD_Handle_t* lcd_handle, uint8_t c);
+NHD_LCDstatus_t NHD_LCD_Write_Data(NHD_LCD_Handle_t* lcd_handle, uint8_t d);
+NHD_LCDstatus_t NHD_LCD_Print_Data(NHD_LCD_Handle_t* lcd_handle, const char * text, uint8_t row_index);
+
 
 #define SET_COLSD_LF	0xA0 	//Set SEG (column) direction - left to right
 #define TURN_OFF		0xAE	  //Turn the display off

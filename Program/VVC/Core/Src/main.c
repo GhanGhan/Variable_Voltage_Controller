@@ -93,7 +93,7 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
-static NHD_LCDstatus_t print_power_value(uint8_t index);
+static NHD_LCDstatus_t print_power_value(NHD_LCD_Handle_t* lcd_handle, uint8_t index);
 static void log_error(uint16_t line, char source, NHD_LCDstatus_t err);
 
 
@@ -137,22 +137,33 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
+  // Configure NHD_LCD handle
+  NHD_LCD_Handle_t lcd_handle = {
+      .hspi = &hspi2,
+      .cs_port = _CS_GPIO_Port,
+      .cs_pin = _CS_Pin,
+      .op_port = A0_GPIO_Port,
+      .op_pin = A0_Pin,
+      .reset_port = _RST_GPIO_Port,
+      .reset_pin = _RST_Pin,
+  };
 
-  reset_screen();//Doesn't call SPI-related methods
+
+  NHD_LCD_Reset_Screen(&lcd_handle);//Doesn't call SPI-related methods
 
   NHD_LCDstatus_t err_code = NHD_SPI_OK;
 
-  err_code = init_screen();
+  err_code = NHD_LCD_Init_Screen(&lcd_handle);
   if (err_code != NHD_SPI_OK)
   {
     log_error(__LINE__, (char)init, err_code);
   }
-  err_code = clear_screen();
+  err_code = NHD_LCD_Clear_Screen(&lcd_handle);
   if (err_code != NHD_SPI_OK)
   {
     log_error(__LINE__, (char)init, err_code);
   }
-  err_code = cmd_write(SET_SRT_ROW); // To first line
+  err_code = NHD_LCD_Write_Data(&lcd_handle, SET_SRT_ROW); // To first line
   if (err_code != NHD_SPI_OK)
   {
     log_error(__LINE__, (char)init, err_code);
@@ -176,22 +187,22 @@ int main(void)
 	  HAL_ADC_Stop(&hadc1); //Needed in for OVERSAMPLING MODE to work
 
 	  //Send input voltage, output voltage, input current, output current to the LCD screen
-	  err_code = print_power_value(v_input);
+	  err_code = print_power_value(&lcd_handle, v_input);
 	  if (err_code != NHD_SPI_OK)
 	  {
 	    log_error(__LINE__, (char)print, err_code);
 	  }
-	  err_code = print_power_value(v_output);
+	  err_code = print_power_value(&lcd_handle, v_output);
 	  if (err_code != NHD_SPI_OK)
 	  {
 	    log_error(__LINE__, (char)print, err_code);
 	  }
-	  err_code = print_power_value(i_input);
+	  err_code = print_power_value(&lcd_handle, i_input);
 	  if (err_code != NHD_SPI_OK)
 	  {
 	    log_error(__LINE__, (char)print, err_code);
 	  }
-	  err_code = print_power_value(i_output);
+	  err_code = print_power_value(&lcd_handle, i_output);
 	  if (err_code != NHD_SPI_OK)
 	  {
 	    log_error(__LINE__, (char)print, err_code);
@@ -422,7 +433,7 @@ static void MX_GPIO_Init(void)
  * @param index: The character row that the value would be displayed on
  * @retval NHD_LCD status
  */
-static NHD_LCDstatus_t print_power_value(uint8_t index)
+static NHD_LCDstatus_t print_power_value(NHD_LCD_Handle_t* lcd_handle, uint8_t index)
 {
 	// Set the number digits after the decimal point, and identify if it a current value or voltage value
 	uint8_t decimals = 0;
@@ -456,13 +467,13 @@ static NHD_LCDstatus_t print_power_value(uint8_t index)
 	else
 	{
 	  NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	  if ((err_code = print_data("Error: string was too long", index)) != NHD_SPI_OK)
+	  if ((err_code = NHD_LCD_Print_Data(lcd_handle, "Error: string was too long", index)) != NHD_SPI_OK)
 	    return err_code;
 	}
 
 	// Print string to the LCD string
 	NHD_LCDstatus_t err_code = NHD_SPI_OK;
-	if ((err_code = print_data(g_dest_text, index)) != NHD_SPI_OK)
+	if ((err_code = NHD_LCD_Print_Data(lcd_handle, g_dest_text, index)) != NHD_SPI_OK)
 		return err_code;
 
 	return err_code;
