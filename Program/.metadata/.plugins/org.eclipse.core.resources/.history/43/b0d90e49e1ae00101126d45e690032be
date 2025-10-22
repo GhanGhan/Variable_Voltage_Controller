@@ -14,85 +14,32 @@
 static uint8_t last_len[NUM_CHAR_ROWS] = {0};
 
 
-// PIN CONTROL HELPER FUNCTIONS
-
-/*
- * @brief Activates the 'Chip-Select' pin of the NHD_LCD module, it is now able to receive
- *    'command' and 'data' messages, depending on the op_pin value
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
- *
- * @retval None
- */
+// Pin Control Helper Functions
 static void LCD_Select(NHD_LCD_Handle_t* lcd_handle)
 {
   HAL_GPIO_WritePin(lcd_handle->cs_port, lcd_handle->cs_pin, GPIO_PIN_RESET);  //Select LCD Screen
 }
 
-/*
- * @brief De-activates the 'Chip-Select' pin of the NHD_LCD module, it will not accept
- *    'command' and 'data' messages
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
- *
- * @retval None
- */
 static void LCD_DeSelect(NHD_LCD_Handle_t* lcd_handle)
 {
   HAL_GPIO_WritePin(lcd_handle->cs_port, lcd_handle->cs_pin, GPIO_PIN_SET);  //De-Select LCD Screen
 }
 
-/*
- * @brief Sets the NHD_LCD module to the 'command' state, all received messages will be treated as
- *  commands the modules behavior
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
- *
- * @retval None
- */
 static void LCD_OP_Command(NHD_LCD_Handle_t* lcd_handle)
 {
   HAL_GPIO_WritePin(lcd_handle->op_port, lcd_handle->op_pin, GPIO_PIN_RESET);  //Set message type to command
 }
 
-/*
- * @brief Sets the NHD_LCD module to the 'data' state, all received messages will be treated as
- *  data that should be displayed by the module
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
- *
- * @retval None
- */
 static void LCD_OP_Data(NHD_LCD_Handle_t* lcd_handle)
 {
   HAL_GPIO_WritePin(lcd_handle->op_port, lcd_handle->op_pin, GPIO_PIN_SET);
 }
 
-/*
- * @brief Activates hardware reset on the module
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
- *
- * @retval None
- */
 static void LCD_Reset_LOW(NHD_LCD_Handle_t * lcd_handle)
 {
   HAL_GPIO_WritePin(lcd_handle->reset_port, lcd_handle->reset_pin, GPIO_PIN_RESET);
 }
 
-/*
- * @brief Places module into normal operating mode
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
- *
- * @retval None
- */
 static void LCD_Reset_HIGH(NHD_LCD_Handle_t* lcd_handle)
 {
   HAL_GPIO_WritePin(lcd_handle->reset_port, lcd_handle->reset_pin, GPIO_PIN_SET);
@@ -110,9 +57,6 @@ static void LCD_Reset_HIGH(NHD_LCD_Handle_t* lcd_handle)
  * for at least 5uS for stable operation, which is why there are 100mS delays after both
  * "HAL_GPIO_WritePin" functions
  * @note While the pin is "LOW" no write functions will be accepted
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
  *
  * @retval None
  */
@@ -141,8 +85,6 @@ void NHD_LCD_Reset_Screen(NHD_LCD_Handle_t* lcd_handle)
  * voltage of the regulator circuit to 1.698
  * @note 8: Now that all the settings have been given the proper values, turn the display on
  *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
  *
  * @retval NHD_LCD status
  */
@@ -196,9 +138,6 @@ NHD_LCDstatus_t NHD_LCD_Init_Screen(NHD_LCD_Handle_t* lcd_handle)
  *
  * @note The display is still on, but the all the data in the Display Data RAM which stores
  * the 'dot' data of the LCD is set to 0x00
- *
- * @param lcd_handle: pointer to a NHD_LCD_Handle_t structure that contains
- *              the configuration information for NHD_LCD SPI module
  *
  * @retval NHD_LCD status
  */
@@ -270,7 +209,7 @@ NHD_LCDstatus_t NHD_LCD_Write_Command(NHD_LCD_Handle_t* lcd_handle, uint8_t c)
 	LCD_Select(lcd_handle);
 	LCD_OP_Command(lcd_handle);	//Set message type to command
 
-	err_code = HAL_SPI_Transmit(lcd_handle->hspi, &c, 1, 100); 		// transmit command
+	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &c, 1, 100); 		// transmit command
 
 	LCD_DeSelect(lcd_handle);	//De-select LCD Screen
 
@@ -309,7 +248,7 @@ NHD_LCDstatus_t NHD_LCD_Write_Data(NHD_LCD_Handle_t* lcd_handle, uint8_t d)
 	LCD_Select(lcd_handle);;	//Select LCD Screen
 	LCD_OP_Data(lcd_handle);		//Set message type to data
 
-	err_code = HAL_SPI_Transmit(lcd_handle->hspi, &d, 1, 100); 		// transmit data
+	err_code = HAL_SPI_Transmit(&SPI_HANDLE, &d, 1, 100); 		// transmit data
 
 	LCD_DeSelect(lcd_handle);	//De-select LCD Screen
 
